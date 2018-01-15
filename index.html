@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+
+<meta name="viewport" content="initial-scale=1, minimum-scale=1">
+
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+<meta name="author" content="Stuart Sherwood" />
+<meta name="assetcreated" content="26 August 2014" />
+
+    <title>Stuart Sherwood, Web Designer/Developer</title>
+
+
+<style>
+
+@font-face {
+    font-family: 'BallparkWeiner';
+    src: url('Ballpark-fontfacekit/ballpark_weiner-webfont.eot');
+    src: url('Ballpark-fontfacekit/ballpark_weiner-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Ballpark-fontfacekit/ballpark_weiner-webfont.woff') format('woff'),
+         url('Ballpark-fontfacekit/ballpark_weiner-webfont.ttf') format('truetype'),
+         url('Ballpark-fontfacekit/ballpark_weiner-webfont.svg#BallparkWeiner') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+    
+@font-face {
+    font-family: 'BitterRegular';
+    src: url('bitter-fontfacekit/Bitter-Regular-webfont.eot');
+    src: url('bitter-fontfacekit/Bitter-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('bitter-fontfacekit/Bitter-Regular-webfont.woff') format('woff'),
+         url('bitter-fontfacekit/Bitter-Regular-webfont.ttf') format('truetype'),
+         url('bitter-fontfacekit/Bitter-Regular-webfont.svg#BitterRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {font:18px/24px BitterRegular,serif; margin:0; overflow-x:hidden;}
+header {border-bottom:60px solid #242424; margin:10px 0 -24px -5px; padding-top:20px; transform:rotate(-2deg);}
+h1 {color:#242424; font:60px/0.8 BallparkWeiner,serif; margin:0 0 -12px; padding-left:60px;}
+/* GALLERY */
+.gallery {background-color:#242424; padding:60px; position:relative;}
+.gallery img {float:none!important; padding:0!important;}
+.placeholder {background:transparent url(images/overlay-loader.gif) no-repeat center center; margin:0; xmax-height:420px; overflow:hidden; text-align:center;}
+.placeholder a {display:block;}
+.placeholder img {margin:0 auto; width:100%;}
+.placeholder img + img {display:none!important;}
+.gallery-info h2 {color:#fff; font-size:30px;}
+.gallery-info p {color:#fff;}
+p.gallery-counter {font-family:'Roboto Bold', sans-serif; font-size:16px; letter-spacing:3px; margin-bottom:20px;}
+p.caption {font-size:15px; line-height:1.3; margin-bottom:20px; max-height:110px; overflow:auto;}
+ul.showcase {height:105px; padding:0; margin:0; list-style-type:none; overflow-x:auto; overflow-y:hidden; white-space:nowrap;}
+.showcase a:hover {background-color:#504742;}
+.showcase li {display:inline-block; padding:0; margin:0; vertical-align:bottom;}
+.showcase a {cursor:pointer;}
+.showcase img {border-top:10px solid #242424; height:80px; padding:0;}
+.showcase a:focus img {outline:none; transform:scale(1.1);}
+.m-brown .showcase img {border-color:#63513D;}
+.m-yellow .showcase img {border-color:#FF9E1B;}
+.m-beige .showcase img {border-color:#F5F2E4;}
+.showcase img.selected {border-bottom:10px solid orange;
+    -webkit-animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
+    -moz-animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
+    -o-animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
+    -ms-animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
+    animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
+}
+p.gallery-attribution {font-size:15px; margin-bottom:20px;}
+.gallery-attribution:empty {display:none;}
+.gallery-attribution:before {content:"Attribution: ";}
+.gallery-left, .gallery-right {background-color:orange; bottom:35px; color:#fff; display:inline-block; height:44px; width:44px;}
+.gallery-left:hover, .gallery-right:hover {background-color:#B2371F;}
+.gallery-left {background-image:url(images/chevron-sm-white-left.png); background-repeat:no-repeat; background-position:center center; left:572px;}
+.gallery-right {background-image:url(images/chevron-sm-white-right.png); background-repeat:no-repeat; background-position:center center; left:616px;}
+
+address {font-style:normal; padding:60px;}
+
+@media (min-width:768px) {
+  header {padding-top:50px;}
+  h1 {font-size:100px; line-height:0.8; margin:0 0 -18px 0;}   
+}
+    
+@media (min-width:320px) and (max-width:1024px) {
+  .gallery-info {padding:20px 0;}
+  .gallery-info h2 {margin-top:0;}
+  p.gallery-counter {float:left; margin-right:12px;}
+}
+
+@media (min-width:1025px) and (max-width:10000px) {
+  h1 {padding-left:100px;}
+  .gallery {padding:160px 120px; position:relative;}
+  .gallery-info {position:absolute; right:120px; top:0; width:30%;}
+  .gallery-controls {position:absolute; right:0; top:-85px;}
+  .gallery-left, .gallery-right {height:88px; width:88px;}
+  address {padding:120px;}
+}
+    
+@-moz-keyframes bbounce { 
+    from { border-bottom:10px solid orange; border-top:10px solid #242424;}
+    to { border-bottom:20px solid orange; border-top:0 solid #242424;}
+}
+    
+</style>
+
+
+<!--[if lt IE 9]>
+<script src="/__data/assets/js_file/0006/576672/html5shiv.min.js"></script>
+<![endif]-->
+
+
+</head>
+
+<body class="">
+
+
+<div class="wrapper">
+
+<header itemscope itemtype="http://schema.org/Person"><h1 itemprop="name">Stuart Sherwood</h1></header>
+    
+<article class="gallery">
+    <div class="gallery-info">
+      <h2>Portfolio <span class="gallery-current">1</span>/<span class="gallery-total">13</span></h2>
+      <p class="caption"></p>
+      <p class="gallery-attribution"></p>
+    </div>
+    <div class="gallery-controls">
+      <span class="gallery-left"></span><span class="gallery-right"></span>
+    </div>
+    <ul class="showcase">
+      <li><a href="images/La-Trobe-University.jpg"><img alt="Current version of the La Trobe University home page. 2017, Responsive" src="images/La-Trobe-University-thumb.jpg" class="selected"></a></li>
+      <li><a href="images/ATAR-Wizard.jpg"><img alt="ATAR Wizard app. 2017, Responsive" src="images/ATAR-Wizard-thimb.jpg"></a></li>
+      <li><a href="images/Subjects.png"><img alt="Subject page. 2014, Responsive" src="images/Subjects-thumb.jpg"></a></li>
+      <li><a href="images/Scholarships.png"><img alt="Scholarships application. 2017, Responsive" src="images/Scholarships-thumb.jpg"></a></li>
+      <li><a href="images/Plan-your-orientation.png"><img alt="Orientation activity planner. 2018, Responsive" src="images/Plan-your-orientation-thumb.png"></a></li>
+      <li><a href="images/Courses.png"><img alt="Course publishing application. 2017, Responsive" src="images/Courses-thumb.jpg"></a></li>
+      <li><a href="images/audio.png"><img alt="La Trobe audio and podcast module. 2014, Responsive" src="images/audio-thumb.png"></a></li>
+      <li><a href="images/photo-gallery.jpg"><img alt="La Trobe photo gallery module. 2014, Responsive" src="images/photo-gallery-thumb.jpg"></a></li>
+      <li><a href="images/vertex.png"><img alt="Vertex logo, 2017" src="images/vertex-thumb.png"></a></li>
+      <li><a href="images/catchi-smile.png"><img alt="Boat signage. 2013" src="images/catchi-smile-thumb.png"></a></li>
+      <li><a href="images/Tetsuo-badge.png"><img alt="Japanese motorcycle club badge. 2014" src="images/Tetsuo-badge-thumb.png"></a></li>
+      <li><a href="images/promo.jpg"><img alt="La Trobe etched image campain module. 2014, Responsive" src="images/promo-thumb.jpg"></a></li>
+      <li><a href="images/mobile-screens.jpg"><img alt="Upcoming La Trobe mobile application interface designs." src="images/mobile-screens-thumb.jpg"></a></li>
+    </ul>
+    
+    <figure class="placeholder"><a class="load" href="images/La-Trobe-University.jpg" tabindex="0">
+        <img alt="" src="images/La-Trobe-University.jpg"></a>
+    </figure>
+</article>
+    
+<address itemscope itemtype="http://schema.org/Person">
+    <h2>Contact</h2>
+    <p>
+        <span itemprop="telephone">043 166 1742</span><br />
+        <a href="mailto:stuartosherwood@yahoo.com" itemprop="email">stuartosherwood@yahoo.com</a>
+    </p>
+</address>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+//IMAGE GALLERY
+$('.showcase li:first-child img').addClass('selected');
+var firstCaption = $('.showcase li:first-child img').attr('alt');
+$('.caption').text(firstCaption);
+var attribution = $('.showcase li:first-child img').attr('data-attribution');
+$('.gallery-attribution').text(attribution);
+
+$('.showcase a').on('click',function(){
+	var newimage = $(this).attr('href');
+	var caption = $(this).children("img").attr('alt');
+        var count = $(this).parent('li').index() + 1;
+        var currentAttribution = $(this).children("img").attr('data-attribution');
+
+        $('<img src="'+ newimage +'">').load(function() {
+          $('.placeholder img').fadeOut(300, function() { 
+            $(this).remove();
+          });
+          $(this).hide().fadeIn(300, function() {
+            $(this).appendTo('.placeholder a');
+            $('.placeholder a').attr('href',newimage);
+            $('.placeholder img').attr('alt',caption);
+            $('.caption').text(caption);
+            $('.gallery-attribution').text(currentAttribution);
+            $('.gallery-current').text(count);
+          });
+        })
+
+        $('.showcase img').removeClass('selected');
+        $(this).children('img').addClass('selected');
+	return false;
+});
+
+$('.gallery-left').on('click',function(){
+  $('.showcase').animate({scrollLeft:'-=121'}, 400);
+  $('.showcase img.selected').parent().parent().prev('li').children('a').click();
+  return false;
+});
+
+$('.gallery-right').on('click',function(){
+  $('.showcase').animate({scrollLeft:'+=121'}, 400);
+  $('.showcase img.selected').parent().parent().next('li').children('a').click();
+  return false;
+});    
+</script>
+
+</div>
+
+</body>
+</html>
