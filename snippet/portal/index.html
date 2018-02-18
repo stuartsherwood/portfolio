@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>portal</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+
+<style>
+body {background:#fff url(http://www.latrobe.edu.au/__data/assets/image/0005/545990/texture-red.jpg) repeat-x fixed; background-size:cover; font-family:'Roboto Condensed',sans-serif; font-weight:700; margin:0; padding:0;}
+
+main {margin-bottom:1vw;}
+
+@media (max-width:480px) {h2 {font-size:16px;}}
+h3 {font-size:18px;}
+
+a {color:#242424;}
+a:visited {color:#555;}
+a:hover {text-decoration:none;}
+
+input {border:none; border-radius:0; box-sizing:border-box; font:300 16px Roboto,sans-serif; padding:8px; width:100%; -webkit-appearance:none;}
+
+.tile-open {overflow:hidden;}
+    
+.layer {background:#ff9e1b; xbox-shadow:0 0 4px rgba(0,0,0,0.3); box-sizing:border-box; height:32vw; margin:0; overflow:hidden; padding:2vw; position:absolute; transform:translate3d(0,0,0); transition:bottom 0.3s ease-in-out, height 0.3s ease-in-out, left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.6s, width 0.3s ease-in-out, z-index 0.1s ease-in-out; z-index:1;}
+.layer:hover {}
+.open > header {margin-bottom:48px;}
+
+#email {background-image:url(arrows.png); background-position:27% 80%; background-repeat:no-repeat;}
+
+section + section {margin-top:4vw;}
+h2 {margin:0; position:relative; text-transform:uppercase; transition:margin-bottom 0.3s ease-in-out; z-index:2;}
+.layer h2 {margin-bottom:1vw!important;}
+
+.bell {height:20px; position:relative; width:20px; z-index:2;}
+.open .bell {display:none;}
+.indicator {color:#fff; display:inline-block; font-size:24px; left:2px; position:relative; top:-1px;}
+@media (min-width:481px) {
+    .bell {height:32px; width:32px;}
+    .indicator {background-color:#fff; border-radius:100%; color:#ff9e1b ; font-size:44px; height:68px; left:-8px; line-height:68px; text-align:center; top:16px; width:68px;}
+}
+.open .indicator {display:none;}
+.content {display:none; max-height:86%; overflow-y:scroll;}
+.open .content {display:block;}
+.content img {vertical-align:bottom;}
+
+
+/* Mock table */
+.mock-table {border-bottom:1px solid #242424; border-top:1px solid #242424; display:table; width:100%;}
+.mock-table-row {display:table-row; margin:0;}
+.mock-table-row:not(:last-child) {background:transparent url(../img/dotted-line.png) repeat-x 0 bottom;}
+.mock-table-row:hover {background-color:#E87722;}
+.mock-table-cell {display:table-cell; padding:8px 4px;}
+.mock-table-cell:not(:first-child) {font-family:Roboto,sans-serif;}
+
+.links {text-align:right;}
+.links a {color:#242424; display:inline-block; padding:4px;}
+
+.alert {color:red;}
+.blink {-webkit-animation:blinkloop ease-in-out 1s infinite;}
+.contrast {background-color:#000; color:#fff; display:inline-block; padding:0 10px;}
+.date {float:right;}
+.increment {-webkit-animation:increment-alert ease-in-out 1s 1;}
+.off-screen, .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Search */
+body.search-active {overflow:hidden;}
+.search-wrapper {background-color:#fff; bottom:0; display:none; left:0; padding:2vw; position:fixed; right:0; top:0; z-index:20;}
+.search-results {height:86vh; list-style-type:none; margin:4vw 0 0; overflow-y:scroll; padding:0;}
+
+    
+@media (max-width:1199px) and (orientation:portrait) {
+.layer {width:32vw;}
+.tile-open .layer {opacity:0;}
+.layer:nth-child(1) {left:1vw; top:1vw;}
+.layer:nth-child(2) {left:34vw; top:1vw;}
+.layer:nth-child(3) {left:67vw; top:1vw;}
+.layer:nth-child(4) {left:1vw; top:34vw;}
+.layer:nth-child(5) {left:34vw; top:34vw;}
+.layer:nth-child(6) {left:67vw; top:34vw;}
+.layer:nth-child(7) {left:1vw; top:67vw;}
+.layer:nth-child(8) {left:34vw; top:67vw;}
+.layer:nth-child(9) {left:67vw; top:67vw;}
+.layer:nth-child(10) {left:1vw; top:100vw;}
+.layer:nth-child(11) {left:34vw; top:100vw;}
+.layer:nth-child(12) {left:67vw; top:100vw;}
+.layer:nth-child(13) {left:1vw; top:133vw;}
+.layer:nth-child(14) {left:34vw; top:133vw;}
+.layer:nth-child(15) {left:67vw; top:133vw;}
+.layer.open {box-shadow:0 0 8px rgba(0,0,0,0.6); height:98vh; left:1vw; opacity:1; position:fixed; top:1vw; width:98vw; z-index:2;}
+.layer:last-child {margin-bottom:1vw;}
+}
+
+@media (max-width:1199px) and (orientation:landscape) {
+.layer {height:23.75vw; width:23.75vw;}
+.tile-open .layer {opacity:0;}
+.layer:nth-child(1) {left:1vw; top:1vw;}
+.layer:nth-child(2) {left:25.75vw; top:1vw;}
+.layer:nth-child(3) {left:50.5vw; top:1vw;}
+.layer:nth-child(4) {left:75.25vw; top:1vw;}
+.layer:nth-child(5) {left:1vw; top:25.75vw;}
+.layer:nth-child(6) {left:25.75vw; top:25.75vw;}
+.layer:nth-child(7) {left:50.5vw; top:25.75vw;}
+.layer:nth-child(8) {left:75.25vw; top:25.75vw;}
+.layer:nth-child(9) {left:1vw; top:50.5vw;}
+.layer:nth-child(10) {left:25.75vw; top:50.5vw;}
+.layer:nth-child(11) {left:50.5vw; top:50.5vw;}
+.layer:nth-child(12) {left:75.25vw; top:50.5vw;}
+.layer:nth-child(13) {left:1vw; top:75.25vw;}
+.layer:nth-child(14) {left:25.75vw; top:75.25vw;}
+.layer:nth-child(15) {left:50.5vw; top:75.25vw;}
+.layer:last-child {margin-bottom:1vw;}
+.layer.open {box-shadow:0 0 8px rgba(0,0,0,0.6); height:98vh; left:1vw; opacity:1; position:fixed; top:1vw; width:98vw; z-index:2;}
+}
+
+@media (min-width:1200px) {
+.wrapper {right:29vw;}
+.tile-open {overflow:auto;}
+.tile-open .layer {bottom:1vw;}
+.layer {height:13vw; left:81vw; right:0; width:13vw;}
+.close-layer {display:none;}
+.indicator {line-height:1.5}
+.layer:nth-child(1) {left:72vw; top:1vw;}
+.layer:nth-child(2) {left:86vw; top:1vw;}
+.layer:nth-child(3) {left:72vw; top:15vw;}
+.layer:nth-child(4) {left:86vw; top:15vw;}
+.layer:nth-child(5) {left:72vw; top:29vw;}
+.layer:nth-child(6) {left:86vw; top:29vw;}
+.layer:nth-child(7) {left:72vw; top:43vw;}
+.layer:nth-child(8) {left:86vw; top:43vw;}
+.layer:nth-child(9) {left:72vw; top:57vw;}
+.layer:nth-child(10) {left:86vw; top:57vw;}
+.layer:nth-child(11) {left:72vw; top:71vw;}
+.layer:nth-child(12) {left:86vw; top:71vw;}
+.layer:nth-child(13) {left:72vw; top:85vw;}
+.layer:nth-child(14) {left:86vw; top:85vw;}
+.layer:nth-child(15) {left:72vw; top:99vw;}
+.layer:last-child {margin-bottom:1vw;}
+.layer.open {height:97vh; left:1vw; position:fixed; top:1vw; width:70vw;}
+}
+
+
+@-webkit-keyframes blinkloop {
+  0% {opacity:1;}
+  100% {opacity:0;}
+}
+
+@-webkit-keyframes increment-alert {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+    
+</style>
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+</head>
+
+<body>
+<main class="wrapper">
+
+<section class="layer" id="lms"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>LMS</h2>
+        <div class="indicator">4</div>
+    </header>
+    <div class="content">
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">Welcome to CSE2/4DBF</span><span class="mock-table-cell">Eric Pardede</span><span class="mock-table-cell ">10:08</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">New Lab - Monday 9-11</span><span class="mock-table-cell">Timothy Minchin</span><span class="mock-table-cell ">11:58</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">DBF Lab 1</span><span class="mock-table-cell">Mary Wright</span><span class="mock-table-cell ">12:02</span></p>
+        </div>
+        <p class="links"><a href="/lms">LMS</a></p>
+    </div>
+</section>
+
+<section class="layer" id="email"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Email</h2>
+        <div class="indicator">20</div>
+    </header>
+    <div class="content">
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">Re: What time for study session</span><span class="mock-table-cell">Sally Murphy</span><span class="mock-table-cell ">10:08</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Re: european travel and art question</span><span class="mock-table-cell">Timothy Minchin</span><span class="mock-table-cell ">11:58</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Lunch?</span><span class="mock-table-cell">Mary Wright</span><span class="mock-table-cell ">12:02</span></p>
+        </div>
+        <p class="links"><a href="">Setup email</a> <a href="">Office365</a></p>
+    </div>
+</section>
+
+<section class="layer" id="notices"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Notices</h2>
+        <div class="indicator">8</div>
+    </header>
+    <div class="content">
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">Re: What time for study session</span><span class="mock-table-cell">Sally Murphy</span><span class="mock-table-cell ">10:08</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Re: european travel and art question</span><span class="mock-table-cell">Timothy Minchin</span><span class="mock-table-cell ">11:58</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Lunch?</span><span class="mock-table-cell">Mary Wright</span><span class="mock-table-cell ">12:02</span></p>
+        </div>
+    </div>
+</section>
+
+<section class="layer" id="reminders"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Reminders</h2>
+    </header>
+    <div class="indicator">3</div>
+    <div class="content">
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">Due: Pre-War History assignment</span><span class="mock-table-cell ">2 days</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Oral presentation: Macro-economics</span><span class="mock-table-cell ">7 days</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Finance study group</span><span class="mock-table-cell ">12 days</span></p>
+        </div>
+    </div>
+</section>
+
+<section class="layer" id="subjects"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Subjects</h2>
+        <div class="indicator">1</div>
+    </header>
+    <div class="content">
+        <section>
+        <h3>AMERICA'S WAR IN VIETNAM</h3>
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">Code:</span><span class="mock-table-cell ">HIS2AWV</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Lecturer:</span><span class="mock-table-cell ">Robert Smith</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Co-ordinator:</span><span class="mock-table-cell "><a href="/directory?staff=tminchin">Timothy Minchin</a></span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Availablity:</span><span class="mock-table-cell ">9am - 2pm, M-F</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Office:</span><span class="mock-table-cell "><a href="/maps/elt203">ELT203</a></span></p>
+        </div>
+        <h3>CHANGING CITIES: FROM INDUSTRIAL TO MODERN</h3>
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">Code:</span><span class="mock-table-cell ">HIS3URB </span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Lecturer:</span><span class="mock-table-cell ">Robert Smith</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Co-ordinator:</span><span class="mock-table-cell "><a href="/directory?staff=cfahey">Charles Fahey</a></span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Availablity:</span><span class="mock-table-cell ">9am - 6pm, M-W</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Office:</span><span class="mock-table-cell "><a href="/maps/pe113">PE113</a></span></p>
+        </div>
+        </section>
+        <section>
+        <header>
+            <h2>Completed subjects</h2>
+        </header>
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">CHINA AND CULTURAL DIFFERENCES</span><span class="mock-table-cell ">C</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">EUROPEAN TRAVEL AND ART</span><span class="mock-table-cell ">HD</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">GALLIPOLI, ANZACS AND THE GREAT WAR</span><span class="mock-table-cell ">D</span></p>
+        </div>
+        </section>
+        <section>
+        <header>
+            <h2>Search</h2>
+        </header>
+            <form action="">
+                <label class="off-screen" for="keyword">Keyword</label><input class="search-box" id="keyword" placeholder="keyword" />
+            </form>
+        </section>
+    </div>
+</section>
+
+<section class="layer" id="library"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Library</h2>
+        <div class="indicator">10</div>
+    </header>
+    <div class="content">
+        <p>Open today: <span id="bun-time">7 am - Midnight</span> (<a href="http://www.latrobe.edu.au/library/facilities/opening-hours?action=melbourne">view other days</a>)</p>
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">Due: Course material updated</span><span class="mock-table-cell ">20/03/2015</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Book title</span><span class="mock-table-cell ">22/04/2015</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">Another book title</span><span class="mock-table-cell ">22/04/2015</span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">A new quiz is available</span><span class="mock-table-cell ">22/04/2015</span></p>
+        </div>
+        <p class="links"><a href="/library/">My library</a> <a href="/library/citations">Citations</a></p>
+    </div>
+</section>
+
+<section class="layer" id="maps"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Maps</h2>
+        <div class="indicator">4</div>
+    </header>
+    <div class="content">
+        
+    </div>
+</section>
+
+<section class="layer" id="my-day"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>My day</h2>
+        <div class="indicator">6</div>
+    </header>
+    <div class="content">
+        <div class="mock-table">
+            <p class="mock-table-row"><span class="mock-table-cell">10:00</span><span class="mock-table-cell">CHINA AND CULTURAL DIFFERENCES</span><span class="mock-table-cell "><a href="/maps/pe113">PE113</a></span></p>
+            <p class="mock-table-row"><span class="mock-table-cell">11:00</span><span class="mock-table-cell">EUROPEAN TRAVEL AND ART</span><span class="mock-table-cell "><a href="/maps/pe105">PE105</a></span></p>
+            <p class="contrast" style="padding:8px">11<span class="blink">:</span>46</p>
+            <p class="mock-table-row"><span class="mock-table-cell">2:00</span><span class="mock-table-cell">GALLIPOLI, ANZACS AND THE GREAT WAR</span><span class="mock-table-cell "><a href="/maps/pe202">PE202</a></span></p>
+        </div>
+    </div>
+</section>
+
+<section class="layer" id="pinboard"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Pinboard</h2>
+        <div class="indicator">0</div>
+    </header>
+    <div class="content">
+        <div class="mock-table">
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="http://webstat.latrobe.edu.au/c.latrobe?nm=https://latrobe.careerhub.com.au/Login.chpx?ReturnUrl=/Default.chpx?path=student_tools">Career Hub</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="http://www.latrobe.edu.au/students/it/reset-password?path=student_tools">Change password</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="http://www.latrobe.edu.au/lms">Collaborate</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="https://inplace.latrobe.edu.au/">InPlace</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="http://www.latrobe.edu.au/students/it/email">Office 365</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="https://pebblepad.latrobe.edu.au/pebblepad/login.aspx?referer=https%3a%2f%2fpebblepad.latrobe.edu.au%2fpebblepad%2fpebblepad.aspx">Pebblepad ePortfolio</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="http://www.latrobe.edu.au/students/enrolment/studentonline">StudentOnLine</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="http://www.latrobe.edu.au/students/timetables">Allocate Plus</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="http://www.latrobe.edu.au/students/learning/academic-integrity/explanation/turnitin">Turnitin</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell "><a href="http://www.latrobe.edu.au/students/it/connecting/eduroam">Wireless network</a></span><span class="mock-table-cell "><a class="edit"><img src="../icons/edit.svg" alt="Edit" height="48" width="48" /></a> <a class="delete"><img src="../icons/delete.svg" alt="Delete" height="48" width="48" /></a></span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="layer" id="contacts"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Contacts</h2>
+        <div class="indicator">15</div>
+    </header>
+    <div class="content">
+        <section>
+            <div class="mock-table">
+                <p class="mock-table-row">
+                    <span class="mock-table-cell ">Charles Fahey</span>
+                    <span class="mock-table-cell "><a href="mailto:cfahey@latrobe.edu.au">cfahey@latrobe.edu.au</a></span>
+                    <span class="mock-table-cell "><a href="tel:61394790011">9479 0011</a></span>
+                </p>
+                <p class="mock-table-row">
+                    <span class="mock-table-cell ">Timothy Minchin</span>
+                    <span class="mock-table-cell "><a href="mailto:tminchin@latrobe.edu.au">tminchin@latrobe.edu.au</a></span>
+                    <span class="mock-table-cell "><a href="tel:61394790123">9479 0123</a></span>
+                </p>
+            </div>
+        </section>
+        <section>
+        <header>
+            <h2>Search</h2>
+        </header>
+            <form action="">
+                <label class="off-screen" for="subject-keyword">Keyword</label><input class="search-box" id="subject-keyword" placeholder="keyword" />
+            </form>
+        </section>
+    </div>
+</section>
+
+<section class="layer" id="ask-latrobe"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Ask La Trobe</h2>
+        <div class="indicator">2</div>
+    </header>
+    <div class="content">
+        <form method="post" action="http://latrobe-current.custhelp.com/app/answers/list/kw/[keyword]/search/1">
+            <div class="rn_SearchInput">
+                <label class="off-screen" for="rn_KeywordText2_0_Text">Search by Keyword</label>
+                <input class="search-box" id="rn_KeywordText2_0_Text" placeholder="keyword" name="rn_KeywordText2_0_Text" type="text" maxlength="255" value="">
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="layer" id="search"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Search</h2>
+        <div class="indicator">0</div>
+    </header>
+    <div class="content">
+        <form action="http://www.latrobe.edu.au/search">
+            <div>
+                <input type="hidden" value="Latrobe" name="collection">
+                <label class="off-screen" for="ltu-keyword">Keyword</label><input class="search-box" id="ltu-keyword" name="query" placeholder="keyword" />
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="layer" id="student-online"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Enrolments</h2>
+        <div class="indicator">0</div>
+    </header>
+    <div class="content">
+        <h3>Enrolment period open, visit <a href="">Student Online</a></h3>
+    </div>
+</section>
+
+<section class="layer" id="exams"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Exams</h2>
+        <div class="indicator">0</div>
+    </header>
+    <div class="content">
+        <div class="mock-table">
+            <p class="mock-table-row">
+                <span class="mock-table-cell ">HIS2AWV: AMERICA'S WAR IN VIETNAM</span>
+                <span class="mock-table-cell ">11:00, 20/03/2015</span>
+                <span class="mock-table-cell "><a href="/maps/pe202">PE202</a></span>
+            </p>
+            <p class="mock-table-row">
+                <span class="mock-table-cell ">HIS3URB: CHANGING CITIES: FROM INDUSTRIAL TO MODERN</span>
+                <span class="mock-table-cell ">3:00, 20/03/2015</span>
+                <span class="mock-table-cell "><a href="/maps/pe202">PE202</a></span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="layer" id="clubs"><a class="close-layer"><img src="../img/close-x.png" alt="Close" /></a>
+    <header>
+        <h2>Clubs</h2>
+        <div class="indicator">0</div>
+    </header>
+    <div class="content">
+        
+    </div>
+</section>
+
+</main>
+
+<div class="search-wrapper">
+    <input placeholder="start typing" name="collection">
+    <ul class="search-results ng-scope">
+        <!-- ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/economics/research/specialisations/islamic-finance/team-members/_nocache" target="_blank" class="ng-binding">Islamic Finance, Department of Economics and Finance</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/news/articles/2009/article/middle-class-gays-play-bogan-for-kicks" target="_blank" class="ng-binding">Middle-class gays play bogan for kicks, News</a> </h3>
+            <p class="ng-binding">New study looks at class based sex 'tourism' in Britain</p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=BUS4HTB&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2013&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/economics/research/specialisations/financial-and-economic-theory/team-members/_nocache" target="_blank" class="ng-binding">Financial and economic theory, Department of Economics and Finance</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=BUS4HTA&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2013&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=ECO4HTB&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2013&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=FIN4HTB&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2012&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=BUS4HTA&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2012&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=ECO4HTA&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2012&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=BUS4HTB&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2012&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=FIN4HTB&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2013&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/__data/assets/pdf_file/0020/130871/2000.15.pdf" target="_blank" class="ng-binding">dpfront</a> [PDF]</h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=ECO4HTB&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2012&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/udb_public/publicview$p_subjects.actionquery?P_SUBJECT_CODE=ECO4HTA&amp;P_SUBJECT_NAME=&amp;P_SEMESTER=&amp;P_YEAR_LEVEL=&amp;P_FACULTY=&amp;P_CAMPUS=&amp;P_DISCIPLINE_CODE=&amp;P_SUBJECT_OFFER_YEAR=2013&amp;Z_ACTION=&amp;Z_ACTION=&amp;Z_CHK=0" target="_blank" class="ng-binding">Subject Search :</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/__data/assets/pdf_file/0014/220433/Mental-Health-Report.pdf" target="_blank" class="ng-binding">MEETING THE NEEDS OF STUDENTS</a> [PDF]</h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/__data/assets/pdf_file/0014/240134/ACFID-IHS-WP04-Fletcher-Webb.pdf" target="_blank" class="ng-binding">Luke Fletcher and Adele Webb In collaboration with Ross ...</a> [PDF]</h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/economics/research/specialisations/financial-econometrics-and-quantitative-finance/team-members/_nocache" target="_blank" class="ng-binding">Financial econometrics and quantitative finance, Department of Economics and Finance</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/marketing/assets/podcasts/rssfeeds/publiclectures.xml" target="_blank" class="ng-binding">Public Lectures - La Trobe University</a> </h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/__data/assets/pdf_file/0020/553340/Burnheim-AAR-Forum-14-November.pdf" target="_blank" class="ng-binding">Mentoring and social inclusion at Monash</a> [PDF]</h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults --><li class="search-result ng-scope" data-ng-repeat="result in searchResults">
+            <h3 class="ng-binding"><a href="http://www.latrobe.edu.au/__data/assets/pdf_file/0007/228580/2011-Winter-LAW5ACL-exam.pdf" target="_blank" class="ng-binding">Winter 2004</a> [PDF]</h3>
+            <p class="ng-binding"></p>
+        </li><!-- end ngRepeat: result in searchResults -->
+    </ul>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $('.close-layer').click(function(e){
+        $('body').removeClass('tile-open');
+        $('.layer').removeClass('open');
+        e.stopPropagation();
+    });
+    
+    $('.layer').click(function(){
+       if ($(window).width() >= 1200) {
+           $('.layer').removeClass('open');
+       }
+       $(this).addClass('open');
+       $('body').addClass('tile-open');
+    });
+    
+    if ($(window).width() >= 1200) {
+        $('.layer').first().addClass('open');
+        $('body').toggleClass('tile-open');
+    }
+
+    
+    $('.indicator').each(function(){
+        /*if ($(window).width() < 1200) {
+            var scale = $(this).text();
+            var hscale = $(this).text()*3/4;
+            //if (scale > 20) {scale = 20;}
+            //if (hscale > 12) {hscale = 15;}
+        } else {
+            var scale = $(this).text();
+            var hscale = $(this).text()/4;
+            //if (scale < 12) {scale = 8;}
+            //if (hscale > 5) {hscale = 5;}
+        };*/
+        if ($(this).text() > 0) {
+            $(this).before('<img class="bell" src="../icons/notification.svg" alt="" height="32" width="32" />');   
+        } else $(this).remove();
+        /*var fs = scale*scale;
+        if (fs < 100) {fs = 120};
+        var hw = scale*scale;
+        if (hw < 2) {hw = 2};
+        $(this).css('font-size',(fs)+'%').css('height',hw+'vw').css('width',hw+'vw').css('margin-top','-'+scale*3+'px').css('margin-left',scale*1.25+'px');
+        //$(this).prev('h2').css('margin-bottom',hscale+'vw')*/
+    });
+    
+    $('.search-box').focus(function(){
+        $('.search-wrapper').fadeIn().children('input').focus();
+        $('body').addClass('search-active');
+    });
+
+    var timer = function(){
+      setTimeout(function(){
+          $('.indicator:eq(2)').addClass('increment').text('9');
+      },3000);
+    };
+    timer();
+
+});
+</script>
+ 
+</body>
+</html>

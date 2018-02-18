@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>slideshow</title>
+<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<style>
+
+.progress {list-style:none; margin:0; padding:0;}
+.progress li {background-color:#63513d; color:#fff; display:inline-block; height:40px; line-height:38px; margin:0; padding:0 24px 0 32px; text-align:center; transition:background-color 1s ease-in-out, color 1s ease-in-out;}
+.progress li:after {content:"\25B6"; color:#63513d; font-size:16px; line-height:48px; margin-left:25px; position:absolute; transition:color 1s ease-in-out, transform 1s ease-in-out; transform:scale(1.5,2.9);}
+.progress li:nth-child(odd) {background-color:#735e47;}
+.progress li:nth-child(odd):after {color:#735e47;}
+.progress li.current-step {background-color:#2d251a; color:#ff9e1b; font-family:'Roboto Bold',sans-serif;}
+.progress li.current-step:after {color:#2d251a; transform:scale(1.5,4);}
+
+</style>
+
+</head>
+<body>
+
+<ol class="progress"><li class="current-step">1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
+<p><input class="previous-step" type="button" value="Previous" /><input class="next-step" type="button" value="Next" /></p>
+    
+<script src="js/jquery-1.10.1.min.js"></script>
+<script>
+
+$(document).ready(function(){
+
+$('.next-step').on('click keyup',function(event){
+  if (event.keyCode == '13' || event.keyCode === undefined){
+    $('.current-step').removeClass('current-step').next().addClass('current-step');
+  }
+});
+
+$('.previous-step').on('click keyup',function(event){
+  if (event.keyCode == '13' || event.keyCode === undefined){
+    $('.current-step').removeClass('current-step').prev().addClass('current-step');
+  }
+});
+
+});
+    
+
+</script>
+ 
+</body>
+</html>

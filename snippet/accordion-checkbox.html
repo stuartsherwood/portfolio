@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="minimum-scale=1.0, width=device-width, initial-scale=1" name="viewport" />
+<title>Accordion checkbox</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<style>
+    
+#container {
+    margin:0 auto;
+    padding:20px;
+    width:50%;
+}
+p {margin:0; padding:1em;}
+
+.checkbox-expander {perspective:500px;}
+.checkbox-expander input {opacity:0; position:absolute;}
+.checkbox-expander label {background:#f4f4f4; cursor:pointer; display:block; font:normal 20px/24px RobotoCondensed-Bold,sans-serif; margin-bottom:4px; padding:12px 12px 12px 48px; position:relative;}
+.checkbox-expander label:hover {background:#ddd;}
+.checkbox-expander input:focus + label {outline:2px dotted #e42312;}
+.checkbox-expander label:before {content:url(http://www.latrobe.edu.au/__data/assets/file/0004/745195/minus-dark.svg); display:inline-block; height:48px; left:0; position:absolute; top:0; vertical-align:middle; width:48px;}
+.checkbox-expander input:checked + label {background:#ddd; margin-bottom:0;}
+.checkbox-expander input:checked + label:before {content:url(http://www.latrobe.edu.au/__data/assets/file/0005/745196/plus-dark.svg);}
+.checkbox-expander-content {background:#f4f4f4; animation:accordion-closed 0.2s 1 ease-in-out forwards; display:block; transform-origin:top; visibility:hidden;}
+.checkbox-expander input:checked ~ .checkbox-expander-content {animation:accordion-open 0.2s 1 ease-in-out forwards; display:block; margin-bottom:4px; transform-origin:top; visibility:hidden;}
+
+@keyframes accordion-open {
+    0% {max-height:0px;overflow:hidden;transform:rotateX(-90deg);visibility:hidden;}
+    1% {max-height:0px;overflow:none;transform:rotateX(-90deg);visibility:visible;}
+    100% {max-height:10000px;overflow:none;transform:rotateX(0);visibility:visible;}
+}
+@keyframes accordion-closed {
+    0% { max-height:10000px; overflow:none; transform:rotateX(0); visibility:visible;}
+	99% { max-height:0; overflow:hidden; transform:rotateX(-90deg); visibility:visible;}
+    100% { max-height:0; overflow:hidden; transform:rotateX(-90deg); visibility:hidden;}
+}
+</style>
+
+</head>
+<body>
+	<div id="container">
+        <div class="checkbox-expander">
+            <input type="checkbox" id="check-1" title="Check to expand content" />
+            <label for="check-1">Option 1 that is really long and might wrap around</label>
+            <article class="checkbox-expander-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, odit, quia hic ipsam laboriosam dignissimos suscipit eligendi! Aspernatur, ad, suscipit officiis repellat consequuntur quod quibusdam sint nobis magnam voluptates veritatis?</p>
+            </article>
+        </div>
+        <div class="checkbox-expander">
+            <input type="checkbox" id="check-2" title="Check to expand content" />
+            <label for="check-2">Option 2</label>
+            <article class="checkbox-expander-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, doloremque maiores excepturi iste porro cumque rem praesentium illo labore error quasi magni cupiditate rerum sequi dolores architecto consectetur harum soluta neque placeat culpa nesciunt molestias quam facilis ipsum ab aspernatur ut similique aperiam nemo tempore earum esse repellat provident eum blanditiis tempora molestiae! Optio, asperiores neque nam reiciendis ad rerum.</p>
+            </article>
+        </div>
+        <div class="checkbox-expander">
+            <input type="checkbox" id="check-3" title="Check to expand content" />
+            <label for="check-3">Option 3</label>
+            <article class="checkbox-expander-content">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, ipsum ratione eos voluptates unde ut sint maiores nobis iste odit. Maiores, voluptatum, dolorem, deleniti debitis est ea numquam nesciunt in rerum fuga neque quas laudantium quo laboriosam doloremque nemo ab itaque aliquid accusamus accusantium veritatis consectetur necessitatibus iure soluta blanditiis facere quam aperiam suscipit obcaecati voluptatem tempore delectus temporibus culpa! Repellendus, maiores at itaque soluta voluptatum est iusto dolor ex fuga animi debitis necessitatibus consectetur. Dignissimos, optio, saepe, quos dolorum pariatur voluptatum quasi eveniet ipsam fugit accusantium voluptate ducimus cupiditate ullam nostrum unde eaque necessitatibus maxime sunt incidunt aliquid accusamus.</p>
+            </article>
+        </div>
+  </div>
+</body>
+</html>

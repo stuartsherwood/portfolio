@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="minimum-scale=1.0, width=device-width, initial-scale=1" name="viewport" />
+<title>Personalisation</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<style>
+    body {font-family:Roboto,sans-serif; margin:0;}
+    h2 {font-size:18px; margin:4px;}
+    
+#personalisation-filters {transform:translateY(-100%); transition:transform 0.3s ease-in-out;}
+#personalisation-filters.on {transform:translateY(0);}
+    
+</style>
+
+</head>
+<body class="">
+
+<div id="personalisation-filters">
+    <select class="set-personalisation" id="P-level" name="P-level" required>
+        <option value="null">Please select</option>
+        <option value="ug">Undergraduate</option>
+        <option value="pg">Postgraduate</option>
+    </select>
+    <select hidden class="set-personalisation" id="P-disc" name="P-disc" required>
+        <option value="null">Please select</option>
+        <option value="discipline-ac">Arts and Communications</option>
+        <option value="discipline-bc">Business and Commerce</option>
+        <option value="discipline-hs">Health Sciences</option>
+        <option value="discipline-ite">IT and Engineering</option>
+        <option value="discipline-lc">Law and Criminology</option>
+        <option value="discipline-sp">Sciences and Psychology</option>
+        <option value="discipline-te">Teaching and Education</option>
+    </select>
+
+    <button id="P-done">Done</button>
+    <button id="P-nope">Clear or opt out</button>
+    <button hidden id="P-close">Close</button>
+</div>
+<button id="personalise">Personalise</button>
+<main>
+    <h2 class="P-item au">AU story</h2>
+    <h2 class="P-item int">INT story</h2>
+    <h2 class="P-item au-ug">AU UG story</h2>
+    <h2 class="P-item generic">Generic story</h2>
+    <h2 class="P-item au">AU story</h2>
+    <h2 class="P-item generic">Courses</h2>
+    <ul id="courses">
+        <li class="discipline-ac"><input type="radio" name="disc" value="discipline-ac" /> Arts</li>
+        <li class="discipline-bc"><input type="radio" name="disc" value="discipline-bc" /> Business</li>
+        <li class="discipline-hs"><input type="radio" name="disc" value="discipline-hs" /> Health</li>
+        <li class="discipline-ite"><input type="radio" name="disc" value="discipline-ite" /> IT</li>
+        <li class="discipline-lc"><input type="radio" name="disc" value="discipline-lc" /> Law</li>
+        <li class="discipline-sp"><input type="radio" name="disc" value="discipline-sp" /> Science</li>
+        <li class="discipline-te"><input type="radio" name="disc" value="discipline-te" /> Teaching</li>
+    </ul>
+    <h2 class="P-item discipline-ac">Arts story</h2>
+    <h2 class="P-item pg">PG story</h2>
+    <h2 class="P-item ug">UG story</h2>
+    <h2 class="P-item ug">UG story</h2>
+    <h2 class="P-item pg">PG story</h2>
+    <h2 class="P-item pg">PG story</h2>
+    <h2 class="P-item generic">Generic story</h2>
+    <h2 class="P-item discipline-ac">arts story</h2>
+    <h2 class="P-item discipline-ac">arts story</h2>
+    <h2 class="P-item disc-health-science">health story</h2>
+    <h2 class="P-item discipline-ac">arts story</h2>
+    <h2 class="P-item discipline-hs">health story</h2>
+    <h2 class="P-item discipline-ite">it story</h2>
+    <h2 class="P-item generic">Generic story</h2>
+    <h2 class="P-item discipline-te">teaching story</h2>
+    <h2 class="P-item discipline-sp">science story</h2>
+    <h2 class="P-item discipline-hs">health story</h2>
+    <h2 class="P-item generic">Generic story</h2>
+    <h2 class="P-item discipline-bc">business story</h2>
+    <h2 class="P-item discipline-ac">arts story</h2>
+    <h2 class="P-item generic">Generic story</h2>
+</main>
+
+<script>
+if(testSupport() === true){
+    var P_screen = document.getElementById('personalisation-filters');
+    var P_level = document.getElementById('P-level');
+    var P_discipline = document.getElementById('P-disc')
+    var P_done = document.getElementById('P-done');
+    var P_nope = document.getElementById('P-nope');
+    var P_close = document.getElementById('P-close');
+    var personalise = document.getElementById('personalise');
+    var items = '';
+    
+    function P_items(){
+        items = document.querySelectorAll('.P-item');
+    }
+    
+    P_items();
+
+    // if personalisation not set, show filter screen
+    if (getP_value('pStatus') == undefined) {
+        P_screen.classList.add('on');
+    }
+    // if personalisation is set, show matching items and open courses
+    if (getP_value('pStatus') === 'set') {
+        var P_class = [];
+        P_class.push(getP_value('studentLevel'));
+        P_class.push(getP_value('studentDisc'));
+        toggleHidden(P_class);
+        document.querySelector('input[value='+getP_value('studentDisc')+']').checked = 'true';
+    }
+    // if personalisation is set to optOut, show generic items
+    if (getP_value('pStatus') === 'optOut') {
+        var P_class = ['generic'];
+        toggleHidden(P_class);
+    }
+
+    // personalisation screen visible and level set, show discipline
+    P_level.addEventListener('change', function(e){
+        if(P_level.value !== 'null') {
+            P_discipline.removeAttribute('hidden');
+        };
+    });
+
+    // save personalisation settings
+    P_done.addEventListener('click', function(e){
+        var P_class = [];
+        if (P_level.value !== 'null') {
+            P_class.push(P_level.value);
+            setP_value('pStatus','set');
+            setP_value('studentLevel',P_level.value);
+        }
+        if (P_level.value === 'null') {
+            P_level.focus();
+        }
+        if (P_discipline.value !== 'null') {
+            P_class.push(P_discipline.value);
+            setP_value('studentDisc',P_discipline.value);
+            document.querySelector('input[value='+getP_value('studentDisc')+']').checked = 'true';
+        }
+        if (P_level.value !== 'null' && P_discipline.value === 'null') {
+            P_discipline.focus();
+        }
+        if (P_level.value === 'null' && P_discipline.value === 'null') {
+            P_level.focus();
+        }
+        if (P_level.value !== 'null' && P_discipline.value !== 'null') {
+            P_screen.classList.remove('on');
+            toggleHidden(P_class);
+        }
+    });
+
+    // opt out of personalisation
+    P_nope.addEventListener('click', function(){
+        var P_class = ['generic'];
+        toggleHidden(P_class);
+        P_level.value = 'null';
+        P_discipline.value = 'null';
+        P_screen.classList.remove('on');
+        trashP_value('studentLevel');
+        trashP_value('studentDisc');
+        setP_value('pStatus','optOut');
+    });
+
+    // close personalisation screen without change
+    P_close.addEventListener('click', function(){
+        P_screen.classList.remove('on');
+    });
+
+    // open personalisation screen
+    personalise.addEventListener('click', function(){
+        showPPP();
+    });
+
+    // open personalisation screen
+    function showPPP(){
+        P_screen.classList.add('on');
+        if (getP_value('pStatus') === 'set') {
+            P_close.removeAttribute('hidden');
+            P_discipline.removeAttribute('hidden');
+            P_level.value = getP_value('studentLevel');
+            P_discipline.value = getP_value('studentDisc');
+        }
+    };
+
+    function setP_value(x,y) {
+        localStorage[x]=y;
+    }
+        
+    function getP_value(x) {
+        return localStorage[x];
+    }
+    
+    function trashP_value(x) {
+        localStorage.removeItem(x);
+    }
+    
+    function toggleHidden(P_class) {
+        for (i = 0; i < items.length; i++) {
+            var $this = items[i];
+            if ($this.classList.contains(P_class[0]) || $this.classList.contains(P_class[1])) {
+                $this.removeAttribute('hidden');
+            }
+            else $this.setAttribute('hidden','hidden');
+        }
+    };
+    
+}else{
+    var P_class = ['generic'];
+    var items = document.querySelectorAll('h2');
+    for (i = 0; i < items.length; i++) {
+        if (items[i].classList.contains('generic') === false) {
+            items[i].setAttribute('hidden','hidden');
+        }
+    }
+}
+
+function testSupport(){
+    var test = 'test';
+    try {
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        return true;
+    } catch(e) {
+        return false;
+    }
+}
+</script>
+
+</body>
+</html>

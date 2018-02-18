@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="minimum-scale=1.0, width=device-width, initial-scale=1" name="viewport" />
+<title>Tooltips</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<style>
+    
+    body {font-family:sans-serif; margin:0; padding:0;}
+    .wrapper {padding:20px;}
+    input {box-sizing:border-box; border:1px solid #ccc; padding:8px; width:100%;}
+    
+    .tip-text {background-color:#555; box-sizing:border-box; box-shadow:0 0 4px rgba(0,0,0,0.3); color:#fff; display:inline-block; max-width:calc(100vw - 40px); padding:12px; pointer-events:none; position:absolute; transition:opacity 0.2s ease-in-out, visibility 0s 0.2s;}
+    .tip-text[aria-hidden="true"] {opacity:0; visibility:hidden;}
+    .tip-text[aria-hidden="false"] {opacity:1; visibility:visible;}
+    /*.tip-text:before {color:#555; content:"\25B2"; display:block; margin:-28px 0 0 -8px; position:absolute;}*/
+    @media (min-width:768px) {.tip-text {max-width:25vw;}}
+    @media (min-width:1024px) {.tip-text {}}
+    input + .tip-text {margin:8px 0 0 0;}
+    
+    .pls-explain {cursor:help; display:inline-block;}
+    span.pls-explain {border-bottom: 1px dotted #666;}
+    .pls-explain:hover + .tip-text, .pls-explain:focus + .tip-text {transition:opacity 0.2s ease-in-out, visibility 0.2s 0s;}
+    
+</style>
+
+</head>
+<body class="">
+<div class="wrapper">
+    <p>Username <button class="pls-explain" title="AKA user ID">?</button></p>
+    <p><span class="pls-explain" title="The Agora">The Ag</span></p>
+    <p><input id="email" type="email" class="pls-explain" title="Your email address" required /></p>
+    <p>Indicative only! Upon application, <abbr class="pls-explain" title="La Trobe University">LTU</abbr> admission <span class="pls-explain" title="the good ones">staff will</span> access your <span class="pls-explain" title="In some circumstances, it is possible for users to become discombobulated. If this occurs, call 000 immediately.">circumstances</span> to confirm your eligibility to the available bonuses. A maximum of 25 bonus points can be granted.</p>
+    
+    <p>Username <button class="pls-explain" title="AKA user ID">?</button></p>
+    <p><span class="pls-explain" title="The Agora">The Ag</span></p>
+    <p><input id="email" type="email" class="pls-explain" title="Your email address" required /></p>
+    <p>Indicative only! Upon application, <abbr class="pls-explain" title="La Trobe University">LTU</abbr> admission <span class="pls-explain" title="the good ones">staff will</span> access your <span class="pls-explain" title="In some circumstances, it is possible for users to become discombobulated. If this occurs, call 000 immediately.">circumstances</span> to confirm your eligibility to the available bonuses. A maximum of 25 bonus points can be granted.</p>
+    
+    <p>Username <button class="pls-explain" title="AKA user ID">?</button></p>
+    <h2 class="pls-explain" title="The Agora">The Ag</h2>
+    <p><input id="email" type="email" class="pls-explain" title="Your email address" required /></p>
+    <p>Indicative only! Upon application, <abbr class="pls-explain" title="La Trobe University">LTU</abbr> admission <span class="pls-explain" title="the good ones">staff will</span> access your <span class="pls-explain" title="In some circumstances, it is possible for <b>users</b> to become discombobulated. If this occurs, call 000 immediately.">circumstances</span> to confirm your eligibility to the available bonuses. A maximum of 25 bonus points can be granted.</p>
+</div>
+
+<script>
+    
+var tooltips = document.querySelectorAll('.pls-explain');
+var yAdjust = 'move-up';
+var xAdjust = 'move-left';
+for (i = 0; i < tooltips.length; ++i) {
+    var $this = tooltips[i];
+    $this.setAttribute('aria-describedby','tip-'+i);
+    $this.setAttribute('tabindex','0');
+    var tipContent = $this.getAttribute('title');
+    $this.insertAdjacentHTML('afterend','<span id="tip-'+i+'" class="tip-text" role="tooltip" aria-hidden="true">'+tipContent+'</span>');
+    $this.removeAttribute('title');
+    $this.addEventListener('mouseover',function(e){
+        var popup = e.target.nextElementSibling;
+        var rect = popup.getBoundingClientRect();
+        e.target.nextElementSibling.setAttribute('aria-hidden','false');
+        positionTooltip(e,popup,rect);
+    });
+    $this.addEventListener('mouseout',function(e){
+        e.target.nextElementSibling.setAttribute('aria-hidden','true');
+        //setTimeout(function(){e.target.nextElementSibling.classList.remove(yAdjust)},300);
+    });
+    $this.addEventListener('keyup',function(e){
+        if (e.code == 'Escape') {
+            e.target.nextElementSibling.setAttribute('aria-hidden','true');
+        }
+        if (document.activeElement) {
+            var popup = e.target.nextElementSibling;
+            var rect = popup.getBoundingClientRect();
+            e.target.nextElementSibling.setAttribute('aria-hidden','false');
+            positionTooltip(e,popup,rect);
+        }
+    });
+    $this.addEventListener('blur',function(e){
+        e.target.nextElementSibling.setAttribute('aria-hidden','true');
+        //setTimeout(function(){e.target.nextElementSibling.classList.remove(yAdjust)},300);
+    });
+}
+
+function positionTooltip(e,popup,rect) {
+    // if right edge offscreen, move left
+    if (popup.classList.contains('mod') === false) {
+        // default position directly under element
+        popup.style.top = (e.target.offsetTop + e.target.offsetHeight + 4)+'px';
+        popup.style.left = e.target.offsetLeft+'px';
+
+        if ((rect.left + popup.offsetWidth) > document.body.offsetWidth || rect.left <= 0 || rect.bottom > document.documentElement.clientHeight) {
+            // if right edge offscreen
+            if ((rect.left + popup.offsetWidth) > document.body.offsetWidth) {
+                popup.style.right = '20px';
+                popup.style.top = (e.target.offsetTop + e.target.offsetHeight + 4)+'px';
+            }
+            // if left edge offscreen, move right
+            if (rect.left <= 0) {
+                popup.style.left = '20px';
+            }
+            // if bottom edge offscreen
+            if (rect.bottom > document.documentElement.clientHeight) {
+                popup.style.top = (e.target.offsetTop - popup.offsetHeight - 4)+'px';
+            }
+            popup.classList.add('mod');
+        }
+    }
+}
+
+
+/*****************************************************
+  Fire at end of resize
+*****************************************************/
+var resizeTimer,
+    windowWidth = window.clientWidth;
+
+window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+        // Call functions here
+        resetTips();
+    }, 250);
+});
+
+function resetTips() {
+    for (i = 0; i < tooltips.length; ++i) {
+        tooltips[i].nextElementSibling.removeAttribute('style');
+        tooltips[i].nextElementSibling.classList.remove('mod');
+        var popup = tooltips[i].nextElementSibling;
+    }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>slideshow</title>
+<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1">
+<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<style>
+
+body {background:transparent url(http://www.latrobe.edu.au/__data/assets/image/0005/545990/texture-red.jpg) 0 0 no-repeat; font-family:sans-serif; margin:0; padding:0;}
+
+.js .slideshow {}
+.js .slide {opacity:0; position:absolute; top:0; visibility:hidden; -webkit-transition:opacity 0.5s ease-in-out, visibility 0.5s; transition:opacity 0.5s ease-in-out, visibility 0.5s; width:100%;}
+.slide.current {opacity:1; visibility:visible;}
+.pager {bottom:0; list-style-type:none; margin:0; padding:0; position:absolute; z-index:1;}
+.pager .page {border:1px solid #000; border-radius:100%; cursor:pointer; display:inline-block; height:12px; margin-right:12px; 
+    -ms-transition:background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
+    -webkit-transition:background-color 0.5s ease-in-out, transform 0.5s ease-in-out; 
+    transition:background-color 0.5s ease-in-out, transform 0.5s ease-in-out;
+    width:12px;}
+.pager button {background-color:transparent; border:none; overflow:hidden; text-indent:-200px;}
+.pager button:focus {outline:none;}
+.pager .current {background-color:#000; -ms-transform:scale(1.2); -webkit-transform:scale(1.2); transform:scale(1.2);}
+.pager .page:focus {border-radius:0; -ms-transform:rotateZ(45deg); -webkit-transform:rotateZ(45deg); transform:rotateZ(45deg); outline:none;}
+.pager .page:hover {border-radius:0; -ms-transform:rotateZ(45deg); -webkit-transform:rotateZ(45deg); transform:rotateZ(45deg);}
+.stop {background:transparent url(img/slideshow-controls.png) no-repeat -3px -5px; background-size:24px 48px; cursor:pointer; display:inline-block; height:14px; margin-right:12px; width:14px;}
+.stop:focus, .stop:hover {outline:none;}
+.stop.paused {background-position:-3px -29px;}
+
+
+.flow-slideshow {}
+.flow-slideshow .hero {background-color:#ff9e1b; position:relative;}
+.flow-slideshow .slideshow {overflow:auto;}
+.js .flow-slideshow .slideshow {border-bottom:28px solid #ff9e1b;}
+.flow-slideshow .slide {}
+.flow-slideshow .pager {padding:0 0 12px 20px;}
+.spotlight-header {position:relative;}
+.flow-slideshow .sidekick {display:none;}
+.spotlight-image {box-shadow:none!important;}
+.spotlight-heading {background-color:rgba(0,0,0,0.5); bottom:0; color:#fff; font:700 36px/36px 'Roboto Condensed',sans-serif; margin:0; text-transform:uppercase; box-sizing:border-box; padding:8px 20px; position:absolute;}
+.line-1 {padding-bottom:0; width:240px;}
+.line-2 {width:320px;}
+.spotlight-content {background-color:#ff9e1b; box-sizing:border-box; padding:20px;}
+.spotlight-desc {color:#242424; font:300 16px/24px 'Roboto',sans-serif; -webkit-flex:0 1 60%; flex:0 1 60%; margin:0; padding-right:20px;}
+.spotlight-cta {-webkit-flex:0 1 40%; flex:0 1 40%; margin:20px 0 0;}
+.spotlight-sub {color:#fff; display:block; font:700 24px/24px 'Roboto Condensed',sans-serif; margin-bottom:16px; text-transform:uppercase;}
+@media (min-width:600px){
+    .flow-slideshow {}
+    .flow-slideshow .hero {background-color:transparent; height:540px; width:100%;}
+    .js .flow-slideshow .slideshow {border:none;}
+    .spotlight-header {padding-right:60px;}
+    .spotlight-heading {background-color:#2d251a; font-size:40px; line-height:40px; max-width:540px;}
+    .spotlight-content {display:-webkit-flex; display:flex; height:160px; margin-left:45px;}
+    .spotlight-cta {margin:0;}
+    .flow-slideshow .pager {margin:0 0 0 45px;}
+}
+@media (min-width:769px){
+    .flow-slideshow .hero {margin:80px 0 0 80px; width:630px;}
+}
+    
+/* LTU Button */
+a.ltu-button {color:#fff!important; background:#D14124 url(http://www.latrobe.edu.au/__data/assets/image/0004/553369/chevron-lg-white-right.png) no-repeat 94% center; display:inline-block; font-family:"Roboto Condensed",sans-serif; padding:10px 46px 9px 26px; text-decoration:none; text-transform:uppercase;}
+a.mini {background-image:none; padding:4px 20px; vertical-align:top;}
+a.ltu-button:first-child:not(:only-child) {margin-bottom:5px;}
+a.ltu-button.chat {background:#D14124 url(http://www.latrobe.edu.au/__data/assets/image/0003/551469/speech-bubbles.png) no-repeat 15% center; padding:10px 26px 9px 48px;}
+a.ltu-button:hover {background-color:#B43A20;}
+a.ltu-button:active {background-color:#D52B1E; box-shadow:0 0 4px #D52B1E;}
+
+/* Image ratio */
+.img-ratio {background-color:#242424; box-shadow:0 0 5px rgba(0,0,0,0.5); display:block; height:0; overflow:hidden; position:relative; width:100%;}
+.ratio-3-2 {padding:66.66666666% 0 0 0;}
+.img-ratio img {bottom:0; display:block; left:0; max-height:100%; margin:auto; position:absolute; right:0; top:0;}
+
+    
+.off-screen, .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+</style>
+
+</head>
+<body>
+
+<section class="flow-node flow-slideshow">
+    <div>
+        <div class="hero">
+            <div class="slideshow">
+                <article class="slide">
+                    <header class="spotlight-header">
+                        <div class="spotlight-image img-ratio ratio-3-2"><img class="" src="http://www.latrobe.edu.au/experience/life-images/Students-and-building-2.jpg/preview.jpg" alt="The LIMS building exterior" /></div>
+                        <h2 class="spotlight-heading">Study your dreams at La&nbsp;Trobe in 2016</h2>
+                    </header>
+                    <div class="spotlight-content">
+                        <p class="spotlight-desc">Choose La Trobe to get real world experience, gain a global perspective and study with people who are pushing the boundaries of knowledge.</p>
+                        <p class="spotlight-cta"><span class="spotlight-sub">Now&rsquo;s your time</span><a class="ltu-button" href="http://www.google.com">Learn more</a></p>
+                    </div>
+                </article>
+                <article class="slide">
+                    <header class="spotlight-header">
+                        <div class="spotlight-image img-ratio ratio-3-2"><img class="" src="http://www.latrobe.edu.au/experience/life-images/La-Trobe-regional-campus.jpg/preview.jpg" alt="A La Trobe building in Bendigo" /></div>
+                        <h2 class="spotlight-heading">Brilliant and beautiful regional campuses</h2>
+                    </header>
+                    <div class="spotlight-content">
+                        <p class="spotlight-desc">Choose La Trobe to get real world experience, gain a global perspective and study with people who are pushing the boundaries of knowledge.</p>
+                        <p class="spotlight-cta"><span class="spotlight-sub">Live regional</span><a class="ltu-button" href="http://www.yahoo.com">Explore</a></p>
+                    </div>
+                </article>
+                <article class="slide">
+                    <header class="spotlight-header">
+                        <div class="spotlight-image img-ratio ratio-3-2"><img class="" src="http://www.latrobe.edu.au/experience/life-images/La-Trobe-Postgraduate-Health-and-Business.jpg/preview.jpg" alt="A lA Trobe business partnership meeting" /></div>
+                        <h2 class="spotlight-heading">Industry wide and pro-commercial partnerships</h2>
+                    </header>
+                    <div class="spotlight-content">
+                        <p class="spotlight-desc">Choose La Trobe to get real world experience, gain a global perspective and study with people who are pushing the boundaries of knowledge.</p>
+                        <p class="spotlight-cta"><span class="spotlight-sub">Get ahead</span><a class="ltu-button" href="http://www.bing.com">Start researching</a></p>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="sidekick"></div>
+    </div>
+</section>
+
+<script>
+
+document.getElementsByTagName('body')[0].classList.add('js');
+
+// setup slideshows
+var slideshows = document.querySelectorAll('.slideshow');
+var speed = 3000;
+var play = startSlideshow();
+
+// stop/play buttons
+var stopButtons = document.querySelectorAll('.stop');
+for (var i=0;i<stopButtons.length;i++){  
+    stopButtons[i].addEventListener('click', stopSlideshow, false);
+    stopButtons[i].addEventListener('keyup', stopSlideshow, false);
+}
+
+function stopSlideshow(event){
+    if (event.keyCode == '13' || event.keyCode == '0' || event.keyCode === undefined){
+        this.parentElement.nextSibling.classList.toggle('pause');
+        this.classList.toggle('paused');
+        if (this.classList.contains('paused')){
+            this.innerHTML = '<button>Play</button>';
+        } else this.innerHTML = '<button>Stop</button>';
+    }
+}
+
+// init paging
+var pager = document.querySelectorAll('.pager');
+for (var i=0;i<pager.length;i++){
+    pager[i].firstElementChild.nextSibling.classList.add('current');
+}
+var pages = document.querySelectorAll('.page');
+for (var i=0;i<pages.length;i++){
+    $this = pages[i];
+    (function(i){
+        var event = '';
+        $this.addEventListener('click', function(){gotoSlide(event,i)}, false);
+        $this.addEventListener('keyup', function(){gotoSlide(event,i)}, false);
+    }(i));
+}
+
+// go to clicked slide
+function gotoSlide(event,i){
+    if (event.keyCode == '13' || event.keyCode == '0' || event.keyCode === undefined){
+        var cp = pages[i].parentNode.childNodes
+        for (var e=0;e<cp.length;e++){
+            cp[e].classList.remove('current');
+        }
+        pages[i].classList.add('current');
+        var slide = document.querySelectorAll('.slide');
+        $this = slide.item(i);
+        $current = $this.parentElement.children;
+        for (var i=0;i<$current.length;i++){
+            if ($current[i].classList.contains('current')) {
+              $current[i].classList.remove('current');
+            }
+        }
+        $this.classList.add('current');
+        
+        var pauseButton = cp[0];
+        if (pauseButton.classList.contains('paused')){
+        } else {
+            var evt = document.createEvent('MouseEvents');
+            evt.initEvent('click', true, true);
+            pauseButton.dispatchEvent(evt);
+        }
+    }
+};
+
+function startSlideshow() {
+    // create pager
+    for (var i=0;i<slideshows.length;i++){
+        slideshows[i].firstElementChild.classList.add('current');
+        h = slideshows[i].firstElementChild.offsetHeight;
+        slideshows[i].setAttribute('style','height:'+h+'px');
+        var count = slideshows[i].childElementCount;
+        var page = stringRepeat('<li class="page"><button>Go to slide</button></li>', count);
+        if (slideshows[i].childElementCount > 1){
+            slideshows[i].insertAdjacentHTML('beforebegin', '<ol class="pager"><li class="stop"><button>Stop</button></li>'+page+'</ol>');
+        }
+    }
+    return window.setInterval(function(){
+        // cycle slides
+        for (var i=0;i<slideshows.length;i++){
+          var $this = slideshows[i];
+          if($this.classList.contains('pause'))continue;
+          var e  = $this.querySelector('.current');
+          (e.nextElementSibling || $this.firstElementChild).classList.add('current');
+          if ($this.childElementCount > 1){e.classList.remove('current')};
+        }
+        // cycle current pages
+        for (var i=0;i<pager.length;i++){
+            var $pager = pager[i];
+            var p  = $pager.querySelector('.current');
+            var n = p.nextElementSibling;
+            if($pager.nextSibling.classList.contains('pause'))continue;
+            if (n === undefined || n === null){
+                n = $pager.firstElementChild.nextSibling;
+                n.classList.add('current');
+            } else {n.classList.add('current');}
+            p.classList.remove('current');
+        }
+    }, speed);
+}
+
+// String repeater
+function stringRepeat(str, num) {
+    num = Number(num);
+    var result = '';
+    while (true) {
+        if (num & 1) { // (1)
+        result += str;}
+    num >>>= 1; // (2)
+    if (num <= 0) break;
+    str += str;
+} return result;}
+
+var resizeTimer;
+
+// End of resize
+window.addEventListener('resize', function(e) {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() {
+    console.log('finished');
+  }, 250);
+});
+
+</script>
+ 
+</body>
+</html>

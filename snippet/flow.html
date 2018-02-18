@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+  <title>Flow page</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<script src="/__data/assets/js_file/0006/576672/html5shiv.min.js"></script>
+<![endif]-->
+
+<style>
+html, body {height:100%;}
+body {background-color:#E86F2A; font-family:Roboto; font-weight:300; margin:0; padding:0;}
+
+h1 {color:#fff; font:700 50px/1 'Roboto Condensed',sans-serif; margin:0; padding:36px 60px 48px; position:relative;}
+h2 {font:700 20px/20px 'Roboto Condensed',sans-serif; margin:0 0 4px 0; text-transform:uppercase;}
+h2:only-child {margin:0;}
+h3 {font:700 18px/20px 'Roboto Condensed',sans-serif; margin:0 0 4px 0; text-transform:uppercase;}
+p {margin-top:0;}
+
+*:focus {outline:1px dotted #FF9E1b;}
+
+.header {background-color:#fff; box-shadow:0 0 5px rgba(0,0,0,0.5); height:80px; position:relative; z-index:11;}
+.universes {display:none;}
+.universes a {background:transparent url(http://www.latrobe.edu.au/__data/assets/image/0004/549742/chevron-sm-orange.png) no-repeat 15px 33px; color:#63513D; display:inline-block; text-decoration:none;}
+.universes a.current {background:url(http://www.latrobe.edu.au/__data/assets/image/0010/552817/current-audience-ltu.png) no-repeat 20px 20px rgba(255,255,255,0.6); border-top:4px solid #D14124; padding-left:60px; padding-top:26px;}
+.universes a:hover {color:#D14124;}
+.search {float:right; height:80px; margin-top:0; position:relative;}
+.search label {background-color:#fff; display:inline-block; float:right; height:80px; vertical-align:top;}
+.search label:hover {color:#D14124;}
+#LT_search_field {background:#fff; border:none; -moz-box-sizing:border-box; box-sizing:border-box; display:inline-block; float:left; font:300 20px/1 'Roboto',sans-serif; height:80px; transition:width 0.3s; vertical-align:top; -webkit-appearance:none; width:0;}
+#LT_search_field::-ms-clear {display:none; height:0; width:0;}
+#LT_search_field:focus {padding:0 20px; width:300px;}
+#LT_search_field:focus + label + input {z-index:1;}
+.LT_search_field_submit {background:#fff url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3MTk2MzJFRjNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3MTk2MzJGMDNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjcxOTYzMkVEM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjcxOTYzMkVFM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+XW8RkAAAAwNJREFUeNrsml2ITGEYx9+xPrKkfIVI9sLH+rgQUVuULZa0JG5Q3Fm52XbvFIm483GplFy62SVRrBIr+bhQatYuF1wQViQXWsvONv6P804dz545O3PG7Gz7/J/61bzvnPOeOb/Oed7zPmdS2WzWMZJHigIpkAIpkAIZFEiBFEiBDAqkQAqkQAYFUiAFUiCDAimQAimQQYEUSIF/o6thWUVOcGXHq7KOP47XEAVWNMaPst8zGewADWAJmOv7voGX4AFoB1+YA4eKa/XMGGaoX+AKOA6+Mgc6txw8B6cLkCcxCRwGPWCb9Ry4HjwCtQn2nQVugoNWc+AiL2C66h8EN8Bt8Nq3a8BmsBtMDW1bBS6DT+CupRyY8ldendqsExwB3XmGkUnlHNin+j8DOcB3Kzlwb4S8dn+Vdcfs1wv2g5Oqfw44ZikHtqp2GhwAAwXuLwLbVF8TmGZB4GKwRvW1gL4ixpC80wx+hvokN263IHCjar8D9xKM8xHcUn0bLAhcqNr3SxjroWovtSBwvmp/KGGs96o924LAHxHLuKQxUbUHLAjs/Y+3XW1EXhzzAntUe5NaXRQTjar9woLATl9RCd/CzQnG2QrWqr47FgTKcuua6jsKVhUxhkwWF1WfrJsfW1mJnAGZUHuKLx4UIlFm8Q5fjNCrk6wVgVJdPhsh5qkLCqUzI/apBodcUDtcHfF9phInUsmK9ASfs+ojNpcS1jPwxn9e4IsP1TGHyPgixT9r5HJXYypZD5Rntp0uqMJsUd9VeWF1RZ7LVf+5bazfwuGHaikAnAK/iywmvI2RuMeKwNytd8IF70YuufgXRX1+BpeiwYo8jy05ifUj8eNH02tNyXdS05OK9DpJX2Cez3sitcsFrzX7Q/vsAtf9M6E+rxprAsMTyBPPcNGfR+IFF7wrMXELlxo5ibnb+bwbWvE2dQUmldjoiwtpCw/S5ZqM0iN9UP4/kAIpkAIpkEGBFEiBFMigQAqkQApkUCAFUiAFMiiQAimQAhkUSIEUSIGMmPgjwAB1wSBkr5jHbQAAAABJRU5ErkJggg==") no-repeat 0 0; border:none; float:right; height:80px; padding:0; position:absolute; text-indent:-1000px; transition:z-index 0.5s; -webkit-appearance:none; width:80px; z-index:-1;}
+.someinput::-ms-clear {
+    display: none;
+}
+.breadcrumbs {background-color:#333; clear:both; height:60px;}
+.logo {background-color:#fff; box-shadow:0 0 5px rgba(0,0,0,0.2); display:inline-block; float:left; height:80px; min-width:318px; width:27%; z-index:11;}
+.hamburger {background-color:#d14124; color:#fff; cursor:pointer; float:left; height:80px; transform:rotate(0deg); transition:transform ease-in-out 0.3s; width:80px;}
+.hamburger img {display:block; margin:2px auto;}
+
+.nav-container {background:#F8F3EF url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAmCAMAAACvbwi9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0RUJBNTQ4MzEzNUMxMUUzOTRGRkI5Njg5MzI2MzgxNCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0RUJBNTQ4NDEzNUMxMUUzOTRGRkI5Njg5MzI2MzgxNCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRFQkE1NDgxMTM1QzExRTM5NEZGQjk2ODkzMjYzODE0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRFQkE1NDgyMTM1QzExRTM5NEZGQjk2ODkzMjYzODE0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BUnKfgAAADBQTFRFLSUaKiIYJBwVLSMXKiUfJyMXJyAYLyUZMycYKiMbLiYbLiUcLCkkKyUZIBwRLiMbYzcFGQAAAGhJREFUeNrs1UEOwCAIRNFBgaJ19P63rVdg2YQfti+zBMt0Dc221lZXDHIGklEIuoMMiSfbFLg36ItJ5BO5y4ULFy5c+B943p9R+FfYwnr0bNKPnwYe6TaSTRmvt4YwV7Vkm/e2fwIMAI74DpH0F/RIAAAAAElFTkSuQmCC) repeat-y 0 0; box-shadow:0 0 12px rgba(0,0,0,0.3); height:100%; left:0; overflow:hidden; padding-top:80px; position:absolute; transition:margin-left 0.3s ease-in-out; width:90%; z-index:10;}
+.nav-hidden .nav-container {margin-left:-90%;}
+.nav-hidden .hamburger {transform:rotate(180deg);}
+.nav-container nav {width:200%;}
+.nav-container ul {float:left; list-style-type:none; margin:0; padding:0; width:50%;}
+.nav-container li {overflow:hidden;}
+.nav-container li:not(.furniture) {background:#ff9e1b url(http://www.latrobe.edu.au/__data/assets/image/0012/585939/nav-icons.png) no-repeat -60px -350px;}
+.nav-container a {color:#63513D; display:block; font:700 20px/1 'Roboto Condensed',sans-serif; text-decoration:none;}
+.nav-container a:visited {color:#63513D;}
+.nav-container .icon {background:#FF9E1B url(http://www.latrobe.edu.au/__data/assets/image/0012/585939/nav-icons.png) no-repeat; display:block; float:left; height:60px; vertical-align:top; width:60px;}
+.nav-container a:hover .icon {background-color:#D14124;}
+.nav-label {background-color:#fff; box-shadow:0 -1px 0 #E1E1E1 inset; -moz-box-sizing:border-box; box-sizing:border-box; display:block; overflow:hidden; padding:20px; text-transform:uppercase; vertical-align:top;}
+.furniture a {font:300 18px/1 'Roboto',sans-serif; padding:12px 0 12px 80px;}
+.furniture a:hover {color:#D14124;}
+
+/* Home universe icon positions */
+.icon {background-position:-60px -300px;}
+.g-nav-Study_with_us .icon {background-position:0 0;}
+.g-nav-Study_with_us a:hover .icon {background-position:-60px 0;}
+.g-nav-Experience .icon {background-position:0 -60px;}
+.g-nav-Experience a:hover .icon {background-position:-60px -60px;}
+.g-nav-Research .icon {background-position:0 -120px;}
+.g-nav-Research a:hover .icon {background-position:-60px -120px;}
+.g-nav-About .icon {background-position:0 -180px;}
+.g-nav-About a:hover .icon {background-position:-60px -180px;}
+
+.wrapper {height:100%; width:100%;}
+     
+a:hover {text-decoration:none;}
+     
+/* LTU Button */
+a.ltu-button {color:#fff!important; background:#D14124 url(http://www.latrobe.edu.au/__data/assets/image/0004/553369/chevron-lg-white-right.png) no-repeat 94% center; display:inline-block; font-family:"Roboto Condensed",sans-serif; padding:10px 46px 9px 26px; text-decoration:none; text-transform:uppercase;}
+a.mini {background-image:none; padding:4px 20px; vertical-align:top;}
+a.ltu-button:first-child:not(:only-child) {margin-bottom:5px;}
+a.ltu-button.chat {background:#D14124 url(http://www.latrobe.edu.au/__data/assets/image/0003/551469/speech-bubbles.png) no-repeat 15% center; padding:10px 26px 9px 48px;}
+a.ltu-button:hover {background-color:#B43A20;}
+a.ltu-button:active {background-color:#D52B1E; box-shadow:0 0 4px #D52B1E;}
+
+#flow-content {left:0; position:relative; transform:translate3d(0,0,0); z-index:2;}
+#make-wide {position:relative; top:120px;}
+.flow-node {width:100%;}
+.hero {background-color:#ff931b; box-shadow:0 0 3px rgba(0,0,0,0.3); padding:20px;}
+.hero a {color:#242424; text-decoration:none;}
+.feature_action, .node-cta {color:#fff; display:block;}
+.article-label {border-top:1px solid #242424; display:block; font:700 14px/1 'Roboto Condensed',sans-serif; text-transform:uppercase; padding:6px 0 10px;}
+.spotlight .hero, .newsreel .hero, .events_ticker .hero {box-shadow:none;} 
+.sidekick img {vertical-align:top;}
+
+/* Flow move arrows */
+.scrollers {display:none;}
+
+/* Footer */
+#fat-footer {background-color:#2D251A;}
+.quicklinks {display:none;}
+
+
+/* MEDIA QUERIES */
+     
+@media screen and (max-width:799px) {
+    .nav-container {padding-top:0;}
+    #make-wide {top:0px;}
+    .sidekick img {width:100%;}
+}
+
+@media screen and (min-width:800px) {
+    .header {position:fixed; top:0; width:100%;}
+    .nav-container {width:50%;}
+    .js .nav-container {position:fixed;}
+    .nav-hidden .nav-container {margin-left:-50%;}
+    .paralax {background:transparent url(http://www.latrobe.edu.au/__data/assets/image/0005/545990/texture-red.jpg) repeat-x 0 0; bottom:0; left:0; position:fixed; top:80px; transform:translate3d(0,0,0); width:100%;}
+    #flow-content {height:560px; margin-left:40px;}
+    #make-wide {display:table; height:560px;}
+    .flow-node {display:table-cell; min-width:790px;}
+    .flow-node:last-child {padding-right:40px;}
+    .flow-node > div {height:520px; margin:-20px -30px; position:relative;}
+    .hero {height:200px; margin:-20px -30px; padding:20px; position:absolute; width:215px; z-index:1;}
+    .sidekick {left:200px; margin:-20px -30px; padding:20px; position:absolute; top:60px;}
+    input[type="button"].scrollers {background:rgba(255,255,255,0.8) url(http://www.latrobe.edu.au/__data/assets/image/0005/557537/chevron-black-left.png) no-repeat center; border:none; box-shadow:0 0 3px #555555; display:block; top:40%; left:0; color:rgba(0,0,0,0); height:100px; padding:0; position:fixed; -webkit-appearance:none;  width:50px; z-index:9;}
+    input[type="button"].scrollers:last-of-type {background-image:url(http://www.latrobe.edu.au/__data/assets/image/0006/557538/chevron-black-right.png); right:0; left:inherit;}
+    input[type="button"].scrollers:hover {background-color:rgba(209,65,36,1);}
+    .left-arrow-hidden .scrollers:first-of-type {display:none;}
+    .right-arrow-hidden .scrollers:last-of-type {display:none;}
+    .footer {bottom:0; height:60px; left:0; position:fixed; transform:translate3d(0,0,0); width:100%; z-index:2;}
+    #fat-footer {bottom:0; -moz-box-sizing:border-box; box-sizing:border-box; padding:60px 80px; position:absolute; top:80px; -webkit-transform:translateY(100%); transform:translateY(100%); -webkit-transition:transform 0.5s ease-in-out; transition:transform 0.5s ease-in-out; width:100%; z-index:10;}
+    .js #fat-footer {position:fixed;}
+    .quicklinks {background:#242424 url(http://www.latrobe.edu.au/__data/assets/image/0020/551702/chevron-sm-orange-up.png) no-repeat 24px center; color:#fff;  display:block; float:right; font:700 16px/20px 'Roboto Condensed',sans-serif; padding:20px 24px 20px 44px; text-decoration:none; text-transform:uppercase;}
+    .show-footer {overflow:hidden;}
+    .show-footer #fat-footer {-webkit-transform:translateY(0%); transform:translateY(0%);}
+    #close-footer {background:#EF3829 url(http://www.latrobe.edu.au/__data/assets/image/0004/551677/close-x.png) no-repeat center center; border-radius:22px; color:#fff; display:inline-block; font:20px/1 'Roboto Condensed',sans-serif; float:right; margin-top:20px; padding:12px 0; text-align:center; text-indent:-10000px;}
+}
+
+@media screen and (min-width:1024px) and (min-height:768px) {
+     .header {background:#F5F2E4 url(http://www.latrobe.edu.au/__data/assets/image/0004/545989/texture-beige.jpg) repeat-x 0 0;}
+     .logo {min-width:52%; position:absolute; top:40px;}
+     .search {box-shadow:0 0 5px rgba(0,0,0,0.2); margin-top:-40px;}
+     .search {}
+     .universes {-moz-box-sizing:border-box; box-sizing:border-box; display:block; height:80px; list-style-type:none; margin:0 0 0 32%; padding:0; width:68%;}
+     .universes li {float:left; font:18px/20px 'Roboto Condensed'; text-transform:uppercase;}
+     .universes a {padding:30px 30px;}
+     .nav-container {padding-top:120px;}
+    #flow-content {left:25%; margin-left:80px; top:80px;}
+    #make-wide {top:80px;}
+    .flow-node:last-child {padding-right:80px;}
+    .footer {background:#F5F2E4 url(http://www.latrobe.edu.au/__data/assets/image/0004/545989/texture-beige.jpg) repeat-x 0 0; box-shadow:0 0 5px rgba(0,0,0,0.3); height:120px;}
+    .quicklinks {margin:30px;}
+
+}
+
+@media screen and (min-width:1280px) and (min-height:768px) {
+    .logo {min-width:27%;}
+     .nav-container {width:25%;}
+     .nav-hidden .nav-container {margin-left:-25%;}
+}
+@media screen and (min-width:1024px) and (min-height:900px) {
+    #flow-content {margin-left:120px;}
+    #make-wide {top:120px;}
+    .flow-node:last-child {padding-right:120px;}
+}
+    
+
+.spotlight {min-width:790px; position:relative;}
+.spotlight header {background:transparent; height:300px; width:90%;}
+.spotlight h2 {margin:0;}
+.spotlight h2 span {background-color:#242424; clear:both; display:block; float:left; line-height:1;}
+.spotlight h2 span:nth-child(1) {color:#fff; font-size:48px; padding:12px 15px 14px;}
+.spotlight h2 span:nth-child(2) {background-color:#FF9E1B; color:#242424; font-size:66px; margin-left:40px; padding:8px 16px 12px;}
+.spotlight h2 span:nth-child(3) {background-color:#FF9E1B; color:#242424; font-size:60px; margin-top:-14px; padding:8px 14px 10px;}
+.spotlight p { clear: both; padding: 1em; background: #2b2318; color: #fff; width: 70%; margin:0 0 0 40px; }
+.spotlight p + a {display:inline-block;  margin: -12px 0 0 50%;}
+.spotlight img {max-width:640px;}
+.spotlight .ltu-button {margin-bottom:20px;}
+
+
+.feature_small img {max-width:360px;}
+.js .feature_small.stacked {display:inline-block; float:left; vertical-align:top;}
+.content_box header {height:auto; width:320px;}
+
+.feature_large img {max-width:600px;}
+
+.content_box {min-width:360px;}
+
+.flow-node.feature_small.stacked > div {height:280px;}
+
+.newsreel {}
+.newsreel .hero {background:none; height:auto; overflow:hidden; padding:0; width:100%!important;}
+.newsreel ul.ticker {height:320px; margin:0; overflow-y:scroll; padding:0;}
+.newsreel li.ticker_item {height:320px; position: relative; width:100%;}
+.newsreel div.news_box {background-color:#ff9e1b; border-right:20px solid #FF9E1B; height:200px; left:1.5em; overflow:hidden; padding:20px; position:absolute; top:0; width:215px; z-index:1;}
+.newsreel span.thumbnail {height:90%; position:absolute; right:0; top:2em; width:60%; z-index:0;}
+.newsreel span.thumbnail img {width:100%;}
+.newsreel .sidekick {height:14px; left:625px!important; overflow:visible; position: relative; top:192px!important; width:14px; z-index:2;}
+
+.events_ticker .ticker_controls {bottom:1em; left:2.6em;}
+.events_ticker .more-events {left:105px;}
+</style>
+</head>
+
+<body class="flow_page left-arrow-hidden">
+<div id="top" class="wrapper">
+<header class="header">
+    <div class="logo"><div class="hamburger" tabindex="0"><img src="http://www.latrobe.edu.au/__data/assets/image/0012/545988/hamburger.png" alt="Menu" /></div><img src="http://www.latrobe.edu.au/__data/assets/image/0011/545987/logo.png" alt="La Trobe University" height="75" width="224" /></div>
+    <ul class="universes"><li><a class="current" href="/">Home</a></li><li><a href="/staff">Staff</a></li><li><a href="/students">Students</a></li><li><a href="/researchers">Researchers</a></li></ul>
+    <form class="search" action="http://www.latrobe.edu.au/search">
+        <input type="hidden" value="Latrobe" name="collection" />
+        <input type="text" name="query" placeholder="Start typing" id="LT_search_field"><label for="LT_search_field" class="off-screen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3MTk2MzJFRjNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3MTk2MzJGMDNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjcxOTYzMkVEM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjcxOTYzMkVFM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+XW8RkAAAAwNJREFUeNrsml2ITGEYx9+xPrKkfIVI9sLH+rgQUVuULZa0JG5Q3Fm52XbvFIm483GplFy62SVRrBIr+bhQatYuF1wQViQXWsvONv6P804dz545O3PG7Gz7/J/61bzvnPOeOb/Oed7zPmdS2WzWMZJHigIpkAIpkAIZFEiBFEiBDAqkQAqkQAYFUiAFUiCDAimQAimQQYEUSIF/o6thWUVOcGXHq7KOP47XEAVWNMaPst8zGewADWAJmOv7voGX4AFoB1+YA4eKa/XMGGaoX+AKOA6+Mgc6txw8B6cLkCcxCRwGPWCb9Ry4HjwCtQn2nQVugoNWc+AiL2C66h8EN8Bt8Nq3a8BmsBtMDW1bBS6DT+CupRyY8ldendqsExwB3XmGkUnlHNin+j8DOcB3Kzlwb4S8dn+Vdcfs1wv2g5Oqfw44ZikHtqp2GhwAAwXuLwLbVF8TmGZB4GKwRvW1gL4ixpC80wx+hvokN263IHCjar8D9xKM8xHcUn0bLAhcqNr3SxjroWovtSBwvmp/KGGs96o924LAHxHLuKQxUbUHLAjs/Y+3XW1EXhzzAntUe5NaXRQTjar9woLATl9RCd/CzQnG2QrWqr47FgTKcuua6jsKVhUxhkwWF1WfrJsfW1mJnAGZUHuKLx4UIlFm8Q5fjNCrk6wVgVJdPhsh5qkLCqUzI/apBodcUDtcHfF9phInUsmK9ASfs+ojNpcS1jPwxn9e4IsP1TGHyPgixT9r5HJXYypZD5Rntp0uqMJsUd9VeWF1RZ7LVf+5bazfwuGHaikAnAK/iywmvI2RuMeKwNytd8IF70YuufgXRX1+BpeiwYo8jy05ifUj8eNH02tNyXdS05OK9DpJX2Cez3sitcsFrzX7Q/vsAtf9M6E+rxprAsMTyBPPcNGfR+IFF7wrMXELlxo5ibnb+bwbWvE2dQUmldjoiwtpCw/S5ZqM0iN9UP4/kAIpkAIpkEGBFEiBFMigQAqkQApkUCAFUiAFMiiQAimQAhkUSIEUSIGMmPgjwAB1wSBkr5jHbQAAAABJRU5ErkJggg==" alt="search" /></label><input type="submit" class="LT_search_field_submit" value="Search">
+    </form>
+</header>
+<div class="nav-container">
+    <nav id="global">
+        <ul id="nav-global">
+            <li class="g-nav-Study_with_us Live a259531"><a href="http://www.latrobe.edu.au/study"><span class="icon"></span><span class="nav-label">Study with us</span></a></li>
+            <li class="g-nav-Experience Live a6309"><a href="http://www.latrobe.edu.au/experience"><span class="icon"></span><span class="nav-label">Experience</span></a></li>
+            <li class="g-nav-Research Live a6293"><a href="http://www.latrobe.edu.au/research"><span class="icon"></span><span class="nav-label">Research</span></a></li>
+            <li class="g-nav-About Live a6281"><a href="http://www.latrobe.edu.au/about"><span class="icon"></span><span class="nav-label">About</span></a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/courses">Courses</a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/campuses">Campuses </a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/faculties">Faculties</a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/library">Library</a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/news">News</a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/contact">Contacts</a></li>
+        </ul>
+        <ul id="nav-local" class="nav-localwrapper">
+            <li class="nav-trigger main" tabindex="0"><span class="icon"></span><span class="nav-label">Main menu</span></li>
+            <li id="back"><a href="http://www.latrobe.edu.au"><span class="icon"></span><span class="nav-label">Back to La Trobe University</span></a></li>
+            <li class="current"><span class="icon"></span><span class="nav-label">La Trobe University</span></li>
+        </ul>
+    </nav>
+</div>
+
+
+    <div class="paralax"></div>
+    <div id="flow-content">
+        <div id="make-wide">
+            <article class="flow-node"><header class="hero"><h2>GET A GLOBAL PERSPECTIVE</h2></header><div class="sidekick"><img src="http://www.latrobe.edu.au/be-the-difference/choose-la-trobe/global-perspective.jpg/preview.jpg" alt="" /></div></article>
+            <article class="flow-node"><header class="hero"><h2>GET A GLOBAL PERSPECTIVE</h2></header><div class="sidekick"><img src="http://www.latrobe.edu.au/be-the-difference/choose-la-trobe/global-perspective.jpg/preview.jpg" alt="" /></div></article>
+            <article class="flow-node">3</article>
+            <article class="flow-node">4</article>
+            <article class="flow-node">5</article>
+            <article class="flow-node">6</article>
+            <article class="flow-node">7</article>
+            <article class="flow-node">8</article>
+            <article class="flow-node">9</article>
+            <article class="flow-node">0</article>
+            <article class="flow-node"><header class="hero"><h2>LA TROBE FEE GUARANTEE</h2></header><div class="sidekick"><img class="lazy" data-original="http://www.latrobe.edu.au/study/aspire/fee-guarantee/Cameron.jpg/preview.jpg" alt="" /></div></article>
+        </div>
+    </div>
+
+<div class="footer"><a href="#fat-footer" class="quicklinks">Quicklinks</a></div>
+<footer id="fat-footer">
+    <a href="#top" id="close-footer" tabindex="0">Close</a>
+</footer>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://www.latrobe.edu.au/__data/assets/js_file/0005/564143/jquery-ui-1.10.3.min.js"></script>
+<script src="http://www.latrobe.edu.au/__data/assets/js_file/0008/590552/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+var b = $('body');
+var fired = false;
+var wWidth = $(window).width();
+var flowWidth = document.getElementById('flow-content').scrollWidth;
+var flowOffset = $('#make-wide').offset();
+var flowOffsetL = flowOffset.left;
+var flowOffsetRound = Math.round(flowOffsetL);
+var maxScroll = flowWidth - (wWidth - flowOffsetRound);
+
+// On page load, hide nav for devices less than 1024px wide or less than 768 high
+if ($(window).width() < 1024 || $(window).height() < 768){
+    b.addClass('nav-hidden');
+}
+
+// LAZY LOAD IMAGES
+$('img.lazy').lazyload({
+  effect:'fadeIn',
+  threshold:400
+});
+
+// Toggle nav on scroll
+window.addEventListener('scroll', function(){
+
+    //Hide nav when scrolling left from 0
+    if (window.pageXOffset > 0 && fired === false) {
+        b.addClass('nav-hidden').removeClass('left-arrow-hidden');
+        fired = true;
+    }
+    //Show nav when scrolling back to 0 while screen is wider than 1024
+    if (window.pageXOffset == 0 && $(window).width() > 1024 && fired === true) {
+        b.removeClass('nav-hidden');
+    }
+    //Reset fired variable and hide left arrow
+    if (window.pageXOffset == 0 && fired === true) {
+        fired = false;
+        b.addClass('left-arrow-hidden');
+    }
+    //Hide right arrow
+    if (window.pageXOffset == maxScroll && fired === true) {
+        b.addClass('right-arrow-hidden');
+    } else {b.removeClass('right-arrow-hidden');}
+}, true)
+
+
+//Setup scroll arrows
+function toggleArrows(){
+    if(wWidth>1024){
+        var arrow = '<input type="button" class="scrollers" value="">';
+        $('.flow_page').append(arrow).append(arrow);
+        $('.scrollers:first').val('<'); $('.scrollers:last').val('>');
+    }
+}
+toggleArrows();
+
+var flowWidth2 = '';
+
+//bind events to body
+b.addClass('js').on('click keyup','.hamburger',function(event){  //Toggle hamburger
+  if (event.keyCode == '13' || event.keyCode === undefined){
+    b.toggleClass('nav-hidden');
+    //Reset fired if nav shown;
+    if ($('.nav-hidden').length = 1){
+        fired = false;
+    }
+  }
+}).on('mouseenter','input[type="button"].scrollers',function(){ //Enable arrow scrolling - mouseover
+    var direction = $(this).val();
+    if(direction==='>'){
+        direction = '+=';
+    }else{
+        direction = '-=';
+    }
+
+    var flowOffset2 = $('#make-wide').offset(),
+        flowWidth2 = $('#make-wide').width(),
+        totalWidth = parseFloat(flowOffset2.left+flowWidth2);
+
+    $('html,body').stop().animate({scrollLeft:direction+totalWidth},(flowWidth2/3),'easeInQuad');
+
+}).on('mouseleave','input[type="button"].scrollers',function(){ //Enable arrow scrolling - mouseout
+    var scrollLeft = $('html,body').scrollLeft(),
+         direction = $(this).val();
+    if(scrollLeft<1){
+        scrollLeft = $('body').scrollLeft();
+    }
+    if(direction==='>'){
+        scrollLeft = (scrollLeft+200);
+    }else{
+        scrollLeft = (scrollLeft-200);
+    }
+    $('html,body').stop().animate({scrollLeft:scrollLeft},flowWidth2,'easeOutQuad');
+    //uq_jsclick('Flow-arrow', 'Action', 'flow-scrolled', direction);
+}).on('focus','#LT_search_field',function(){ //Delay blur on search field, Use until transition is fully supported
+        $('.LT_search_field_submit').css('z-index','1');
+}).on('blur','#LT_search_field',function(){ //Delay blur on search field, Use until transition is fully supported
+        setTimeout(function(){
+            $('.LT_search_field_submit').removeAttr('style');
+        },500);
+}).bind('keydown',function(){  //Close footer with escape key
+    if (event.keyCode == '27'){
+        $(this).removeClass('show-footer');
+    }
+}).on('click keydown','#close-footer',function(event){  //Close footer button
+  if (event.keyCode == '13' || event.keyCode === undefined){
+    b.removeClass('show-footer');
+    //uq_jsclick('Flow-footer', 'Action', 'open');
+  }
+  event.preventDefault();
+});
+
+//Toggle flow footer
+$('.quicklinks').attr('tabindex','0').bind('click keydown',function(event){
+  if (event.keyCode == '13' || event.keyCode === undefined){
+    b.addClass('show-footer');
+    //uq_jsclick('Flow-footer', 'Action', 'open');
+  }
+event.preventDefault();
+});
+    
+//$('#flow-content').load('http://www.latrobe.edu.au #make-wide');
+
+
+});
+</script>
+
+</body>
+</html>

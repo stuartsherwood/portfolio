@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="minimum-scale=1.0, width=device-width, initial-scale=1" name="viewport" />
+<title>Flexbox</title>
+
+<style>
+    body {margin:0;}
+    h2, p {margin-top:0;}
+
+
+.flex-showcase-item {background-color:#f5f2ea; box-sizing:border-box; flex:0 0 calc(25% - 30px); margin:30px;}
+.flex-showcase-item figure {margin:0;}
+.flex-showcase-content {box-sizing:border-box; padding:30px;}
+@media (min-width:768px) {
+    .flex-showcase {display:flex; flex-wrap:wrap;}
+    .tfl .flex-showcase {margin:30px 30px 0px 0;}
+    .flex-showcase-item {flex:0 0 calc(50% - 30px); margin:0 0 30px 30px;}
+}
+@media (min-width:1024px) {
+    .tfl .flex-showcase {margin:60px 60px 30px 30px;}
+    .flex-showcase-item {flex:0 0 calc(25% - 30px); margin:0 0 60px 30px;}
+}
+
+/* Image ratio */
+.img-ratio {background-color:#242424; box-shadow:0 0 5px rgba(0,0,0,0.5); display:block; height:0; overflow:hidden; position:relative; width:100%;}
+.ratio-3-2 {padding:66.5% 0 0 0;}
+.img-ratio img {bottom:0; display:block; left:0; max-height:100%; margin:auto; position:absolute; right:0; top:0;}
+
+</style>
+
+</head>
+<body class="tfl">
+
+<div class="flex-showcase">
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/courses/feature/apply-direct-images/Master-of-Teaching.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hello</h2>
+            <p>Another nice looking car</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/study/images/Aspire-James-latrobe-uni.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>What's up?</h2>
+            <p>Some description here asdsadsa</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/experience/social-media/social-tab.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hey what you doing with such a long heading?</h2>
+            <p>Massive power for goofing around. 123 </p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/events/all/naomi-simson-presents-the-ethics-of-business-transformation/Naomi-Simson-1.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Yo!</h2>
+            <p>Grab an expert to get ahead of the marketplace.</p>
+        </div>
+    </div>
+        <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/courses/feature/apply-direct-images/Master-of-Teaching.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hello</h2>
+            <p>Another nice looking car</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/study/images/Aspire-James-latrobe-uni.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>What's up?</h2>
+            <p>Some description here asdsadsa</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/experience/social-media/social-tab.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hey what you doing with such a long heading?</h2>
+            <p>Massive power for goofing around. 123 </p>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

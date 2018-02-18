@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mega menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font:900 16px/20px sans-serif; margin:0; padding:0;}
+/* Universe */
+.nav-universes {background-color:#fff; box-shadow:0 0 4px rgba(0,0,0,0.3); display:none; transition:transform 0.3s ease-in-out; position:absolute; width:90%;}
+.nav-universes-list {list-style-type:none; margin:0; padding:0;}
+.nav-universe {background-color:#fff; font-family:'Roboto Bold', sans-serif; font-size:16px; padding:0; vertical-align:top;}
+.nav-universe:hover {background-color:#fff;}
+/*.nav-universe:hover:after {background-color:#ff9e1b; content:""; display:block; height:20px; margin:0; position:absolute; width:10px;}*/
+@media (min-width:1024px) {
+    .nav-universes {display:block; height:auto; position:relative; width:100%;}
+    .nav-universe {display:inline-block; vertical-align:top;}
+}
+.nav-universe-link, .nav-universe-link:visited {color:#363636; display:block; padding-right:16px; text-decoration:none; text-transform:uppercase;}
+.nav-universe-link:hover {color:#e87722;}
+.nav-universe-link img {background:#63513d url(//wwwdev.latrobe.edu.au/__data/assets/file/0008/704924/plus.svg) no-repeat 0 0; margin-right:20px; padding:6px;}
+.nav-universe.current_site {}
+.current_site .nav-universe-link {text-decoration:overline;}
+.current_site .nav-universe-link:hover {}
+@media (min-width:1024px) {
+    .nav-universes-list {display:inline-block; margin:0 80px;}
+    .nav-universe-link {padding:13px 20px 13px 0; text-indent:16px;}
+    .nav-universe-link img {display:none;}
+}
+
+.mega-menu-item {background-color:#eae8e0; border-left:60px solid #63513d; box-shadow:0px 2px 1px rgba(0,0,0,0.2); box-sizing:border-box; display:none; left:0; list-style-type:none; margin:0;  padding:0;}
+@media (min-width:1024px) {
+    .mega-menu-item {border:none; display:flex; padding:0 80px; position:absolute; transform:translateY(-100%); transition:background-color 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0.2s, visibility 0s 0.5s; visibility:hidden; width:100%; z-index:-1;}
+    .nav-universe:hover .mega-menu-item, .nav-universe:focus .mega-menu-item {background-color:#fff; transform:translateY(0); transition:background-color 0.3s ease-in-out 0.2s, transform 0.3s ease-in-out 0.2s, visibility 0.3s 0.2s; visibility:visible;}
+}
+.mega-menu-item > div {flex:1 0 auto; margin:0 20px;}
+div.mega-menu-item h2 {font-size:18px; margin-top:20px;}
+.mega-menu-item ul {list-style-type:none; margin:0; padding:0;}
+.mega-menu-item ul:not(.mm1), .mega-menu-item p {font-family:'Roboto',sans-serif;}
+.mega-menu-item ul li {line-height:20px; padding:8px 0;}
+.mega-menu-item img {margin-right:12px;}
+.mega-menu-item a {text-decoration:none;}
+.mega-menu-item a:hover {color:#e87722;}
+.mm-keyword {box-sizing:border-box; height:48px; padding:13px 16px; vertical-align:top;}
+.mm-button {border:none; background:#d52b1e url(./?a=707212) no-repeat 0 0; height:48px; text-indent:-1000%; width:48px;}
+.mm1 li {border-bottom:1px solid #363636; padding:0;}
+.mm1 li:last-child {border:none;}
+.mm1 a {display:block; font-size:18px; padding:20px 0;}
+@media (max-width:768px) {
+    .open + .mega-menu-item {display:block;}
+    .nav-universe-link.open img {background-image:url(./?a=704923);}
+}
+    
+.site-index {background-color:#fff; flex-direction:row; flex-wrap:nowrap; height:48px; left:0; list-style-type:none; margin:0; overflow:visible; padding:0; position:absolute; top:100%;}
+.site-index.active {}
+.site-index li {flex:1 auto; position:relative;}
+.site-index li:hover {background-color:#d6d2c2;}
+.site-index a {color:#242424; cursor:pointer!important; display:block; line-height:48px; padding:0; text-align:center; text-decoration:none;}
+.site-index a:focus {background-color:#63513d; color:#fff;}
+.site-index a:hover {background-color:#ff9e1b; color:#363636; text-decoration:none;}
+.site-index ul {background-color:#fff; box-shadow:0 0 4px #999 inset; max-height:268px; overflow:auto; padding:0; position:absolute; transition:visibility 0s 0.3s; visibility:hidden; width:300px;}
+.nav-universe:hover .site-index ul {visibility:visible;}
+.site-index ul li {display:block;}
+.site-index ul a {line-height:20px; padding:14px; text-align:left;}
+.nav-container .site-index {border:none; display:none; flex-direction:column; height:auto; top:0; width:48px; z-index:10;}
+.show-main-nav .site-index {display:flex;}
+.nav-container .letter {text-align:center;}
+.nav-container .site-index ul {left:48px; top:0; visibility:visible; width:calc(100vw - 128px); z-index:10;}
+@media (min-width:1024px) {
+    .nav-container .site-index {display:none;}
+}
+</style>
+</head>
+<body>
+<nav id="nav-universes" class="nav-universes" role="navigation">
+        <ul class="nav-universes-list"><li class="nav-universe a1 current_site"><a class="nav-universe-link" href="study"><img src="/__data/assets/image/0006/552093/transparent.gif" alt="collapsed" height="48" width="48">Study with us</a><div class="mega-menu-item"><div>
+    <ul class="mm1">
+        <li><a href=""><img src="https://wwwdev.latrobe.edu.au/study/images/Agora.jpg/100.jpg" alt="">Why study at La&nbsp;Trobe</a></li>
+        <li><a href=""><img src="https://wwwdev.latrobe.edu.au/study/images/Business-people-chatting.jpg/100.jpg" alt="">Your first degree</a></li>
+        <li><a href=""><img src="https://wwwdev.latrobe.edu.au/study/images/international/Experience.jpg/100.jpg" alt="">Postgraduate degree</a></li>
+        <li><a href=""><img src="https://wwwdev.latrobe.edu.au/study/images/international/Faith.jpg/100.jpg" alt="">Higher degree by research</a></li>
+        <li><a href=""><img src="https://wwwdev.latrobe.edu.au/study/images/inspired-futures.jpg/100.jpg" alt="">Short courses</a></li>
+    </ul>
+</div>
+<div>
+    <h2>How to apply</h2>
+    <ul class="mm2">
+        <li><a href="">Eligibility</a></li>
+        <li><a href="">Your options</a></li>
+        <li><a href="">International students</a></li>
+    </ul>
+    <h2>Costs and scholarships</h2>
+    <ul class="mm2">
+        <li><a href="">Costs and fees</a></li>
+        <li><a href="">Learn about scholarships</a></li>
+    </ul>
+    <h2>Exchange and study abroad</h2>
+    <ul class="mm2">
+        <li><a href="">Exchange to La&nbsp;Trobe</a></li>
+        <li><a href="">Study abroad at La&nbsp;Trobe</a></li>
+    </ul>
+</div>
+<div>
+    <h2>Useful resources</h2>
+    <ul class="mm3">
+        <li><a href="">Career practitioners</a></li>
+        <li><a href="">For teachers</a></li>
+        <li><a href="">For parents</a></li>
+        <li><a href="">Contact us</a></li>
+    </ul>
+</div>
+<div>
+    <h2>Courses</h2>
+    <form action="http://www.latrobe.edu.au/courses" method="GET" _lpchecked="1">
+        <p>
+            <label class="visuallyhidden" for="query_courses">Keyword</label>
+            <input type="text" autocomplete="off" name="query" class="mm-keyword" id="query_courses" placeholder="What do you want to study?"><input class="mm-button" type="submit" value="Search">
+            <input type="hidden" name="collection" value="course-search">
+            <input type="hidden" name="tabSelection" value="local"><br><br>
+            <a href="https://wwwdev.latrobe.edu.au/courses/a-z-old">View all courses</a>
+        </p>
+  </form>
+    <h2>Career pathways</h2>
+    <ul class="mm4">
+        <li><a href="">Arts and communications</a></li>
+        <li><a href="">Business and commerce</a></li>
+        <li><a href="">Health sciences</a></li>
+        <li><a href="">IT and engineering</a></li>
+        <li><a href="">Law and criminology</a></li>
+        <li><a href="">Teaching and education</a></li>
+    </ul>
+</div></div>
+</li><li class="nav-universe a2"><a class="nav-universe-link" href="/courses"><img src="/__data/assets/image/0006/552093/transparent.gif" alt="collapsed" height="48" width="48">Courses</a><div class="mega-menu-item">Courses</div>
+</li><li class="nav-universe a3"><a class="nav-universe-link" href="/international"><img src="/__data/assets/image/0006/552093/transparent.gif" alt="collapsed" height="48" width="48">International</a>
+</li><li class="nav-universe a4"><a class="nav-universe-link" href="/industry-and-community"><img src="/__data/assets/image/0006/552093/transparent.gif" alt="collapsed" height="48" width="48">Industry &amp; community</a>
+</li><li class="nav-universe a5"><a class="nav-universe-link" href="/research"><img src="/__data/assets/image/0006/552093/transparent.gif" alt="collapsed" height="48" width="48">Research</a>
+</li><li class="nav-universe a6"><a class="nav-universe-link" href="/about"><img src="/__data/assets/image/0006/552093/transparent.gif" alt="collapsed" height="48" width="48">About us</a>
+</li><li class="nav-universe a-z"><a class="nav-universe-link" href="/index">A-Z</a><ol class="mega-menu-item site-index"><li><a class="letter" href="/index?result_131559_result_page=A">A</a></li><li><a class="letter" href="/index?result_131559_result_page=B">B</a></li><li><a class="letter" href="/index?result_131559_result_page=C">C</a></li><li><a class="letter" href="/index?result_131559_result_page=D">D</a></li><li><a class="letter" href="/index?result_131559_result_page=E">E</a></li><li><a class="letter" href="/index?result_131559_result_page=F">F</a></li><li><a class="letter" href="/index?result_131559_result_page=G">G</a></li><li><a class="letter" href="/index?result_131559_result_page=H">H</a></li><li><a class="letter" href="/index?result_131559_result_page=I">I</a></li><li><a class="letter" href="/index?result_131559_result_page=J">J</a></li><li><a class="letter" href="/index?result_131559_result_page=K">K</a></li><li><a class="letter" href="/index?result_131559_result_page=L">L</a></li><li><a class="letter" href="/index?result_131559_result_page=M">M</a></li><li><a class="letter" href="/index?result_131559_result_page=N">N</a></li><li><a class="letter" href="/index?result_131559_result_page=O">O</a></li><li><a class="letter" href="/index?result_131559_result_page=P">P</a></li><li><a class="letter" href="/index?result_131559_result_page=Q">Q</a></li><li><a class="letter" href="/index?result_131559_result_page=R">R</a></li><li><a class="letter" href="/index?result_131559_result_page=S">S</a></li><li><a class="letter" href="/index?result_131559_result_page=T">T</a></li><li><a class="letter" href="/index?result_131559_result_page=U">U</a></li><li><a class="letter" href="/index?result_131559_result_page=V">V</a></li><li><a class="letter" href="/index?result_131559_result_page=W">W</a></li><li><a class="letter" href="/index?result_131559_result_page=X">X</a></li><li><a class="letter" href="/index?result_131559_result_page=Y">Y</a></li><li><a class="letter" href="/index?result_131559_result_page=Z">Z</a></li></ol></li></ul>    </nav>
+    
+</body>
+</html>

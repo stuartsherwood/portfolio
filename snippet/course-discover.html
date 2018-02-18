@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+  <title>Discover our courses</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+  <link href='css/featherlight.css' rel='stylesheet'>
+<style>
+html, body {height:100%;}
+body {font-family:Roboto; font-weight:300; margin:0; padding:0;}
+
+h1 {background:url("http://www.latrobe.edu.au/__data/assets/image/0005/545990/texture-red.jpg") repeat-x scroll 0 70% rgba(0, 0, 0, 0); box-shadow:0 0 5px rgba(0,0,0,0.4); color:#fff; font:700 50px/1 'Roboto Condensed',sans-serif; margin:0; padding:36px 60px 48px; position:relative; transition:padding-left 0.3s ease-in-out;}
+h2 {font:700 20px/20px 'Roboto Condensed',sans-serif; margin:0 0 4px 0; text-transform:uppercase;}
+h2:only-child {margin:0;}
+h3 {font:700 18px/20px 'Roboto Condensed',sans-serif; margin:0 0 4px 0; text-transform:uppercase;}
+p {margin-top:0;}
+    
+*:focus {outline:2px dotted #FF9E1b;}
+
+header {height:140px;}
+.universes {display:none;}
+.search {background:#fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3MTk2MzJFRjNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3MTk2MzJGMDNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjcxOTYzMkVEM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjcxOTYzMkVFM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+XW8RkAAAAwNJREFUeNrsml2ITGEYx9+xPrKkfIVI9sLH+rgQUVuULZa0JG5Q3Fm52XbvFIm483GplFy62SVRrBIr+bhQatYuF1wQViQXWsvONv6P804dz545O3PG7Gz7/J/61bzvnPOeOb/Oed7zPmdS2WzWMZJHigIpkAIpkAIZFEiBFEiBDAqkQAqkQAYFUiAFUiCDAimQAimQQYEUSIF/o6thWUVOcGXHq7KOP47XEAVWNMaPst8zGewADWAJmOv7voGX4AFoB1+YA4eKa/XMGGaoX+AKOA6+Mgc6txw8B6cLkCcxCRwGPWCb9Ry4HjwCtQn2nQVugoNWc+AiL2C66h8EN8Bt8Nq3a8BmsBtMDW1bBS6DT+CupRyY8ldendqsExwB3XmGkUnlHNin+j8DOcB3Kzlwb4S8dn+Vdcfs1wv2g5Oqfw44ZikHtqp2GhwAAwXuLwLbVF8TmGZB4GKwRvW1gL4ixpC80wx+hvokN263IHCjar8D9xKM8xHcUn0bLAhcqNr3SxjroWovtSBwvmp/KGGs96o924LAHxHLuKQxUbUHLAjs/Y+3XW1EXhzzAntUe5NaXRQTjar9woLATl9RCd/CzQnG2QrWqr47FgTKcuua6jsKVhUxhkwWF1WfrJsfW1mJnAGZUHuKLx4UIlFm8Q5fjNCrk6wVgVJdPhsh5qkLCqUzI/apBodcUDtcHfF9phInUsmK9ASfs+ojNpcS1jPwxn9e4IsP1TGHyPgixT9r5HJXYypZD5Rntp0uqMJsUd9VeWF1RZ7LVf+5bazfwuGHaikAnAK/iywmvI2RuMeKwNytd8IF70YuufgXRX1+BpeiwYo8jy05ifUj8eNH02tNyXdS05OK9DpJX2Cez3sitcsFrzX7Q/vsAtf9M6E+rxprAsMTyBPPcNGfR+IFF7wrMXELlxo5ibnb+bwbWvE2dQUmldjoiwtpCw/S5ZqM0iN9UP4/kAIpkAIpkEGBFEiBFMigQAqkQApkUCAFUiAFMiiQAimQAhkUSIEUSIGMmPgjwAB1wSBkr5jHbQAAAABJRU5ErkJggg==) no-repeat 100% 42.5%; float:right; height:80px; right:0; top:0; width:80px; z-index:10;}
+.breadcrumbs {background-color:#333; clear:both; height:60px;}
+.logo {background-color:#fff; box-shadow:0 0 5px rgba(0,0,0,0.2); display:inline-block; float:left; height:80px; min-width:324px; width:27%; z-index:11;}
+.hamburger {background-color:#d14124; color:#fff; float:left; height:80px; width:80px;}
+
+.nav {background-color:#F8F3EF; box-shadow:0 0 5px rgba(0,0,0,0.2); margin-top:-60px; transition:margin-left 0.3s ease-in-out; width:25%;}
+
+    a {color:#d14124; text-decoration:none;}
+
+.wrapper {transition:width 0.3s ease-in-out; width:100%;}
+.content-wrapper {}
+    
+    .nav-container {background-color:#f5f2e4; width:25%;}
+
+    .grid-window {background-color:#fff; margin-bottom:30px;}
+    .js .grid-window {height:672px; position:relative;}
+    .window {background-color:#eee; box-shadow:0 -1px 1px #fff; box-sizing:border-box;  padding:20px;}
+    .js .window {height:96px; outline:none; transition:all 0.3s ease-in-out; width:100vw;}
+    .window:nth-child(even) {background-color:#ddd;}
+    .js .window:focus {background-color:#ff9e1b; z-index:1;}
+    .active .window.open {background-color:#fff; box-shadow:0 0 6px rgba(0,0,0,0.5); height:100%; top:0; z-index:2;}
+
+    .js .window:nth-child(1) {top:0;}
+    .js .window:nth-child(2) {top:96px;}
+    .js .window:nth-child(3) {top:192px;}
+    .js .window:nth-child(4) {top:288px;}
+    .js .window:nth-child(5) {top:384px;}
+    .js .window:nth-child(6) {top:480px;}
+    .js .window:nth-child(7) {top:576px;}
+    
+    .js  .window-content {height:0; opacity:0; transition:height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0s; visibility:hidden;}
+    .window.open .window-content {height:30vw; opacity:1; transition:height 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0s linear 0.3s; visibility:visible; top:0;}
+    .close {background-color:transparent; border:none; box-sizing:border-box; color:#D14124; border-radius:0; float:right; font-family:Verdana; font-size:18px; height:48px; margin-top:-16px; opacity:0; padding:14px 0 0 0; text-align:center; transition:opacity 0.3s ease-in-out; visibility:hidden; width:48px;}
+    .close:hover {background-color:#d14124; color:#fff;}
+    .open .close {opacity:1; visibility:visible;}
+    
+    @media (max-width:600px) {
+        .grid-window.active {}
+    }
+    
+    @media (min-width:1024px) {
+        .nav-container {box-shadow:0 0 8px rgba(0,0,0,0.4); display:inline-block; height:100vh; position:relative; z-index:1;}
+        .grid-window {display:inline-block; vertical-align:top;}
+        .js .grid-window {height:37vw; width:75%;}
+        .active .window {visibility:hidden;}
+        .active .window.open {visibility:visible;}
+        .js .window {height:50%; padding:40px; position:absolute; width:25%;}
+        .js .window:nth-child(1) {left:0; top:0;}
+        .js .window:nth-child(2) {left:25%; top:0;}
+        .js .window:nth-child(3) {left:50%; top:0;}
+        .js .window:nth-child(4) {left:75%; top:0;}
+        .js .window:nth-child(5) {left:0; top:50%;}
+        .js .window:nth-child(6) {left:25%; top:50%;}
+        .js .window:nth-child(7) {left:50%; top:50%;}
+        
+        .active .window.open {height:100%; left:0; top:0; width:100%;}
+        .js .window-content {height:auto;}
+    }
+    @media (min-width:1200px) {
+        .js .grid-window {height:28vw;}
+        .window {padding:60px;}
+    }
+    
+    /* Lists */
+    .content-wrapper li > ul, .main-content li > ol {margin-bottom:0;}
+    .content-wrapper p + ul, .main-content p + ol {margin-top:-8px;}
+    .content-wrapper li {margin-bottom:8px;}
+    
+    /* List styles */
+    ul.beige-arrows {background-color:#fff; list-style-type:none; padding:0;}
+    ul.beige-arrows li {background-color:#f2f2f2; padding:0; margin-bottom:1px;}
+    ul.beige-arrows li a {background:url(http://www.latrobe.edu.au/__data/assets/image/0005/549743/chevron-sm-dark.png) no-repeat 16px center; display:block; padding:12px 24px 12px 44px;}
+    ul.beige-arrows li a:hover {background-color:#ccc;}
+
+</style>
+</head>
+
+<body>
+<header>
+    <div class="logo"><div class="hamburger"><img src="http://www.latrobe.edu.au/__data/assets/image/0012/545988/hamburger.png" alt="Menu" height="75" width="75"></div><img src="http://www.latrobe.edu.au/__data/assets/image/0011/545987/logo.png" alt="La Trobe University" height="75" width="224" /></div>
+    <ul class="universes"><li>Home</li><li>Staff</li><li>Students</li><li>Researchers</li></ul>
+    <div class="search"></div>
+    <div class="breadcrumbs"></div>
+</header>
+<div class="nav"></div><!--
+
+--><div class="wrapper">
+<h1 id="title">Discover our courses</h1>
+<div class="content-wrapper">
+    <div class="nav-container"></div><!--
+    --><div class="grid-window">
+        <article class="window" tabindex="0">
+            <h2>Arts and Communications</h2>
+            <div class="window-content">
+                <ul class="beige-arrows">
+                    <li><a href="">Bachelor of Asian Studies</a></li>
+                    <li><a href="">Master of Journalism</a></li>
+                    <li><a href="">Master of Philosophy</a></li>
+                </ul>
+            </div>
+        </article>
+        <article class="window" tabindex="0">
+            <h2>Business and Commerce</h2>
+            <div class="window-content">
+                <ul class="beige-arrows">
+                    <li><a href="">Master of Finance</a></li>
+                    <li><a href="">Master of Event Management</a></li>
+                    <li><a href="">Bachelor of Marketing</a></li>
+                    <li><a href="">Master of Sport Management</a></li>
+                </ul>
+            </div>
+        </article>
+        <article class="window" tabindex="0">
+            <h2>Education, Outdoor and Environmental Studies</h2>
+            <div class="window-content">
+                <ul class="beige-arrows">
+                    <li><a href="">Master of Applied Linguistics</a></li>
+                    <li><a href="">Master of Educational Studies</a></li>
+                    <li><a href="">Bachelor of Secondary teaching</a></li>
+                    <li><a href="">Master of Special Education</a></li>
+                </ul>
+            </div>
+        </article>
+        <article class="window" tabindex="0">
+            <h2>Health Sciences</h2>
+            <div class="window-content">
+                <ul class="beige-arrows">
+                    <li><a href="">Master of Audiology</a></li>
+                    <li><a href="">Master of Counselling</a></li>
+                    <li><a href="">Bachelor of Family Therapy</a></li>
+                    <li><a href="">Master Oral Health</a></li>
+                </ul>
+            </div>
+        </article>
+        <article class="window" tabindex="0">
+            <h2>IT and Engineering</h2>
+            <div class="window-content">
+                <ul class="beige-arrows">
+                    <li><a href="">Master of Engineering</a></li>
+                    <li><a href="">Master of Computer Science</a></li>
+                    <li><a href="">Master of Information Technology</a></li>
+                </ul>
+            </div>
+        </article>
+        <article class="window" tabindex="0">
+            <h2>Law</h2>
+            <div class="window-content">
+                <ul class="beige-arrows">
+                    <li><a href="">Master of Global Business Law</a></li>
+                    <li><a href="">Master of Law</a></li>
+                </ul>
+            </div>
+        </article>
+        <article class="window" tabindex="0">
+            <h2>Sciences and Psychology</h2>
+            <div class="window-content">
+                <ul class="beige-arrows">
+                    <li><a href="">Master of Botany</a></li>
+                    <li><a href="">Master of Genetics</a></li>
+                    <li><a href="">Bachelor of Mathematics and Statistics</a></li>
+                    <li><a href="">Master of Nanotechnology</a></li>
+                </ul>
+            </div>
+        </article>
+    </div>
+
+</div>
+</div>
+
+<footer class="footer"></footer>
+
+<script>
+    document.body.classList.add('js');
+    
+    var grid = document.getElementsByClassName('grid-window')[0];
+    var windows = document.querySelectorAll('.window');
+    
+    var closeWindows = function(){
+        [].forEach.call(windows, function(item) {
+            item.classList.remove('open');
+        });
+        grid.classList.remove('active');
+    }
+    
+    var openWindow = function(ele){
+        closeWindows();
+        ele.classList.add('open');
+        grid.classList.add('active');
+    }
+     
+    var initWindows = function(){
+        
+        for (var i=0;i<windows.length;i++){
+            var $this = windows[i];
+            $this.firstElementChild.insertAdjacentHTML('beforeend',' <span class="close" aria-role="button" tabindex="0">&#10006;</span>');
+            $this.addEventListener('click', function(){
+                var ele = this;
+                openWindow(ele);
+            }, false);
+            $this.addEventListener('keyup', function(e){
+                var ele = this;
+                if (e.keyCode == '13'){
+                    openWindow(ele);
+                }
+            }, false);
+        }
+        
+        var closeButtons = document.querySelectorAll('.close');
+        for (var i=0;i<closeButtons.length;i++){
+            var $this = closeButtons[i];
+            $this.addEventListener('click', function(event){
+                this.parentElement.parentElement.focus();
+                closeWindows();
+                event.stopPropagation();
+            }, false);
+            $this.addEventListener('keyup', function(event){
+                if (event.keyCode == 13) {
+                    this.parentElement.parentElement.focus();
+                    closeWindows();
+                    event.stopPropagation();
+                }
+            }, false);
+        }
+    }
+    
+    initWindows();
+    
+</script>
+
+
+
+</body></html>

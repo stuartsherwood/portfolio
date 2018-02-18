@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+  <title>Flow page</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+
+<!--[if lt IE 9]>
+<script src="/__data/assets/js_file/0006/576672/html5shiv.min.js"></script>
+<![endif]-->
+
+<style>
+html, body {}
+body {background-color:#fff; font-family:Roboto; font-weight:300; margin:0; overflow-x:hidden; padding:0;}
+
+h1 {color:#fff; font:700 50px/1 'Roboto Condensed',sans-serif; margin:0; padding:36px 60px 48px; position:relative;}
+h2 {font:700 20px/20px 'Roboto Condensed',sans-serif; margin:0 0 4px 0; text-transform:uppercase;}
+h2:only-child {margin:0;}
+h3 {font:700 18px/20px 'Roboto Condensed',sans-serif; margin:0 0 4px 0; text-transform:uppercase;}
+p {margin-top:0;}
+
+*:focus {outline:1px dotted #FF9E1b;}
+
+.header {background-color:rgba(255,255,255,0.6); box-shadow:0 0 5px rgba(0,0,0,0.5); height:80px; position:relative; z-index:11;}
+.universes {display:none;}
+.universes a {background:transparent url(http://www.latrobe.edu.au/__data/assets/image/0004/549742/chevron-sm-orange.png) no-repeat 15px 33px; color:#63513D; display:inline-block; text-decoration:none;}
+.universes a.current {background:url(http://www.latrobe.edu.au/__data/assets/image/0010/552817/current-audience-ltu.png) no-repeat 20px 20px rgba(255,255,255,0.6); border-top:4px solid #D14124; padding-left:60px; padding-top:26px;}
+.universes a:hover {color:#D14124;}
+.search {float:right; height:80px; margin-top:0; position:relative;}
+.search label {background-color:#fff; display:inline-block; float:right; height:80px; vertical-align:top;}
+.search label:hover {color:#D14124;}
+#LT_search_field {background:#fff; border:none; -moz-box-sizing:border-box; box-sizing:border-box; display:inline-block; float:left; font:300 20px/1 'Roboto',sans-serif; height:80px; transition:width 0.3s; vertical-align:top; -webkit-appearance:none; width:0;}
+#LT_search_field::-ms-clear {display:none; height:0; width:0;}
+#LT_search_field:focus {padding:0 20px; width:calc(25vw - 80px);}
+#LT_search_field:focus + label + input {z-index:1;}
+.LT_search_field_submit {background:#fff url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3MTk2MzJFRjNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3MTk2MzJGMDNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjcxOTYzMkVEM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjcxOTYzMkVFM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+XW8RkAAAAwNJREFUeNrsml2ITGEYx9+xPrKkfIVI9sLH+rgQUVuULZa0JG5Q3Fm52XbvFIm483GplFy62SVRrBIr+bhQatYuF1wQViQXWsvONv6P804dz545O3PG7Gz7/J/61bzvnPOeOb/Oed7zPmdS2WzWMZJHigIpkAIpkAIZFEiBFEiBDAqkQAqkQAYFUiAFUiCDAimQAimQQYEUSIF/o6thWUVOcGXHq7KOP47XEAVWNMaPst8zGewADWAJmOv7voGX4AFoB1+YA4eKa/XMGGaoX+AKOA6+Mgc6txw8B6cLkCcxCRwGPWCb9Ry4HjwCtQn2nQVugoNWc+AiL2C66h8EN8Bt8Nq3a8BmsBtMDW1bBS6DT+CupRyY8ldendqsExwB3XmGkUnlHNin+j8DOcB3Kzlwb4S8dn+Vdcfs1wv2g5Oqfw44ZikHtqp2GhwAAwXuLwLbVF8TmGZB4GKwRvW1gL4ixpC80wx+hvokN263IHCjar8D9xKM8xHcUn0bLAhcqNr3SxjroWovtSBwvmp/KGGs96o924LAHxHLuKQxUbUHLAjs/Y+3XW1EXhzzAntUe5NaXRQTjar9woLATl9RCd/CzQnG2QrWqr47FgTKcuua6jsKVhUxhkwWF1WfrJsfW1mJnAGZUHuKLx4UIlFm8Q5fjNCrk6wVgVJdPhsh5qkLCqUzI/apBodcUDtcHfF9phInUsmK9ASfs+ojNpcS1jPwxn9e4IsP1TGHyPgixT9r5HJXYypZD5Rntp0uqMJsUd9VeWF1RZ7LVf+5bazfwuGHaikAnAK/iywmvI2RuMeKwNytd8IF70YuufgXRX1+BpeiwYo8jy05ifUj8eNH02tNyXdS05OK9DpJX2Cez3sitcsFrzX7Q/vsAtf9M6E+rxprAsMTyBPPcNGfR+IFF7wrMXELlxo5ibnb+bwbWvE2dQUmldjoiwtpCw/S5ZqM0iN9UP4/kAIpkAIpkEGBFEiBFMigQAqkQApkUCAFUiAFMiiQAimQAhkUSIEUSIGMmPgjwAB1wSBkr5jHbQAAAABJRU5ErkJggg==") no-repeat 0 0; border:none; float:right; height:80px; padding:0; position:absolute; text-indent:-1000px; transition:z-index 0.5s; -webkit-appearance:none; width:80px; z-index:-1;}
+.someinput::-ms-clear {
+    display: none;
+}
+.live-chat {background-color:#d14124; border:none; display:inline-block; float:right; height:80px; padding:0; width:80px;}
+.breadcrumbs {background-color:#333; clear:both; height:60px;}
+.logo {background-color:#fff; box-shadow:0 0 5px rgba(0,0,0,0.2); display:inline-block; float:left; height:80px; min-width:318px; width:25%; z-index:11;}
+.hamburger {background-color:#d14124; color:#fff; cursor:pointer; float:left; height:80px; transform:rotate(0deg); transition:transform ease-in-out 0.3s; width:80px;}
+.hamburger img {display:block; margin:2px auto;}
+
+.nav {background:#F8F3EF url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAAmCAMAAACvbwi9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo0RUJBNTQ4MzEzNUMxMUUzOTRGRkI5Njg5MzI2MzgxNCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo0RUJBNTQ4NDEzNUMxMUUzOTRGRkI5Njg5MzI2MzgxNCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjRFQkE1NDgxMTM1QzExRTM5NEZGQjk2ODkzMjYzODE0IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRFQkE1NDgyMTM1QzExRTM5NEZGQjk2ODkzMjYzODE0Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BUnKfgAAADBQTFRFLSUaKiIYJBwVLSMXKiUfJyMXJyAYLyUZMycYKiMbLiYbLiUcLCkkKyUZIBwRLiMbYzcFGQAAAGhJREFUeNrs1UEOwCAIRNFBgaJ19P63rVdg2YQfti+zBMt0Dc221lZXDHIGklEIuoMMiSfbFLg36ItJ5BO5y4ULFy5c+B943p9R+FfYwnr0bNKPnwYe6TaSTRmvt4YwV7Vkm/e2fwIMAI74DpH0F/RIAAAAAElFTkSuQmCC) repeat-y 0 0; height:100vh; left:0; overflow:hidden; padding-top:80px; position:absolute; transition:margin-left 0.3s ease-in-out; width:90%; z-index:10;}
+.nav-hidden .nav {margin-left:-90%;}
+.nav-hidden .hamburger {transform:rotate(180deg);}
+.nav nav {width:200%;}
+.nav ul {float:left; list-style-type:none; margin:0; padding:0; width:50%;}
+.nav li {overflow:hidden;}
+.nav li:not(.furniture) {background:#ff9e1b url(http://www.latrobe.edu.au/__data/assets/image/0012/585939/nav-icons.png) no-repeat -60px -350px;}
+.nav a {color:#63513D; display:block; font:700 20px/1 'Roboto Condensed',sans-serif; text-decoration:none;}
+.nav a:visited {color:#63513D;}
+.nav .icon {background:#FF9E1B url(http://www.latrobe.edu.au/__data/assets/image/0012/585939/nav-icons.png) no-repeat; display:block; float:left; height:60px; vertical-align:top; width:60px;}
+.nav a:hover .icon {background-color:#D14124;}
+.nav-label {background-color:#fff; box-shadow:0 -1px 0 #E1E1E1 inset; -moz-box-sizing:border-box; box-sizing:border-box; display:block; overflow:hidden; padding:20px; text-transform:uppercase; vertical-align:top;}
+.furniture a {font:300 18px/1 'Roboto',sans-serif; padding:12px 0 12px 80px;}
+.furniture a:hover {color:#D14124;}
+
+/* Home universe icon positions */
+.icon {background-position:-60px -300px;}
+.g-nav-Study_with_us .icon {background-position:0 0;}
+.g-nav-Study_with_us a:hover .icon {background-position:-60px 0;}
+.g-nav-Experience .icon {background-position:0 -60px;}
+.g-nav-Experience a:hover .icon {background-position:-60px -60px;}
+.g-nav-Research .icon {background-position:0 -120px;}
+.g-nav-Research a:hover .icon {background-position:-60px -120px;}
+.g-nav-About .icon {background-position:0 -180px;}
+.g-nav-About a:hover .icon {background-position:-60px -180px;}
+
+.wrapper {width:100%;}
+     
+a:hover {text-decoration:none;}
+     
+/* LTU Button */
+a.ltu-button {color:#fff!important; background:#D14124 url(http://www.latrobe.edu.au/__data/assets/image/0004/553369/chevron-lg-white-right.png) no-repeat 94% center; display:inline-block; font-family:"Roboto Condensed",sans-serif; padding:10px 46px 9px 26px; text-decoration:none; text-transform:uppercase;}
+a.mini {background-image:none; padding:4px 20px; vertical-align:top;}
+a.ltu-button:first-child:not(:only-child) {margin-bottom:5px;}
+a.ltu-button:hover {background-color:#B43A20;}
+a.ltu-button:active {background-color:#D52B1E; box-shadow:0 0 4px #D52B1E;}
+
+#flow-content {height:70vh;}
+#make-wide {}
+.flow-node {height:100%; left:100%; position:absolute; transition:left 0.3s ease-in-out; width:75%;}
+.flow-node.slide {left:25%;}
+.flow-node.slide + .flow-node {transform:none; z-index:2;}
+.nav-hidden .flow-node {left:75%;}
+.nav-hidden .flow-node.slide {left:0;}
+.nav-hidden .flow-node.hide-left {left:-100%;}
+.flow-node > div {height:100%;}
+.hero {color:#fff; left:12%!important; opacity:0; position:absolute; top:12%!important; transition:opacity 2s ease-in-out; z-index:1;}
+.feature_large .hero {width:36%;}
+.hero h2 {font-size:6vw; line-height:5.8vw; text-shadow:0 0 5px rgba(0,0,0,0.8);}
+.slide .hero {opacity:1;}
+.hero p {background-color:#ff9e1b; color:#242424; margin-top:2vw; padding:16px; width:220px;}
+.hero a {color:#fff; text-decoration:none;}
+.feature_action, .node-cta {color:#fff; display:block;}
+.article-label {background-color:rgba(0,0,0,0.4); display:inline-block; font:700 14px/1 'Roboto Condensed',sans-serif; margin-bottom:8px; text-transform:uppercase; padding:8px 12px;}
+.spotlight .hero, .newsreel .hero, .events_ticker .hero {box-shadow:none;} 
+.sidekick {height:100%; transition:transform 5s ease-out;}
+.slide .sidekick {transform:translateX(-40px);}
+.sidekick img {background-color:#242424; vertical-align:top; width:100%;}
+.node-cta {background-color:#d14124; bottom:-28px; color:#fff; display:inline; font-size:24px; line-height:1; padding:20px; position:absolute; right:12%; text-shadow:none; white-space: nowrap;}
+
+.feature_small .hero {background-color:rgba(0,0,0,0.3); padding:20px;}
+.feature_small h2 {font-size:20px; line-height:24px;}
+.feature_small .sidekick img {}
+
+/* COURSE SEARCH */
+#course {background-color:#eae8e0; position:relative; z-index:5;}
+#course h2 {text-align:right; background-color:#242424; color:#fff; display:inline-block; float:right; font-size:50px; line-height:1; padding:12px; transform:translateY(-135%);}
+#course h2 a {color:#FF9e1b; text-decoration:none;}
+.course_search .hero {background-color:#000; height:auto; overflow:hidden; padding:0;}
+.flow-course-finder {padding:30px;}
+    .study-level {transform:translateY(-80px);}
+.flow-course-finder form {}
+    .keyword-field {margin-bottom:30px;}
+.flow-course-finder label {display:none;}
+.flow-course-finder .flow-course-keyword {background-color:#fff; box-sizing:border-box; border:none; border-radius:0; font-family:inherit; font-size:40px; height:80px; padding:12px 18px; width:calc(100% - 80px);}
+.flow-course-finder .flow-course-button {background:#d14124 url(/__data/assets/image/0009/551466/search-icon-white.png) no-repeat center; border:none; border-radius:0; height:80px; padding:0; text-indent:-2000px; vertical-align:top; width:80px;}
+.flow-course-finder h3 {color:#ff9e1b; font-size:40px; margin:20px 0 16px; text-transform:uppercase;}
+.flow-course-finder ul {list-style:none; margin:0; padding:0 0 16px;}
+.flow-course-finder li {font-size:28px; line-height:32px;}
+.flow-course-finder li a {background:url(/__data/assets/image/0004/549742/chevron-sm-orange.png) no-repeat 0; color:#242424; display:inline-block; padding:5px 0 5px 0px; text-decoration:none;}
+.flow-course-finder li a:hover {color:#ff9e1b;}
+.flow-course-finder .course-contacts {}
+.flow-course-finder .flow-course-contact {font:24px/24px 'Roboto Bold',sans-serif; margin:0;}
+.flow-course-finder .flow-course-contact a {color:#fff; text-decoration:none;}
+.flow-course-finder .cta {display:flex; flex-direction:column; justify-content:space-between; margin-bottom:0;}
+.flow-course-finder .ltu-button {font-size:28px; flex:1; margin-top:0!important;}
+.course_search .sidekick {display:none;}
+@media (min-width:480px) {
+    .flow-course-finder ul {-ms-column-count:2; -moz-column-count:2; -webkit-column-count:2;}
+}
+@media (min-width:769px) {
+    .flow-course-finder {padding:60px;}
+  .course_search {min-width:400px!important;}
+  .course_search .hero {margin:0; width:360px;}
+  .flow-course-finder ul {-ms-column-count:1; -moz-column-count:1; -webkit-column-count:1;}
+}
+
+input[type="button"].scrollers {background:rgba(255,255,255,0.8) url(http://www.latrobe.edu.au/__data/assets/image/0005/557537/chevron-black-left.png) no-repeat center; border:none; box-shadow:0 0 3px #555555; display:block; top:40%; left:0; color:rgba(0,0,0,0); height:100px; padding:0; position:absolute; -webkit-appearance:none;  width:50px; z-index:9;}
+input[type="button"].scrollers:last-of-type {background-image:url(http://www.latrobe.edu.au/__data/assets/image/0006/557538/chevron-black-right.png); right:0; left:inherit;}
+input[type="button"].scrollers:hover {background-color:rgba(209,65,36,1);}
+.left-arrow-hidden .scrollers:first-of-type {display:none;}
+.right-arrow-hidden .scrollers:last-of-type {display:none;}
+    
+.footer {display:none;}
+
+/* Footer */
+#fat-footer {background-color:#2D251A;}
+.quicklinks {display:none;}
+
+/* MEDIA QUERIES */
+     
+@media screen and (max-width:799px) {
+    .nav {padding-top:0;}
+    #make-wide {}
+    .sidekick img {}
+}
+
+@media screen and (min-width:800px) {
+    .header {position:fixed; top:0; width:100%;}
+    .nav {width:50%;}
+    .js .nav {position:fixed;}
+    .nav-hidden .nav {margin-left:-50%;}
+    .paralax {background:transparent url(http://www.latrobe.edu.au/__data/assets/image/0005/545990/texture-red.jpg) repeat-x 0 0;}
+    #flow-content {height:100vh;}
+    #make-wide {box-sizing:border-box; height:100%;}
+    .flow-node {}
+    .flow-node:last-child {}
+    .flow-node > div {}
+    .sidekick img {height:100%; width:auto;}
+    
+    .viewed {visibility:hidden; transition:visibility 0s 0.3s;}
+    
+    .footer {bottom:0; height:60px; left:0; position:fixed; transform:translate3d(0,0,0); width:100%; z-index:2;}
+    #fat-footer {color:#fff; -moz-box-sizing:border-box; box-sizing:border-box; margin:0; padding:60px 80px;}
+    .js #fat-footer {}
+    .footer-node {background-color:transparent!important;}
+    .footer-node h2 {color:#ff9e1b;}
+    .footer-node ul {list-style-type:none; margin:0; padding:0;}
+    #fat-footer a {text-decoration:none; color:#fff;}
+    .quicklinks {background:#242424 url(http://www.latrobe.edu.au/__data/assets/image/0020/551702/chevron-sm-orange-up.png) no-repeat 24px center; color:#fff;  display:block; float:right; font:700 16px/20px 'Roboto Condensed',sans-serif; padding:20px 24px 20px 44px; text-decoration:none; text-transform:uppercase;}
+    .show-footer {overflow:hidden;}
+    .show-footer #fat-footer {-webkit-transform:translateY(0%); transform:translateY(0%);}
+    #close-footer {background:#EF3829 url(http://www.latrobe.edu.au/__data/assets/image/0004/551677/close-x.png) no-repeat center center; border-radius:22px; color:#fff; display:inline-block; font:20px/1 'Roboto Condensed',sans-serif; float:right; margin-top:20px; padding:12px 0; text-align:center; text-indent:-10000px;}
+}
+    
+.social-media {list-style-type:none; margin:0; overflow:auto; padding:0;}
+.social-media li {display:block; float:left; margin:0 1px 0 0; padding:0;}
+.social-media a {background:#EF3829 url(http://www.latrobe.edu.au/__data/assets/image/0011/550568/social-media-icons.png) no-repeat 0 0; display:block; height:100%; text-indent:-5000px;}
+.social-media a:hover {background-color:#ab2327;}
+.footer-node .facebook a {background-position:0 0;}
+.footer-node .twitter a {background-position:0 -100px;}
+.footer-node .google a {background-position:0 -200px;}
+.footer-node .youtube a {background-position:0 -300px;}
+.footer-node .linkedin a {background-position:0 -400px;}
+.footer-node .instagram a {background-position:0 -500px;}
+.footer-node .ucroo a {background-position:0 -1000px;}
+
+.footer-node .social-media li {height:100px; margin-bottom:1px; width:100px;}
+
+@media screen and (min-width:1024px) and (min-height:768px) {
+     .header {}
+     .logo {min-width:52%; position:absolute;}
+     .search {}
+     .search {box-shadow:0 0 5px rgba(0,0,0,0.2);}
+     .universes {-moz-box-sizing:border-box; box-sizing:border-box; height:80px; list-style-type:none; margin:0 0 0 32%; padding:0; width:68%;}
+     .universes li {float:left; font:18px/20px 'Roboto Condensed'; text-transform:uppercase;}
+     .universes a {padding:30px 30px;}
+     .nav {box-sizing:border-box; padding-top:80px;}
+    #flow-content {}
+    #make-wide {}
+    .flow-node:last-child {}
+    .footer {background:#F5F2E4 url(http://www.latrobe.edu.au/__data/assets/image/0004/545989/texture-beige.jpg) repeat-x 0 0; box-shadow:0 0 5px rgba(0,0,0,0.3); height:120px;}
+    .quicklinks {margin:30px;}
+
+}
+
+@media screen and (min-width:1280px) and (min-height:768px) {
+    .logo {min-width:25%;}
+     .nav {width:25%;}
+     .nav-hidden .nav {margin-left:-25%;}
+}
+@media screen and (min-width:1024px) and (min-height:900px) {
+    #flow-content {margin-left:120px;}
+    #make-wide {}
+    .flow-node:last-child {padding-right:120px;}
+}
+
+.flex-showcase-item {background-color:#f5f2ea; box-sizing:border-box; flex:0 0 calc(25% - 30px); margin:30px;}
+.flex-showcase-item figure {margin:0;}
+.flex-showcase-content {box-sizing:border-box; padding:30px;}
+@media (min-width:768px) {
+    .flex-showcase {display:flex; flex-wrap:wrap; justify-content:space-between;}
+    .flow_page .flex-showcase {margin:30px 30px 0px 30px;}
+    .flex-showcase-item {flex:0 0 calc(50% - 15px); margin:0 0 30px 0;}
+}
+@media (min-width:1024px) {
+    .flow_page .flex-showcase {margin:60px 60px 30px 60px;}
+    .flex-showcase-item {flex:0 0 calc(25% - 30px);}
+}
+
+/* Flexbox */
+.flex-item {box-sizing:border-box; margin:0; padding:0;}
+@media (min-width:640px) {
+    .flex-container {display:flex; flex-wrap:wrap;}
+    .x2 .flex-item {flex:0 0 50%;}
+    .x3 .flex-item {flex:0 0 33.333%;}
+    .x4 .flex-item {flex:0 0 25%;}
+    .x5 .flex-item {flex:0 0 20%;}
+    .x6 .flex-item {flex:0 0 16.6666%;}
+}
+
+/* Image ratio */
+.img-ratio {background-color:#242424; box-shadow:0 0 5px rgba(0,0,0,0.5); display:block; height:0; overflow:hidden; position:relative; width:100%;}
+.ratio-3-2 {padding:66.5% 0 0 0;}
+.img-ratio img {bottom:0; display:block; left:0; max-height:100%; margin:auto; position:absolute; right:0; top:0;}
+
+</style>
+</head>
+
+<body class="flow_page left-arrow-hidden">
+<div id="top" class="wrapper">
+<header class="header">
+    <div class="logo"><div class="hamburger" tabindex="0"><img src="http://www.latrobe.edu.au/__data/assets/image/0012/545988/hamburger.png" alt="Menu" /></div><img src="http://www.latrobe.edu.au/__data/assets/image/0011/545987/logo.png" alt="La Trobe University" height="75" width="224" /></div>
+    <ul class="universes"><li><a class="current" href="/">Home</a></li><li><a href="/staff">Staff</a></li><li><a href="/students">Students</a></li><li><a href="/researchers">Researchers</a></li></ul>
+    <form class="search" action="http://www.latrobe.edu.au/search">
+        <input type="hidden" value="Latrobe" name="collection" />
+        <input type="text" name="query" placeholder="Start typing" id="LT_search_field"><label for="LT_search_field" class="off-screen"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3MTk2MzJFRjNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3MTk2MzJGMDNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjcxOTYzMkVEM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjcxOTYzMkVFM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+XW8RkAAAAwNJREFUeNrsml2ITGEYx9+xPrKkfIVI9sLH+rgQUVuULZa0JG5Q3Fm52XbvFIm483GplFy62SVRrBIr+bhQatYuF1wQViQXWsvONv6P804dz545O3PG7Gz7/J/61bzvnPOeOb/Oed7zPmdS2WzWMZJHigIpkAIpkAIZFEiBFEiBDAqkQAqkQAYFUiAFUiCDAimQAimQQYEUSIF/o6thWUVOcGXHq7KOP47XEAVWNMaPst8zGewADWAJmOv7voGX4AFoB1+YA4eKa/XMGGaoX+AKOA6+Mgc6txw8B6cLkCcxCRwGPWCb9Ry4HjwCtQn2nQVugoNWc+AiL2C66h8EN8Bt8Nq3a8BmsBtMDW1bBS6DT+CupRyY8ldendqsExwB3XmGkUnlHNin+j8DOcB3Kzlwb4S8dn+Vdcfs1wv2g5Oqfw44ZikHtqp2GhwAAwXuLwLbVF8TmGZB4GKwRvW1gL4ixpC80wx+hvokN263IHCjar8D9xKM8xHcUn0bLAhcqNr3SxjroWovtSBwvmp/KGGs96o924LAHxHLuKQxUbUHLAjs/Y+3XW1EXhzzAntUe5NaXRQTjar9woLATl9RCd/CzQnG2QrWqr47FgTKcuua6jsKVhUxhkwWF1WfrJsfW1mJnAGZUHuKLx4UIlFm8Q5fjNCrk6wVgVJdPhsh5qkLCqUzI/apBodcUDtcHfF9phInUsmK9ASfs+ojNpcS1jPwxn9e4IsP1TGHyPgixT9r5HJXYypZD5Rntp0uqMJsUd9VeWF1RZ7LVf+5bazfwuGHaikAnAK/iywmvI2RuMeKwNytd8IF70YuufgXRX1+BpeiwYo8jy05ifUj8eNH02tNyXdS05OK9DpJX2Cez3sitcsFrzX7Q/vsAtf9M6E+rxprAsMTyBPPcNGfR+IFF7wrMXELlxo5ibnb+bwbWvE2dQUmldjoiwtpCw/S5ZqM0iN9UP4/kAIpkAIpkEGBFEiBFMigQAqkQApkUCAFUiAFMiiQAimQAhkUSIEUSIGMmPgjwAB1wSBkr5jHbQAAAABJRU5ErkJggg==" alt="search" /></label><input type="submit" class="LT_search_field_submit" value="Search">
+    </form>
+    <button class="live-chat"><img src="../icons/chat.svg" alt="Live chat" height="80" width="80" /></button>
+</header>
+<div class="nav">
+    <nav id="global">
+        <ul id="nav-global">
+            <li class="g-nav-Study_with_us Live a259531"><a href="http://www.latrobe.edu.au/study"><span class="icon"></span><span class="nav-label">Study with us</span></a></li>
+            <li class="g-nav-Experience Live a6309"><a href="http://www.latrobe.edu.au/experience"><span class="icon"></span><span class="nav-label">Experience</span></a></li>
+            <li class="g-nav-Research Live a6293"><a href="http://www.latrobe.edu.au/research"><span class="icon"></span><span class="nav-label">Research</span></a></li>
+            <li class="g-nav-About Live a6281"><a href="http://www.latrobe.edu.au/about"><span class="icon"></span><span class="nav-label">About</span></a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/courses">Courses</a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/campuses">Campuses </a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/faculties">Faculties</a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/library">Library</a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/news">News</a></li>
+            <li class="furniture"><a href="http://www.latrobe.edu.au/contact">Contacts</a></li>
+        </ul>
+        <ul id="nav-local" class="nav-localwrapper">
+            <li class="nav-trigger main" tabindex="0"><span class="icon"></span><span class="nav-label">Main menu</span></li>
+            <li id="back"><a href="http://www.latrobe.edu.au"><span class="icon"></span><span class="nav-label">Back to La Trobe University</span></a></li>
+            <li class="current"><span class="icon"></span><span class="nav-label">La Trobe University</span></li>
+        </ul>
+    </nav>
+</div>
+
+
+    <div class="paralax"></div>
+    <div id="flow-content">
+        <div id="make-wide">
+
+<article id="F6_flow_li_572093" class="flow-node feature_large stacked a572093">
+  <div>
+    <header class="hero" style="left:120px;top:20px;">
+                                    <span class="article-label meta meta_548422">Feature courses</span>
+<h2><a href="http://www.latrobe.edu.au/courses/feature"><span class="node-link meta meta_548419">Apply now to start in July</span><span class="node-cta meta meta_548421">Learn more</span></a></h2>
+<p class="meta meta_548420">Thinking about going to uni? Many of our courses have a mid-year intake.</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:330px;top:40px;">
+          <img class="lazy" alt="" data-original="http://www.latrobe.edu.au/be-the-difference/images/JWT_latrobe-journo10115_HERO-RGB.jpg/preview.jpg" />
+          <noscript><img alt="" src="http://www.latrobe.edu.au/be-the-difference/images/JWT_latrobe-journo10115_HERO-RGB.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+
+<article id="F7_flow_li_644719" class="flow-node feature_small stacked a644719">
+  <div>
+    <header class="hero" style="left:420px;top:60px;">
+                                    <span class="article-label meta meta_548422">Scholarship opportunities</span>
+<h2><a href="http://www.latrobe.edu.au/study/how-to-apply/postgrad-excellence-scholarship"><span class="node-link meta meta_548419">Postgraduate Excellence Scholarships</span><span class="node-cta meta meta_548421">Apply now</span></a></h2>
+<p class="meta meta_548420">Successful applicants get a 20% discount on postgraduate course fees!</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:120px;top:80px;">
+          <img class="lazy" alt="" data-original="http://www.latrobe.edu.au/giving/images/Second-chance-scholarship.jpg/preview.jpg" />
+          <noscript><img alt="" src="http://www.latrobe.edu.au/giving/images/Second-chance-scholarship.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+
+<article id="F8_flow_li_574860" class="flow-node feature_large a574860">
+  <div>
+    <header class="hero" style="left:180px;top:300px;">
+                                    <span class="article-label meta meta_548422">STUDY AT LA TROBE</span>
+<h2><a href="http://www.latrobe.edu.au/study/aspire"><span class="node-link meta meta_548419">ASPIRE EARLY ADMISSIONS PROGRAM 2016</span><span class="node-cta meta meta_548421">APPLY NOW</span></a></h2>
+<p class="meta meta_548420">We recognise your volunteering efforts. Applications are open now!</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:120px;top:80px;">
+          <img class="lazy" alt="" data-original="http://www.latrobe.edu.au/news/redirect/Nurse-at-work.jpg/preview.jpg" />
+          <noscript><img alt="" src="http://www.latrobe.edu.au/news/redirect/Nurse-at-work.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+
+<article id="F9_flow_li_643438" class="flow-node feature_small stacked a643438">
+  <div>
+    <header class="hero" style="left:330px;top:20px;">
+                                    <span class="article-label meta meta_548422">Big Fat Ideas</span>
+<h2><a href="http://www.latrobe.edu.au/big-fat-ideas/understanding-how-cells-die"><span class="node-link meta meta_548419">Understanding how cells die</span><span class="node-cta meta meta_548421">Learn more</span></a></h2>
+<p class="meta meta_548420">Dr Ivan Poon has spoken about his world-first research into cell death.</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:0px;top:40px;">
+          <img class="lazy" alt="" data-original="http://www.latrobe.edu.au/big-fat-ideas/fat-images/Dr-Ivan-Poon.jpg/preview.jpg" />
+          <noscript><img alt="" src="http://www.latrobe.edu.au/big-fat-ideas/fat-images/Dr-Ivan-Poon.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+<article id="F10_flow_li_644486" class="flow-node feature_small stacked a644486">
+  <div>
+    <header class="hero" style="left:0px;top:60px;">
+                                    <span class="article-label meta meta_548422">New research</span>
+<h2><a href="http://www.latrobe.edu.au/news/articles/2015/release/new-mental-health-project-targets-afl"><span class="node-link meta meta_548419">New mental health project targets AFL</span><span class="node-cta meta meta_548421">Read more</span></a></h2>
+<p class="meta meta_548420">La Trobe is working with AFL personalities to encourage talk about depression.</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:240px;top:80px;">
+          <img class="lazy" alt="AFL" data-original="http://www.latrobe.edu.au/news/images/articles/footy.jpg/preview.jpg" />
+          <noscript><img alt="AFL" src="http://www.latrobe.edu.au/news/images/articles/footy.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+<article id="F11_flow_li_585234" class="flow-node feature_large a585234">
+  <div>
+    <header class="hero" style="left:60px;top:20px;">
+                                    <span class="article-label meta meta_548422">Internships</span>
+<h2><a href="http://www.latrobe.edu.au/humanities/study/internships-and-work-experience/melbourne-webfest-internships"><span class="node-link meta meta_548419">Students power Web Fest</span><span class="node-cta meta meta_548421">Read more</span></a></h2>
+<p class="meta meta_548420">La Trobe interns worked behind the scenes at the Melbourne Web Fest.</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:180px;top:60px;">
+          <img class="lazy" alt="" data-original="http://www.latrobe.edu.au/humanities/study/internships-and-work-experience/melbourne-webfest-internships/_HIP8250-1.jpg/preview.jpg" />
+          <noscript><img alt="" src="http://www.latrobe.edu.au/humanities/study/internships-and-work-experience/melbourne-webfest-internships/_HIP8250-1.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+
+<article id="F12_flow_li_571051" class="flow-node feature_small stacked a571051">
+  <div>
+    <header class="hero" style="left:390px;top:20px;">
+                                    <span class="article-label meta meta_548422">Study options</span>
+<h2><a href="http://www.latrobe.edu.au/humanities/study/accredited-subjects/writers-in-action"><span class="node-link meta meta_548419">Writers in action</span><span class="node-cta meta meta_548421">Learn more</span></a></h2>
+<p class="meta meta_548420">Complete a subject during the Bendigo or Mildura Writers Festivals.</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:60px;top:40px;">
+          <img class="lazy" alt=" " data-original="http://www.latrobe.edu.au/ltlt/ltlt-images/promotional-and-stock-images/Colour-pencils-WEB-2560.jpg/preview.jpg" />
+          <noscript><img alt=" " src="http://www.latrobe.edu.au/ltlt/ltlt-images/promotional-and-stock-images/Colour-pencils-WEB-2560.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+
+<article id="F13_flow_li_639387" class="flow-node feature_small stacked a639387">
+  <div>
+    <header class="hero" style="left:60px;top:60px;">
+                                    <span class="article-label meta meta_548422">Study nursing</span>
+<h2><a href="http://www.latrobe.edu.au/events/all/nursing-information-evening"><span class="node-link meta meta_548419">Postgrad nursing information evening</span><span class="node-cta meta meta_548421">Read more</span></a></h2>
+<p class="meta meta_548420">Visit Alfred Clinical School on 23rd July to learn about postgraduate nursing.</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:240px;top:80px;">
+          <img class="lazy" alt="" data-original="http://www.latrobe.edu.au/courses/feature/apply-direct-images/nursing-master.jpg/preview.jpg" />
+          <noscript><img alt="" src="http://www.latrobe.edu.au/courses/feature/apply-direct-images/nursing-master.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+
+<article id="F14_flow_li_642938" class="flow-node feature_large a642938">
+  <div>
+    <header class="hero" style="left:120px;top:300px;">
+                                    <span class="article-label meta meta_548422">Postgraduate study</span>
+<h2><a href="http://www.latrobe.edu.au/alumni/career-development/alumni-discount"><span class="node-link meta meta_548419">Alumni Discount</span><span class="node-cta meta meta_548421">Learn more</span></a></h2>
+<p class="meta meta_548420">Take advantage of a 10% discount on full-fee postgraduate coursework.</p>
+
+
+                        </header>
+        <div class="sidekick" style="left:240px;top:60px;">
+          <img class="lazy" alt="" data-original="http://www.latrobe.edu.au/alumni/images/Alumni-Benefits.jpg/preview.jpg" />
+          <noscript><img alt="" src="http://www.latrobe.edu.au/alumni/images/Alumni-Benefits.jpg/preview.jpg" /></noscript>
+        </div>
+    </div>
+</article>
+
+<article id="F15_flow_li_6297" class="flow-node content_box a6297">
+  <div>
+    <header class="hero" style="left:135px;top:67px;">
+                                    <h2><span class="meta meta_548419">more from la trobe</span></h2>
+<section class="meta meta_548674"><ul><li><a href="http://www.latrobe.edu.au/alumni">​Alumni</a></li><li><a href="http://www.latrobe.edu.au/apply-direct">​Apply direct</a></li><li><a href="http://www.latrobe.edu.au/giving">​Give to La Trobe</a></li><li><a href="http://www.latrobe.edu.au/international">​International</a></li><li><a href="http://www.latrobe.edu.au/jobs">​Jobs at La Trobe</a></li><li><a href="http://www.latrobe.edu.au/directory">Staff directory</a></li><li><a href="http://www.latrobe.edu.au/calendar">University calendar</a></li><li><a href="http://www.latrobe.edu.au/security/parking/visitors">​Visitors</a></li><li><a href="http://www.latrobe.edu.au/short-courses">​Short courses</a></li></ul></section>
+
+                        </header>
+        <div class="sidekick" style="left:9.03125px;top:5.953125px;">
+          <img class="lazy" alt="" data-original="" />
+          <noscript><img alt="" src="/__data/assets/image/0006/552093/transparent.gif" /></noscript>
+        </div>
+    </div>
+</article>
+
+
+        </div>
+    </div>
+    
+    <div id="course" class="flow-course-finder"><h2>Find a course<br /><a href="tel:1300135045">1300 135 045</a></h2>
+        <div class="study-level">
+            <!-- these values use reverse polish notation, see gscope docs -->
+            <!-- NOTE: don't use Funnelback's s:Select, or you'll get a Nickscript error because of the gscope value for Undergraduates. This is a bug.  -->
+            <form action="http://www.latrobe.edu.au/courses" method="GET">
+                <div class="keyword-field">
+                <label class="visuallyhidden" for="query_courses">Keyword</label>
+                <input type="text" autocomplete="off" name="query" class="flow-course-keyword" id="query_courses" placeholder="What do you want to study?"><input class="flow-course-button" type="submit" value="Search">
+                <input type="hidden" name="collection" value="course-search">
+                <input type="hidden" name="tabSelection" value="local">
+                </div>
+            </form>
+        </div>
+        <div class="flex-container x2">
+            <div class="flex-item">
+                <h3>Explore courses by study area</h3>
+                <ul>
+                  <li><a href="http://www.latrobe.edu.au/courses/study-arts-and-communications">Arts and Communications</a></li>
+                  <li><a href="http://www.latrobe.edu.au/courses/study-business-and-commerce">Business and Commerce</a></li>
+                  <li><a href="http://www.latrobe.edu.au/courses/study-health-sciences">Health Sciences</a></li>
+                  <li><a href="http://www.latrobe.edu.au/courses/study-it-and-engineering">IT and Engineering</a></li>
+                  <li><a href="http://www.latrobe.edu.au/courses/study-law-criminology">Law and Criminology</a></li>
+                  <li><a href="http://www.latrobe.edu.au/courses/study-sciences-and-psychology">Sciences and Psychology</a></li>
+                  <li><a href="http://www.latrobe.edu.au/courses/study-teaching-education">Teaching and Education</a></li>
+                </ul>
+            </div>
+            <div class="flex-item course-contacts">    
+                <p class="cta"><a class="ltu-button chat" href="http://latrobe.custhelp.com/app/chat/chat_launch/session">Live chat</a> <a class="ltu-button" href="http://latrobe.custhelp.com/app/">FAQs</a></p>
+            </div>
+        </div>
+    </div>
+    
+<div class="flex-showcase">
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/edit-homepage/slideshow/MBA-event.jpg/1024.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hello</h2>
+            <p>Another nice looking car</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/edit-homepage/slideshow/Jim-Whelan.jpg/1024.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>What's up?</h2>
+            <p>Some description here asdsadsa</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/edit-homepage/slideshow/Cybersecurity.jpg/1024.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hey what you doing with such a long heading?</h2>
+            <p>Massive power for goofing around. 123 </p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/edit-homepage/slideshow/New-students.jpg/1024.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Yo!</h2>
+            <p>Grab an expert to get ahead of the marketplace.</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/news/images/articles/image-20160920-12472-vh2nji.jpg/preview.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hello</h2>
+            <p>Another nice looking car</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/study/images/Aspire-James-latrobe-uni.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>What's up?</h2>
+            <p>Some description here asdsadsa</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/experience/social-media/social-tab.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hey what you doing with such a long heading?</h2>
+            <p>Massive power for goofing around. 123 </p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/events/all/naomi-simson-presents-the-ethics-of-business-transformation/Naomi-Simson-1.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Yo!</h2>
+            <p>Grab an expert to get ahead of the marketplace.</p>
+        </div>
+    </div>
+</div>
+
+<footer id="footer" role="contentinfo">
+
+<!-- Available fat footers -->
+
+<!-- Print universe footer -->
+<div id="fat-footer" class="fat-footer flex-showcase x2">
+<div class="footer-node flex-showcase-item">
+    <div class="flex-showcase-content">
+  <h2>Study with us</h2>
+  <ul>
+    <li><a href="http://www.latrobe.edu.au/courses?src=hff">Courses</a></li>
+    <li><a href="http://www.latrobe.edu.au/study/how-to-apply?src=hff">Apply</a></li>
+    <li><a href="http://www.latrobe.edu.au/scholarships?src=hff">Scholarships</a></li>
+    <li><a href="http://latrobe.custhelp.com/app/?src=hff">FAQs</a></li>
+    <li><a href="http://www.latrobe.edu.au/study/contact/international?src=hff">International student enquiries</a></li>
+  </ul>
+    </div>
+</div>
+<div class="footer-node flex-showcase-item">
+    <div class="flex-showcase-content">
+  <h2>Research</h2>
+  <ul>
+    <li><a href="http://www.latrobe.edu.au/research?src=hff">Research at La Trobe</a></li>
+    <li><a href="http://www.latrobe.edu.au/research/research-focus-areas?src=hff">Research Focus Areas</a></li>
+    <li><a href="http://www.latrobe.edu.au/research/future?src=hff">Get a research degree</a></li>
+    <li><a href="http://www.latrobe.edu.au/research/institutes?src=hff">Research centres and institutes</a></li>
+    <li><a href="http://www.latrobe.edu.au/research/research-impacts/impacts?src=hff">Impacts of our research</a></li>
+  </ul>
+    </div>
+</div>
+<div class="footer-node flex-showcase-item">
+    <div class="flex-showcase-content">
+  <h2>International</h2>
+  <ul>
+    <li><a href="http://www.latrobe.edu.au/study/international?src=hff">International home</a></li>
+    <li><a href="http://www.latrobe.edu.au/study/exchange-and-study-abroad?src=hff">Education abroad programs</a></li>
+    <li><a href="http://www.latrobe.edu.au/study/how-to-apply/international?src=hff">Apply and accept</a></li>
+    <li><a href="http://www.latrobe.edu.au/study/costs/international?src=hff">Fees, scholarships and loans</a></li>
+    <li><a href="http://www.latrobe.edu.au/study/costs/financial-aid?src=hff">US Financial Aid</a></li>
+  </ul>
+    </div>
+</div>
+<div class="footer-node flex-showcase-item">
+    <div class="flex-showcase-content">
+  <h2>Resources</h2>
+  <ul>
+    <li><abbr title="Learning Management System"><a href="http://webstat.latrobe.edu.au/url/lms.latrobe.edu.au?src=hff">LMS</a></abbr></li>
+    <li><a href="https://webstat.latrobe.edu.au/url/portal.office.com">Email web access</a></li>
+    <li><a href="http://www.latrobe.edu.au/library?src=hff">Library</a></li>
+    <li><a href="http://www.latrobe.edu.au/calendar?src=hff">University calendar</a></li>
+    <li><a href="http://www.latrobe.edu.au/students/timetables?src=hff">Timetables (Allocate Plus)</a></li>
+    <li><a href="/handbook/?src=hff">Handbook</a></li>
+  </ul>
+    </div>
+</div>
+<div class="footer-node flex-showcase-item">
+    <div class="flex-showcase-content">
+  <h2>Connect</h2>
+  <ul>
+    <li><a href="http://www.latrobe.edu.au/giving?src=hff">Give to La Trobe</a></li>
+    <li><a href="http://www.latrobe.edu.au/directory?src=hff">Directory of staff</a></li>
+    <li><a href="http://www.latrobe.edu.au/colleges?src=hff">Schools and departments</a></li>
+    <li><a href="http://www.latrobe.edu.au/jobs?src=hff">Jobs at La Trobe</a></li>
+    <li><a href="http://www.latrobe.edu.au/alumni?src=hff">Alumni</a></li>
+    <li><a href="http://www.latrobe.edu.au/transport-central?src=hff">Transport Central</a></li>
+    <li><a href="http://www.latrobe.edu.au/about/at-a-glance/maps?src=hff">Maps and parking</a></li>
+  </ul>
+    </div>
+</div>
+<div class="footer-node flex-showcase-item">
+    <div class="flex-showcase-content">
+    <ul id="legal" class="main-footer-legal">
+      <li class="main-footer-legal-item first"><a href="http://www.latrobe.edu.au/emergency">Emergency information</a></li>
+      <li class="main-footer-legal-item"><a class="main-footer-legal-link" href="http://www.latrobe.edu.au/contact">Contacts</a></li>
+      <li class="main-footer-legal-item"><a class="main-footer-legal-link" href="http://www.latrobe.edu.au/sitemap">Site map</a></li>
+      <li class="main-footer-legal-item"><a class="main-footer-legal-link" rel="nofollow" href="http://www.latrobe.edu.au/statements/accessibility">Accessibility</a></li>
+      <li class="main-footer-legal-item"><a class="main-footer-legal-link" rel="nofollow" href="http://www.latrobe.edu.au/statements/privacy">Privacy</a></li>
+      <li class="main-footer-legal-item"><a class="main-footer-legal-link" rel="nofollow" href="http://www.latrobe.edu.au/statements/copyright">Copyright and disclaimer</a></li>
+      <li id="flag" class="main-footer-legal-item flag"><a class="main-footer-legal-link" href="http://www.latrobe.edu.au/about/acknowledgement"><img src="/__data/assets/image/0006/197808/aboriginal-flag.gif" alt="Aboriginal acknowledgment"></a></li>
+    </ul>
+    </div>
+</div>
+<div class="footer-node flex-showcase-item">
+    <div class="flex-showcase-content">
+  <ul class="social-media">
+    <li class="facebook"><a href="http://www.facebook.com/latrobe/?src=hff">Facebook</a></li>
+    <li class="twitter"><a href="http://www.twitter.com/latrobe/?src=hff">Twitter</a></li>
+    <li class="google"><a href="https://plus.google.com/+latrobeuniversity/?src=hff" rel="publisher">Google+</a></li>
+    <li class="youtube"><a href="http://www.youtube.com/user/latrobeuniaustralia/?src=hff">Youtube</a></li>
+    <li class="linkedin"><a href="http://www.linkedin.com/company/la-trobe-university/?src=hff">Linked in</a></li>
+    <li class="instagram"><a href="http://instagram.com/latrobeuni/?src=hff">Instagram</a></li>
+  </ul>
+    </div>
+</div>
+
+<p id="copyright" class="copyright-notice">© Copyright 2016 La Trobe University. All rights reserved. CRICOS Provider Code: <a rel="nofollow" href="http://cricos.deewr.gov.au/institution/institutiondetails.aspx?providerID=115">00115M</a></p>
+</div>
+ 
+</footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="http://www.latrobe.edu.au/__data/assets/js_file/0005/564143/jquery-ui-1.10.3.min.js"></script>
+<script src="http://www.latrobe.edu.au/__data/assets/js_file/0008/590552/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+
+var b = $('body');
+var fired = false;
+var wWidth = $(window).width();
+var flowWidth = document.getElementById('flow-content').scrollWidth;
+var flowOffset = $('#make-wide').offset();
+var flowOffsetL = flowOffset.left;
+var flowOffsetRound = Math.round(flowOffsetL);
+var maxScroll = flowWidth - (wWidth - flowOffsetRound);
+
+// On page load, hide nav for devices less than 1024px wide or less than 768 high
+if ($(window).width() < 1024 || $(window).height() < 768){
+    b.addClass('nav-hidden');
+}
+
+// LAZY LOAD IMAGES
+$('img.lazy').lazyload({
+  effect:'fadeIn',
+  threshold:400
+});
+
+// Toggle nav on scroll
+window.addEventListener('scroll', function(){
+
+    //Hide nav when scrolling left from 0
+    if (window.pageXOffset > 0 && fired === false) {
+        b.addClass('nav-hidden').removeClass('left-arrow-hidden');
+        fired = true;
+    }
+    //Show nav when scrolling back to 0 while screen is wider than 1024
+    if (window.pageXOffset == 0 && $(window).width() > 1024 && fired === true) {
+        b.removeClass('nav-hidden');
+    }
+    //Reset fired variable and hide left arrow
+    if (window.pageXOffset == 0 && fired === true) {
+        fired = false;
+        b.addClass('left-arrow-hidden');
+    }
+    //Hide right arrow
+    if (window.pageXOffset == maxScroll && fired === true) {
+        b.addClass('right-arrow-hidden');
+    } else {b.removeClass('right-arrow-hidden');}
+}, true)
+
+
+//Setup scroll arrows
+function toggleArrows(){
+    //if(wWidth>1024){
+        var arrow = '<input type="button" class="scrollers" value="">';
+        $('.flow_page').append(arrow).append(arrow);
+        $('.scrollers:first').val('<'); $('.scrollers:last').val('>');
+    //}
+}
+toggleArrows();
+
+$('.scrollers:last').on('click',function(){
+    $('.slide').addClass('viewed');
+    $('.slide').next('.flow-node').addClass('slide');
+    b.addClass('nav-hidden').removeClass('left-arrow-hidden');
+    if ($('.flow-node:last').hasClass('slide')){
+        $('body').addClass('right-arrow-hidden');
+    }
+});
+    
+$('.scrollers:first').on('click',function(){
+    if ($('.slide').length != 1){
+        $('.slide:last').not('.silde:first').removeClass('slide');
+        $('.slide:last').removeClass('viewed');
+        $('body').removeClass('right-arrow-hidden');
+    }
+    if ($('.slide').length == 1){
+        $('body').removeClass('nav-hidden','right-arrow-hidden');
+    };
+});
+
+$('.flow-node:first').addClass('slide');
+
+$('.hamburger').on('click',function(){
+    $('body').toggleClass('nav-hidden');
+});
+
+b.on('focus','#LT_search_field',function(){ //Delay blur on search field, Use until transition is fully supported
+        $('.LT_search_field_submit').css('z-index','1');
+}).on('blur','#LT_search_field',function(){ //Delay blur on search field, Use until transition is fully supported
+        setTimeout(function(){
+            $('.LT_search_field_submit').removeAttr('style');
+        },500);
+}).bind('keydown',function(){  //Close footer with escape key
+    if (event.keyCode == '27'){
+        $(this).removeClass('show-footer');
+    }
+}).on('click keydown','#close-footer',function(event){  //Close footer button
+  if (event.keyCode == '13' || event.keyCode === undefined){
+    b.removeClass('show-footer');
+    //uq_jsclick('Flow-footer', 'Action', 'open');
+  }
+  event.preventDefault();
+});
+
+//Toggle flow footer
+$('.quicklinks').attr('tabindex','0').bind('click keydown',function(event){
+  if (event.keyCode == '13' || event.keyCode === undefined){
+    b.addClass('show-footer');
+    //uq_jsclick('Flow-footer', 'Action', 'open');
+  }
+event.preventDefault();
+});
+    
+//$('#flow-content').load('http://www.latrobe.edu.au #make-wide');
+
+
+});
+</script>
+
+</body>
+</html>

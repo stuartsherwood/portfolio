@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Breadcrumbs</title>
+
+<style>
+
+html, body {height:100%;}
+
+#nav-breadcrumb {font-family:sans-serif; font-size:14px; overflow:hidden; text-transform:uppercase;}
+#nav-breadcrumb a {background:#333 url(img/arrow-right-grey.png) no-repeat 99% 9px; color:#fff; display:inline-block; padding:5px 18px 5px 9px; text-decoration:none;}
+#nav-breadcrumb a.live {height:17px; position:absolute; overflow:hidden; width:80px;}
+#nav-breadcrumb a.you-are-here {background-image:none; padding-right:9px;}
+
+#nav-breadcrumb span {background:#333 url(solid-arrow.gif) no-repeat 95% 9px; color:#fff; display:inline-block; padding:5px 18px 2px 9px;}
+#nav-breadcrumb .close-crumbs {background-color:#fff; background-image:none; color:#cc0000; display:none; padding-left:3px;}
+
+</style>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+</head>
+
+<body>
+
+<div id="nav-breadcrumb">
+  <a href="/">University home</a><a href="http://www.latrobe.edu.au/about">About La Trobe</a><a href="http://www.latrobe.edu.au/about/vision">Our Vision</a><a href="#" class="you-are-here">Supporting Strategies</a>
+</div>
+
+<script>
+$(document).ready(function(){
+
+  $('#nav-breadcrumb').css({'height':'27px','width':'100px'});
+  $('#nav-breadcrumb a').addClass('live');
+  $('#nav-breadcrumb').append('<span class="close-crumbs">X</span><span class="last-crumb" style="display:inline-block; height:20px; position:absolute;">You are here</span>');
+
+  $('.last-crumb').click(function(){
+    $('#nav-breadcrumb a').removeClass('live');
+    $(this).hide();
+    $('.close-crumbs').show();
+    $('#nav-breadcrumb').animate({'width':'100%'},'slow');
+  });
+  $('.close-crumbs').click(function(){
+    $('#nav-breadcrumb').animate({'width':'100px'},'slow');
+    $(this).hide();
+    setTimeout(function(){
+      $('.last-crumb').show();
+      $('#nav-breadcrumb a').addClass('live');
+    },500);
+  });
+
+});
+</script>
+
+</body>
+</html>

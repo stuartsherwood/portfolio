@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+    <title>Map</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+
+    <!-- favicon -->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://www.latrobe.edu.au/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://www.latrobe.edu.au/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://www.latrobe.edu.au/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://www.latrobe.edu.au/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://www.latrobe.edu.au/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://www.latrobe.edu.au/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://www.latrobe.edu.au/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://www.latrobe.edu.au/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://www.latrobe.edu.au/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" href="http://www.latrobe.edu.au/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://www.latrobe.edu.au/favicon-194x194.png" sizes="194x194">
+    <link rel="icon" type="image/png" href="http://www.latrobe.edu.au/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="http://www.latrobe.edu.au/android-chrome-192x192.png" sizes="192x192">
+    <link rel="icon" type="image/png" href="http://www.latrobe.edu.au/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="http://www.latrobe.edu.au/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="http://www.latrobe.edu.au/mstile-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- end favicon -->
+
+    <style>
+        body {margin:0; padding:0;}
+        * {font:300 16px Roboto,sans-serif; line-height:24px;}
+        *:focus {outline:1px dotted #FF9E1b;}
+        .alert {color:#d14124;}
+        #ltu-map {height:100vh; width:100vw;}
+        select, textarea {background-color:#fff; border:0; box-sizing:content-box; font-family:inherit; font-weight:300; -ms-box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box; border-radius:0; -moz-box-sizing:border-box; box-sizing:border-box; -webkit-appearance:none; padding:12px;}
+
+        /* Restore arrow to select elements in webkit browsers */
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            select:not([multiple]) { background:#fff url(http://www.latrobe.edu.au/__data/assets/image/0003/552090/chevron-sm-orange-down.png) no-repeat calc(100% - 12px) center; padding-right:36px; }
+        }
+    </style>
+
+    <link rel="stylesheet" href="ltu-map.css" media="screen" />
+
+</head>
+
+<body>
+<div id="ltu-map" class="ltu-map"></div>
+
+<script>
+    document.body.classList.add('js');
+
+    var map = document.getElementById('ltu-map');
+    if ('visibilityState' in document) {
+        // Modern browsers supported, load map script
+        var script = document.createElement('script');
+        script.src = 'ltu-map-editor.js';
+        map.appendChild(script);
+    }
+    else {
+        // For old browsers
+        var noMap = document.getElementById('no-ltu-map').innerHTML;
+        map.innerHTML = noMap;
+    };
+
+</script>
+<noscript id="no-ltu-map">
+    <ul>
+        <li><a href="http://www.latrobe.edu.au/melbourne/location">Melbourne location and maps</a></li>
+        <li><a href="http://www.latrobe.edu.au/bendigo/location">Bendigo location and maps</a></li>
+        <li><a href="http://www.latrobe.edu.au/aw/location">Albury-Wodonga location and maps</a></li>
+        <li><a href="http://www.latrobe.edu.au/mildura/location">Mildura location and maps</a></li>
+        <li><a href="http://www.latrobe.edu.au/shepparton/location">Shepparton location and maps</a></li>
+    </ul>
+    <p>For a better experience, please upgrade your browser.</p>
+</noscript>
+
+
+</body>
+</html>

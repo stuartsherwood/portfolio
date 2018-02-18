@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)file:///Users/ssherwood/Sites/prototype/www/slideshow-2.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, shrink-to-fit=no, minimum-scale=1, maximum-scale=2">
+<title>Expander</title>
+<style>
+    :focus {outline:1px dotted #d14124;}
+
+body {font-family:sans-serif;}
+.expander {margin-bottom:28px;}
+.main-content .expander-trigger {cursor:pointer; margin:0 0 1px 0; position:relative; -webkit-transition:background-color 0.3s ease-in-out; transition:background-color 0.3s ease-in-out; z-index:1;}
+.expander-trigger.red {background-color:#d14124;}
+.expander-trigger.black {background-color:#242424; color:#ff9e1b;}
+.expander-trigger.red.open {background-color:#D76F21;}
+.expander-trigger button {background:transparent; border:none; display:block; font:700 20px/24px 'Roboto Bold',sans-serif; padding:12px 12px 12px 46px; text-align:left; transition:color 0.3s ease-in-out, text-indent 0.3s ease-in-out; width:100%;}
+.expander-trigger button:focus {border-left:4px solid #000;}
+.expander-trigger.black button:focus {border-left:4px solid #d14124;}
+.expander-trigger.red button, .expander-trigger.black button {color:#fff; padding:12px 46px 12px 12px;}
+.expander-trigger.black.open button {color:#ff9e1b;}
+.expander .expander-trigger img {padding:0; position:absolute; top:0; transition:transform 0.3s ease-in-out;}
+.expander-trigger.plain img {left:0;}
+.expander-trigger.red img, .expander-trigger.black img {right:0;}
+.expander-trigger img[alt="collapsed"] {transform:rotate(90deg);}
+@media (min-width:768px) {
+    .expander-trigger.plain button {padding:20px 0px 20px 54px;}
+    .expander-trigger.red button, .expander-trigger.black button {padding:20px 62px 20px 20px;}
+    .expander-trigger.plain img {left:0px; top:8px;}
+    .expander-trigger.red img, .expander-trigger.black img {right:8px; top:8px;}
+    .expander-content img {clear:right; float:right; margin:0 0 20px 20px;}
+}
+.expander-content {background-color:#F5F2E4; margin:0; overflow:hidden; -webkit-transition:height 0.3s ease-in-out, visibility 0s 0.3s; transition:height 0.3s ease-in-out, visibility 0s 0.3s; visibility:hidden;}
+.plain + .expander-content {background-color:#fff;}
+.plain + .expander-content.open {box-shadow:0 1px 1px #eee;}
+.expander-content.open {height:auto; overflow:hidden; -webkit-transition:height 0.3s ease-in-out, visibility 0s 0s; transition:height 0.3s ease-in-out, visibility 0s 0s; visibility:visible;}
+.expander-content > div {overflow:hidden; padding:20px;}
+.plain + .expander-content > div {padding:0 14px;}
+.expander-content ul {padding-left:20px;}
+.expander-content div img {}
+
+    /* @keyframes heightZero {
+      from {height:auto;}
+      to {height:0;}
+    }*/
+    
+    .detail {float:right;}
+
+    blockquote {background-color:#333; clear:both; color:#fff; margin:0; padding:20px;}
+    
+    #last {visibility:hidden;}
+    
+    details {background:#ddd;}
+    details p {padding:12px;}
+    summary {background:#ccc; padding:12px;}
+</style>
+
+</head>
+<body class="main-content">
+
+<div class="expander">
+    <h2 id="First" class="red">First <span class="detail">(34)</span></h2>
+    <div id="one" class="">
+        <h4><strong>Radical beginnings</strong></h4>
+        <p><img src="http://www.latrobe.edu.au/va/images/history1.jpg/250.jpg" alt="">La Trobe University was established in 1967 when 552 students enrolled at our Melbourne Campus – we were the third university to open in Victoria. La Trobe has been a pioneering university for nearly 50 years, we have grown to more than 30,000 students including approximately 7,600 international students from over 90 countries.</p>
+        <p>La Trobe University’s radical beginnings still shape the work we do to this day. We seek to push the borders in research and make a difference to communities in everything we do. Our academics are thought-leaders, with a strong sense of social justice.</p>
+        <h4><strong>Whoever seeks shall find</strong></h4>
+        <p><img src="http://www.latrobe.edu.au/va/images/history2.jpg/250.jpg" alt="Professor David Myers, 'A new University in a changing world' From La Trobe University: Opening Ceremony and Inaugural Lectures, 1967 " title="Professor David Myers, 'A new University in a changing world' From La Trobe University: Opening Ceremony and Inaugural Lectures, 1967">The French motto "Qui cherche trouve" (Whoever seeks shall find) is a modern version of the La Trobe family motto.</p>
+        <p>At La Trobe, we believe that education should be accessible, which is why we support a large number of ‘first-in-family’ students to attend university.</p>
+        <p>Throughout our history La Trobe has encouraged all those who learn, teach or undertake research here to play an active and vocal role in their community and in the future of the University. Social engagement and participation is part of our DNA.</p>
+        <blockquote> 'The true test of the University must be based on the achievement of its graduates at the height of their careers, when they have assumed the responsibilities of leadership in the solution of the wider and more far reaching problems of civilisation… The true measure of a university's greatness is the total effect it has on human welfare and progress.'</blockquote></div>
+    <h2 id="" class="red">Second</h2>
+    <div><p>Second content<br />More here</p></div>
+    <h2 id="bendigo" class="red">Third</h2>
+    <div><p>Third content</p></div>
+    <h2 id="bundoora" class="red">Fourth</h2>
+    <div><p>Fourth content</p></div>
+</div>
+
+<div id="last" class="expander">
+    <h2 id="One" class="plain">One</h2>
+    <div><p>First content</p></div>
+    <h2 id="Two" class="plain">Two</h2>
+    <div><p>Two content<br />More here</p></div>
+    <h2 id="Three" class="plain">Three</h2>
+    <div><p><a href="http://www.latrobe.edu.au/apps/search/xml/getAllStaffXml.xml">Three content</a></p></div>
+    <h2 id="Four" class="plain">Four</h2>
+    <div><p>Fourth content</p></div>
+</div>
+
+<script>
+
+localStorage.setItem('campus','bendigo');
+
+/* Not needed until jQuery is retired. Helper function to parse query strings
+function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}*/
+
+// toggle items class and attributes on click or keyboard event. Conditions for different styles.
+function expanderEvent(event){
+    t = this;
+    e = this.nextElementSibling;
+    i = this.children[0].lastElementChild;
+    if (e.classList.contains('open')) {
+        e.style.height = '0';
+        e.setAttribute('aria-hidden','true');
+        t.setAttribute('aria-selected','false');
+        t.setAttribute('aria-expanded','false');
+        i.setAttribute('alt','collapsed');
+        if (t.classList.contains('plain')) {
+            i.setAttribute('src','icons/plus-dark.svg');
+        } else i.setAttribute('src','icons/plus.svg');
+        t.classList.remove('open');
+        e.classList.remove('open');
+    } else {
+        var h = this.nextElementSibling.getAttribute('data-height');
+        this.nextElementSibling.style.height = h+'px';
+        e.setAttribute('aria-hidden','false');
+        t.setAttribute('aria-selected','true');
+        t.setAttribute('aria-expanded','true');
+        i.setAttribute('alt','expanded');
+        if (t.classList.contains('plain')) {
+            i.setAttribute('src','icons/minus-dark.svg');
+        } else i.setAttribute('src','icons/minus.svg');
+        t.classList.add('open');
+        e.classList.add('open');
+    }
+    event.preventDefault();
+};
+
+// build expander items on page load
+if (document.getElementsByClassName('expander').length !== 0) {
+var expanders = document.getElementsByClassName('expander');
+for (var i = 0, ii = expanders.length; i < ii; i++) {
+    expanders[i].setAttribute('role','tablist');
+    expanders[i].setAttribute('multiselectable','true');
+    var parent = expanders[i],
+        children = parent.children
+
+    // treat every odd item as a trigger and even items as content
+    for (var j = 0, jj = children.length; j < jj; j++) {
+        var elem = children[j]
+        // odd items - insert classes, attrbutes and markup for expander interactions and finally attach event listener
+        if (j % 2 === 0) {
+            elem.classList.add('expander-trigger');
+            var currentContent = elem.innerHTML;
+            if (elem.classList.contains('plain')) {
+                var newContent = '<button tabindex="0"><img src="icons/plus-dark.svg" alt="collapsed" height="48" width="48" />'+currentContent+'</button>';
+            }
+            else {
+                var newContent = '<button tabindex="0">'+currentContent+'<img src="icons/plus.svg" alt="collapsed" height="48" width="48" /></button>';
+            }
+            elem.innerHTML = newContent;
+            if (elem.classList.contains('open')) {
+                elem.setAttribute('aria-selected','true');
+                elem.setAttribute('aria-expanded','true');
+                var img = elem.querySelector('img:first-of-type');
+                img.setAttribute('alt','expanded');
+                if (elem.classList.contains('plain')) {
+                    img.setAttribute('src','icons/minus-dark.svg');
+                } else img.setAttribute('src','icons/minus.svg');
+            }
+            else {
+                elem.setAttribute('aria-selected','false');
+                elem.setAttribute('aria-expanded','false');
+            }
+            elem.addEventListener('click', expanderEvent, false);
+        }
+        // even items - insert classes, attributes that follow state of preceeding trigger
+        else {
+            var wrapper = document.createElement('div');
+            var t = elem.previousElementSibling;
+            elem.parentNode.insertBefore(wrapper, elem);
+            wrapper.setAttribute('aria-labelledby',t.id);
+            wrapper.classList.add('expander-content');
+            wrapper.setAttribute('role','tabpanel');
+            wrapper.appendChild(elem);
+            //var h = elem.clientHeight;
+            //wrapper.style.height = '0';
+            //wrapper.setAttribute('data-height',h);
+            if (t.classList.contains('open')) {
+                wrapper.setAttribute('aria-hidden','false');
+                //wrapper.style.height = h+'px';
+                wrapper.classList.add('open');
+            }
+            else {
+                wrapper.setAttribute('aria-hidden','true');    
+            }
+        }
+    }
+}
+
+// open an expander via ID
+// Change getQueryString to function at top of this file when jQuery is no longer used
+//var queryString = getQueryString('accordion');
+function openAccordionById(id){
+    var t = document.getElementById(id);
+    var i = t.children[0].children[0];
+    var c = t.nextElementSibling;
+    t.setAttribute('aria-selected','true');
+    t.setAttribute('aria-expanded','true');
+    t.classList.add('open');
+    i.setAttribute('alt','expanded');
+    if (t.classList.contains('plain')) {
+            i.setAttribute('src','icons/minus-dark.svg');
+    } else i.setAttribute('src','icons/minus.svg');
+    c.setAttribute('aria-hidden','false');
+    c.style.height = c.getAttribute('data-height')+'px';
+    c.classList.add('open');
+}
+
+// if ?accordion=abc is found in url, open the item with that id
+//if (queryString !== false) {
+//    openAccordionById(queryString);
+//}
+
+// if a trigger with a campus id is found and it matches the users campus, open that id
+if (localStorage.campus) {
+    var campus = localStorage.campus;
+    if (localStorage.campus == campus && document.getElementById(campus)) {
+        openAccordionById(campus);
+    }
+}
+    window.onload = resetExpanderHeight();
+}
+
+// reset expander heights (animations are based on height)
+function resetExpanderHeight(){
+    var expanders = document.getElementsByClassName('expander-content');
+    //setTimeout(function(){
+        for (var i=0;i<expanders.length;i++){
+            expanders[i].removeAttribute('style');
+            $this = expanders[i];
+            //if ($this.offsetParent !== null) {
+                var h = $this.clientHeight;
+                if ($this.offsetParent === null) {
+                    $this.offsetParent.style.display = 'block';
+                    $this.setAttribute('data-height',h);
+                    $this.offsetParent.style.display = 'none';
+                } else $this.setAttribute('data-height',h);
+                if ($this.classList.contains('open')) {
+                    $this.style.height = h+'px';
+                }
+                else if ($this.offsetParent !== null) {
+                    $this.style.height = '0';
+                }
+           // }
+        }
+    //},300);
+}
+
+/*****************************************************
+  Fire at end of resize
+*****************************************************/
+window.addEventListener('resize', afterResize);
+var resizeTimer;
+function afterResize(){
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() {
+    // Call functions here
+      resetExpanderHeight();
+
+  }, 250);
+}
+
+//document.getElementById('last').setAttribute('hidden','hidden')
+</script>
+ 
+
+</body></html>

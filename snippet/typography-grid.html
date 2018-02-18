@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!--[if lt IE 8]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js ie9 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=2">
+
+<title>4px grid</title>
+
+<link href='http://fonts.googleapis.com/css?family=Roboto:300,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+
+<style>
+html {font:300 10px/30px 'Roboto',sans-serif; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
+body {background-color:#F8F3EF; margin:0; padding:0;}
+@media (min-width:1024px) {
+    body {padding:0 0 0 25%;}
+}
+
+.grid {background:#fff url(img/grid-4px.png) repeat 0 0;}
+.grid h2,.grid h3,.grid h4,.grid h5,.grid p,.grid li,.grid th,.grid li {background-color:rgba(255,0,0,0.2);}
+    
+h1,h2,h3,h4,h5,h6 {font-family:'Roboto Condensed',sans-serif; font-weight:700; margin:0 0 8px;}
+h1 + h1 {display:none;}
+h2 strong, h3 strong, h4 strong, h2 b, h3 b, h4 b {font-weight:normal;}
+h1 {color:#d52b1e; font-size:36px; line-height:40px; margin-bottom:40px;}
+h2 {font-size:32px; line-height:36px;}
+h2:not(:first-of-type):not(h2+h2) {margin-top:80px;}
+h3 {font-size:26px; line-height:32px;}
+h4 {font-size:22px; line-height:28px;}
+h5 {font-size:18px; line-height:24px;}
+h6 {font-size:16px; line-height:20px;}
+@media (min-width:1400px) {
+    h1 {color:#d52b1e; font-size:48px; line-height:52px; margin-bottom:40px;}
+    h2 {font-size:32px; line-height:36px;}
+    h3 {font-size:28px; line-height:32px;}
+    h4 {font-size:24px; line-height:28px;}
+    h5 {font-size:20px; line-height:24px;}
+    h6 {font-size:18px; line-height:20px;}
+}
+
+a { color: #e2231b; text-decoration:underline;}
+
+ul {padding-left:46px;}
+li {margin-bottom:12px;}
+
+p,li,th,td {font-size:16px; line-height:24px;}
+p, ul {margin:0 0 28px;}
+@media (min-width:1400px) {
+  p,li,th,td {font-size:18px; line-height:28px;}
+  p, ul {margin:0 0 28px;}
+}
+
+     
+#content {background-color:#fff; margin:0 auto;}
+
+.content {padding:20px;}
+@media (min-width:769px) {
+  .content {padding:60px;}
+}
+@media (min-width:1400px) {
+  .content {padding:120px;}
+}
+@media (min-width:1600px) {
+  .content {padding:180px;}
+}
+
+/* ID and class margins */
+.accordion {margin:0 0 31px; /* -1 for margin on last item */}
+
+/* Small headings */
+.accordion-title, .entry-sub h2 {font-size:20px; line-height:24px;}
+     
+/* Short text */
+.entry-sub p {font-size:16px; line-height:24px; margin-bottom:24px;}
+     
+/* Standard text styled as an uppercase heading */
+#tabbed-menu li {font:700 20px/20px 'Roboto Condensed',sans-serif;}
+
+.accordion-title {background:#242424 url(img/plus-minus.png) no-repeat 15px 14px; color:#fff; margin-bottom:1px; padding:15px 20px 16px 56px;}
+.xaccordion-title:last-child {margin-bottom:0; padding:16px 20px 16px 56px;}
+     
+/* Entry points */
+.entry-sub h2 {background:transparent url(img/chevron-sm-dark.png) no-repeat 6px 8px; padding-left:30px;}
+.entry-sub img {float:left; padding:0 30px 0 0; width:90px;}
+.entry-sub p {padding-left:30px;}
+     
+/* Tab navigation */
+#tabbed-menu {list-style-type:none; margin-bottom:10px; overflow:hidden; padding:0 0 20px 0;}
+#tabbed-menu li {float:left;}
+#tabbed-menu li a {background-color:#FF9E1B; color:#000; display:block; padding:20px; text-decoration:none; border-right:1px dotted #FFF;}
+#tabbed-menu li a.current {background-color:#D14124; color:#fff; position:relative;}
+#tabbed-menu li a.current:after {bottom:-16px; content:"▼"; color:#D14124; display:inline-block; left:50%; margin-left:-6px; position:absolute; transform:scale(1.8,1);
+  -webkit-transform:scale(1.8,1); /* Safari and Chrome */
+  -moz-transform:scale(1.8,1); /* Firefox */
+  -ms-transform:scale(1.8,1); /* IE 9 */
+  -o-transform:scale(1.8,1); /* Opera */
+z-index:1;
+}
+#tabbed-menu li a.current:hover:after {color:#E87722;}
+#tabbed-menu li a:hover {background-color:#E87722;}
+
+</style>
+
+</head>
+<body class="">
+
+<article id="content" class="container">
+
+  <div class="content">
+
+<h1>H1 48/52 with 40 bottom margin</h1>
+       		
+     <h2>H2 32/36. All headings 8 bottom margin</h2>
+     <!--h3>The Working Department (H3) has a strong framework</h3>
+     <h4>The Working Department (H4) has a strong framework</h4>
+     <h5>The Working Department (H5) has a strong framework</h5>
+     <h6>The Working Department (H6) has a strong framework</h6-->
+
+       <p>The main grid remains 60 x 40px. The typographic grid uses a 4px vertical unit. All line-heights, margins and padding must be incriments of 4 pixels to align to the vertical grid. Padding top and bottom must add up to a multiple of 4.</p>
+     <h2>H2 section heading, 80px of top margin.</h2>
+     <h3>H3 28/32</h3>
+       <p>Body text, 18/32 with 32 bottom margin.</p>
+     <article class="entry-sub no-margin">
+          <h2><a href="http://www.latrobe.edu.au/about/vision">Entry point heading, 20/24</a></h2>
+          <p>Entry point description, 20/24</p>
+     </article>
+     <article class="entry-sub no-margin">
+          <h2><a href="http://www.latrobe.edu.au/about/management">Entry point</a></h2>
+          <p>Max one sentence only.</p>
+     </article>
+       
+     <p>La Trobe University&rsquo;s management consists  of a number of committees and advisory bodies covering every aspect of life at  La Trobe and providing expertise to &nbsp;ensure all decisions achieve the best outcome  for students, staff and the wider community.</p>
+     <ul>
+          <li>List items use standard body text size and line-height with 12 bottom margin.</li>
+          <li>LaTrobe University invests  considerable time, energy and expertise in<a href="http://www.google.com"> management and planning.&nbsp; Students, staff and the community benefit  from excellent support and facilities, our standard of research</a> and academic quality is renowned <a href="sdf.doc">internationally</a> and our commitment to excellence and equity is assured now and in the future.</li>
+          <li>ensuring that the University responds to the wider social context</li>
+     </ul>
+     <p>LaTrobe University invests  considerable time, energy and expertise in<a href="http://www.google.com"> management and planning.&nbsp; Students, staff and the community benefit  from excellent support and facilities, our standard of research</a> and academic quality is renowned <a href="sdf.doc">internationally</a> and our commitment to excellence and equity is assured now and in the future.</p>
+  <h3>H3 followed by a sub-heading</h3>
+       <h4>H4 24/28</h4>
+     <p>Meet the teams responsible for making this happen.</p>
+     <h5>H5 20/24</h5>
+     <p>The Academic Board is made up of representatives from all faculties, campuses and student groups.&nbsp; The Board advises the management and governing bodies of La Trobe  University on all academic matters.&nbsp; </p>
+     <h5>2. Governance</h5>
+     <p>The La Trobe University Council is responsible for strategic planning within the regulatory framework of the University. It has a central role in identifying the distinctive character of the institution and ensuring that the University responds to the wider social context in which it operates. </p>
+     <h5>3. Management</h5>
+     <p>La Trobe University&rsquo;s management consists  of a number of committees and advisory bodies covering every aspect of life at  La Trobe and providing expertise to &nbsp;ensure all decisions achieve the best outcome  for students, staff and the wider community.</p>
+     <p>The La Trobe University Council is responsible for strategic planning within the regulatory framework of the University. It has a central role in identifying the distinctive character of the institution and ensuring that the University responds to the wider social context in which it operates. </p>
+     <h5>4. Policies and Planning</h5>
+     <p>Learn more about the strategies to develop La Trobe University&rsquo; community and business  partnerships, to consolidate our research success and to guarantee equal access to service and educational support for all:</p>
+     <ul>
+          <li>Council is responsible for strategic planning</li>
+          <li>advisory bodies covering every aspect of life at  La Trobe</li>
+          <li>ensuring that the University responds to the wider social context</li>
+     </ul>
+     <h5>5. Vice Chancellor</h5>
+     <p>Professor Johnson assumed the Vice-Chancellorship of  La Trobe University in April 2007.&nbsp; He is  the author of the Green Paper &nbsp;- its  recommendations will ensure La Trobe University&rsquo; future is as exceptional as  its past.</p>
+     <h2>Headings in modules</h2>
+     <p>Some heading may employ background colours to add emphisis and inform groupings. When set in all caps, use the same heading style as above.</p>
+     <div class="accordion">  
+          <h2 class="accordion-title">Accordion one 20/24</h2>
+          <h2 class="accordion-title">Accordion two</h2>
+     </div>
+     <ul id="tabbed-menu">
+          <li><a href="http://www.latrobe.edu.au/fbel/areas-of-study" class="current">Undergraduate 20/24</a></li>
+          <li><a href="http://www.latrobe.edu.au/fbel/areas-of-study/honours">Honours</a></li>
+          <li><a href="http://www.latrobe.edu.au/fbel/areas-of-study/postgraduate">Postgraduate</a></li>
+          <li><a href="http://www.latrobe.edu.au/fbel/areas-of-study/research">Research</a></li>
+     </ul>
+     
+  </div>
+
+</article>
+
+
+</body>
+</html>

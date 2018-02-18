@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="minimum-scale=1.0, width=device-width, initial-scale=1" name="viewport" />
+<title>Personalisation</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<style>
+    body {font-family:Roboto,sans-serif; margin:0;}
+    h2 {font-size:18px; margin:4px;}
+    
+    .on {background-color:yellow;}
+    
+    .ug, .pg, .au, .int, .arts, .health, .science {opacity:0.1;}
+    
+    .show-ug .ug, .show-pg .pg, .show-au .au, .show-int .int, .show-arts .arts, .show-health .health,  .show-science .science {opacity:1;}
+    
+    
+</style>
+
+</head>
+<body>
+    
+    <label><input id="ug" type="radio" name="study-level" />UG</label>
+    <label><input id="pg" type="radio" name="study-level" />PG</label>
+    <label><input id="au" type="radio" name="location" />AU</label>
+    <label><input id="int" type="radio" name="location" />INT</label>
+    <label><input id="arts" type="radio" name="study-option" />Arts</label>
+    <label><input id="health" type="radio" name="study-option" />Health</label>
+    <label><input id="science" type="radio" name="study-option" />Science</label>
+    
+    <pre>
+    Rules: 
+    - all tags are independent
+    - if an item matches any of the selected tags, it is shown.
+    
+    This doesn't work because:
+    - Courses are hidden to generic users because they are tagged
+    - Int items may be shown to AU user
+    - PG items may be shown to a UG user
+    </pre>
+
+    <h2 class="ug">UG story</h2>
+    <h2 class="pg">PG story</h2>
+    <h2 class="au ug">AU UG story</h2>
+    <h2 class="">Generic story</h2>
+    <h2 class="au">AU story</h2>
+    <h2 class="">Courses</h2>
+    <ul>
+        <li class="arts ug">Arts</li>
+        <li class="health ug pg au int">Health</li>
+        <li class="science ug pg au">Science</li>
+    </ul>
+    <h2 class="int">INT story</h2>
+    <h2 class="au pg">AU PG story</h2>
+    <h2 class="int ug">INT UG story</h2>
+    <h2 class="int pg">INT PG story</h2>
+    <h2 class="">Generic story</h2>
+    <h2 class="ug arts">UG arts story</h2>
+    <h2 class="pg arts">PG arts story</h2>
+    <h2 class="pg health">PG health story</h2>
+    <h2 class="int ug arts">INT UG arts story</h2>
+    <h2 class="">Generic story</h2>
+    <h2 class="int pg arts">INT PG arts story</h2>
+    <h2 class="int pg science health">INT PG science health story</h2>
+    <h2 class="int ug science health">INT UG science health story</h2>
+    <h2 class="">Generic story</h2>
+    <h2 class="int pg arts">INT PG arts story</h2>
+    <h2 class="ug arts">UG arts story</h2>
+    <h2 class="">Generic story</h2>
+    
+
+
+<script>
+
+var buttons = document.querySelectorAll('input[name="study-level"]');
+for (i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(e){
+        if (e.target.id === 'ug') {
+            document.body.classList.add('show-ug');
+            document.body.classList.remove('show-pg');
+        }
+        if (e.target.id === 'pg') {
+            document.body.classList.add('show-pg');
+            document.body.classList.remove('show-ug');
+        }
+        
+    });
+}
+
+var buttons = document.querySelectorAll('input[name="location"]');
+for (i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(e){
+        if (e.target.id === 'au') {
+            document.body.classList.add('show-au');
+            document.body.classList.remove('show-int');
+        }
+        if (e.target.id === 'int') {
+            document.body.classList.add('show-int');
+            document.body.classList.remove('show-au');
+        }
+        
+    });
+}
+
+var buttons = document.querySelectorAll('input[name="study-option"]');
+for (i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function(e){
+        if (e.target.id === 'arts') {
+            document.body.classList.add('show-arts');
+            document.body.classList.remove('show-health');
+            document.body.classList.remove('show-science');
+        }
+        if (e.target.id === 'health') {
+            document.body.classList.add('show-health');
+            document.body.classList.remove('show-arts');
+            document.body.classList.remove('show-science');
+        }
+        if (e.target.id === 'science') {
+            document.body.classList.add('show-science');
+            document.body.classList.remove('show-arts');
+            document.body.classList.remove('show-health');
+        }
+        
+    });
+}
+
+</script>
+
+</body>
+</html>

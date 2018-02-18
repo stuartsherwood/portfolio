@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>LUMA</title>
+
+<style>
+
+body {font-family:sans-serif; margin:0 0 0 25%; padding:0;}
+
+.red {background-color: red;}
+.blue {background-color: blue;}
+.orange {background-color: orange;}
+.yellow {background-color: yellow;}
+.brown {background-color: brown;}
+.black {background-color: grey;}
+
+.wrapper {display:flex; flex-wrap:wrap;}
+.pad {padding:60px;}
+img {width:100%;}
+.box {vertical-align:top; -moz-box-sizing:border-box; -webkit-box-sizing:border-box;}
+@media (min-width:800px) {.box {flex:1 50%; width:50%;}}
+@media (min-width:1600px) {.box {flex:1 25%; width:25%;}}
+h2 {margin:0;}
+ul {margin:0; padding:0;}
+li {display:inline-block; padding:20px 60px; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; width:50%;}
+
+/* Layered image */
+.layer-image, .layer-image-feature {overflow:hidden; position:relative; width:100%;}
+.layer-image.featured {float:none; width:100%;}
+div.layer-image img, div.layer-image-feature img {padding:0; vertical-align:top; width:100%;}
+.layer-content {background:rgba(0,0,0,0.5); height:100%; position:absolute; top:60%; width:100%;}
+.layer-content {filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000)!important;}
+.layer-image .layer-content h2 {font-size:18px; line-height:1.2; margin:0; padding:13px 15px; text-transform:none;}
+.layer-image .layer-content h2 a {color:#fff; text-shadow:0px 0px 2px #000;}
+.layer-image .layer-content h2 a:hover {color:#F99D27;}
+.layer-image .layer-content h2 a:focus {color:#F99D27; outline:0;}
+.layer-image .layer-content p {color:#fff; font-size:16px; line-height:1.2; padding:0 15px; text-shadow:0px 0px 2px #000;}
+
+</style>
+
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+
+<div class="box layer-image l13 r18 half-bottom Opinion">
+  <img class="scale" src="http://www.latrobe.edu.au/news/images/Cheryl-with-puzzles.jpg/medium.jpg" alt="">
+  <div class="layer-content" style="top: 60%; cursor: pointer; height: 100%; background-color: rgba(0, 0, 0, 0.4);">
+    <h2 class="title"><a href="http://www.latrobe.edu.au/news/articles/2016/opinion/autism-promoting-a-meaningful-life">Autism: promoting a meaningful life</a></h2>
+    <p style="display: none;">How can we support people with ASD to live a meaningful life?</p>
+  </div>
+</div>
+    
+<div class="box layer-image l13 r18 half-bottom Opinion">
+  <img class="scale" src="http://www.latrobe.edu.au/news/images/Cheryl-with-puzzles.jpg/medium.jpg" alt="">
+  <div class="layer-content" style="top: 60%; cursor: pointer; height: 100%; background-color: rgba(0, 0, 0, 0.4);">
+    <h2 class="title"><a href="http://www.latrobe.edu.au/news/articles/2016/opinion/autism-promoting-a-meaningful-life">Autism: promoting a meaningful life</a></h2>
+    <p style="display: none;">How can we support people with ASD to live a meaningful life?</p>
+  </div>
+</div>
+
+<div class="box layer-image l13 r18 half-bottom Opinion">
+  <img class="scale" src="http://www.latrobe.edu.au/news/images/Cheryl-with-puzzles.jpg/medium.jpg" alt="">
+  <div class="layer-content" style="top: 60%; cursor: pointer; height: 100%; background-color: rgba(0, 0, 0, 0.4);">
+    <h2 class="title"><a href="http://www.latrobe.edu.au/news/articles/2016/opinion/autism-promoting-a-meaningful-life">Autism: promoting a meaningful life</a></h2>
+    <p style="display: none;">How can we support people with ASD to live a meaningful life?</p>
+  </div>
+</div>
+
+<div class="box layer-image l13 r18 half-bottom Opinion">
+  <img class="scale" src="http://www.latrobe.edu.au/news/images/Cheryl-with-puzzles.jpg/medium.jpg" alt="">
+  <div class="layer-content" style="top: 60%; cursor: pointer; height: 100%; background-color: rgba(0, 0, 0, 0.4);">
+    <h2 class="title"><a href="http://www.latrobe.edu.au/news/articles/2016/opinion/autism-promoting-a-meaningful-life">Autism: promoting a meaningful life</a></h2>
+    <p style="display: none;">How can we support people with ASD to live a meaningful life?</p>
+  </div>
+</div>
+
+</div>
+
+<script src="http://www.latrobe.edu.au/__data/assets/js_file/0004/564142/jquery-1.8.3.min.js"></script>
+<script>
+    
+
+if ($('body').innerWidth() > 767){
+    $('.layer-image .layer-content p').hide();
+    $('.layer-image').hover(function(){
+      $(this).children('.layer-content').find('p').fadeIn(600, 'linear');
+      $(this).children('.layer-content').find('a').css('color','#F99D27');
+      $(this).children('.layer-content').css({'background-color':'rgba(0,0,0,0.7)','cursor':'pointer','height':'100%'}).animate({top:'0'}, 200);
+    },
+    function(){
+      $(this).children('.layer-content').find('p').fadeOut(200);
+      $(this).children('.layer-content').find('a').removeAttr('style');
+      $(this).children('.layer-content').css({'background-color':'rgba(0,0,0,0.4)'}).animate({top:'60%'}, 200);
+      $('.layer-image .layer-content').animate({top:'60%'}, 200);
+    });
+
+    $('.layer-image .title a').focus(function(){
+      $(this).parent().parent('.layer-content').find('p').fadeIn(600, 'linear');
+      $(this).parent().parent('.layer-content').css({'background-color':'rgba(0,0,0,0.7)','height':'100%'}).animate({top:'0'}, 200);
+    });
+
+    $('.layer-image .title a').blur(function(){
+      $(this).parent().parent('.layer-content').find('p').fadeOut(200);
+      $(this).parent().parent('.layer-content').css({'background-color':'rgba(0,0,0,0.4)'}).animate({top:'60%'}, 200);
+      $('.layer-image .layer-content').animate({top:'60%'}, 200);
+    });
+}
+</script>
+</body>
+</html>

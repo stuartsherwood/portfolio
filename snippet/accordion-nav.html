@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mega menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,800" rel="stylesheet">
+<style>
+body {font-family:'Montserrat',sans-serif; margin:0; padding:0;}
+button {background-color:transparent; border:none; font-size:18px; padding:0;}
+
+/* Local nav */
+.root > a {font-weight:800;}
+.nav-container button {background:transparent; border:none; display:block;}
+.local-nav {position:relative; transition:opacity 0.3s ease-in-out;}
+.local-nav, .local-nav ul {font:16px/20px 'Roboto Bold',sans-serif; list-style-type:none; margin:0; padding:0;}
+.local-nav li {box-shadow:0 -1px 0 rgba(0,0,0,0.1); font-weight:300; margin:0; perspective:1000px; position:relative;}
+/* Hide site asset home pages listed as current page */
+.a549405 .local-nav li.current {display:none;} /* Home */
+.a18980 .local-nav li.current {display:none;} /* Alumni */
+.a59031 .local-nav li.current {display:none;} /* Students */
+.a124552 .local-nav li.current {display:none;} /* Staff */
+.a246794 .local-nav li.current {display:none;} /* Resarchers */
+
+.local-nav a {color:#363636; display:block; padding:18px 52px 18px 14px; text-decoration:none;}
+.level-one > li a {padding-left:16px;}
+.level-two > li a {padding-left:12px;}
+.level-three > li a {padding-left:14px 52px 14px 28px;}
+.level-four > li a {padding-left:32px;}
+.local-nav a:hover {background-color:rgba(0,0,0,0.1);}
+.current > a, .current > a:hover {border-left:8px solid #e42312; cursor:text; font-weight:800; position:relative;}
+.root {padding:0;}
+li.root > a {background-color:#ccc; color:#242424; font-size:20px; padding:20px 20px 20px 40px;}
+li.root > a:hover {background-color:#bbb;}
+li.root > a:before {background:transparent url(chevron-sm-000000.svg) no-repeat center;
+background-size:34px; content:""; display:block; height:34px; left:2px; position:absolute; top:14px; transform:rotate(90deg); width:34px;}
+ul.level-one {background-color:rgba(0,0,0,0.1);}
+ul.level-two {background-color:rgba(255,255,255,0.5);}
+ul.level-three {background-color:#fff; font:15px/20px 'Roboto', sans-serif;}
+.current ul.level-two {}
+.level-two > li > a {padding-left:28px;}
+.level-two > li > a:before {content:"\2022"; display:block; height:24px; left:16px; position:absolute; top:18px; width:6px;}
+.level-two, .level-three {display:none;}
+.local-nav .open {animation:accordion-open 0.2s 1 ease-in-out forwards; display:block; transform-origin:top; visibility:hidden;}
+.local-nav .closed {animation:accordion-closed 0.2s 1 ease-in-out forwards; display:block; transform-origin:top; visibility:hidden;}
+.local-nav .closed a {visibility:hidden;}
+.root button {background-color:rgba(255,255,255,0.2); font-size:18px; height:56px; padding:0; position:absolute; right:0; top:0; width:48px; z-index:1;}
+.local-nav button:hover {background-color:rgba(0,0,0,0.2);}
+.level-one button img {height:24px; pointer-events:none; width:24px;}
+.level-one > .sibling > a {}
+
+@keyframes accordion-open {
+    0% {max-height: 0px;overflow: hidden;transform: rotateX(-90deg);visibility: hidden;}
+    1% {max-height: 0px;overflow: none;transform: rotateX(-90deg);visibility: visible;}
+    100% {max-height: 10000px;overflow: none;transform: rotateX(0);visibility: visible;}
+}
+@keyframes accordion-closed {
+    0% { max-height: 10000px; overflow: none; transform: rotateX(0); visibility: visible;}
+	99% { max-height: 0; overflow: hidden; transform: rotateX(-90deg); visibility: visible;}
+    100% { max-height: 0; overflow: hidden; transform: rotateX(-90deg); visibility: hidden;}
+}
+</style>
+
+</head>
+<body id="top">
+<nav id="nav-container" class="nav-container" role="navigation">
+<ul class="local-nav parent">
+    <li class="root"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply">How to apply</a>
+    <ul class="level-one">
+        <li class="current"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international">International</a>
+        <ul class="level-two">
+            <li class="child"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/undergraduate-and-postgraduate">Undergraduate and postgraduate</a>
+                <ul class="level-three">
+                <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/undergraduate-and-postgraduate/supplementary-admission-forms">Supplementary admission forms</a></li>
+                <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/entry-schemes/vtac">VTAC Entry Access Schemes</a></li>
+                <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/entry-schemes/nsw">NSW Entry Access Schemes</a>
+                <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/your-options/tep">Tertiary Enabling Program (TEP)</a>
+                    <ul class="level-four">
+                        <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/your-options/tep/dates">Study with us - dates and venues</a></li>
+                        <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/your-options/tep/our-student-stories">Our student stories</a></li>
+                        <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/your-options/tep/about-tep">About Tertiary Enabling Program (TEP)</a></li>
+                        <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/your-options/tep/apply">Apply</a></li>
+                        <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/your-options/tep/news-and-events">News and events</a></li>
+                        <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/your-options/tep/contact-us">Contact us</a></li>
+                    </ul>
+                </li>    
+                </li>
+                </ul>
+            </li>
+            <li class="child"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/postgraduate-research-programs">Postgraduate research programs</a></li>
+            <li class="child"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/english-and-academic-requirements">English language and academic requirements</a>
+                <ul class="level-three">
+                    <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/english-and-academic-requirements/english-language-requirements">English language requirements</a></li>
+                    <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/english-and-academic-requirements/academic-entry-requirements">Academic entry requirements</a></li>
+                </ul>
+            </li>
+            <li class="child"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/sponsored-programs">Sponsored programs</a>
+                <ul class="level-three">
+                    <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/sponsored-programs/sponsored-students">Sponsored students</a></li>
+                    <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/sponsored-programs/information-for-sponsors">Information for sponsors</a></li>
+                    <li><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/sponsored-programs/australia-award-students">Australia Award students</a></li>
+                </ul>
+            </li>
+            <li class="child"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/your-country">Study at La Trobe in your home country</a></li>
+            <li class="child"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/accept-your-offer">Accept your offer</a></li>
+            <li class="child"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/defer-your-offer">Defer your offer</a></li>
+            <li class="child"><a href="http://wwwdev.latrobe.edu.au/study/how-to-apply/international/apply-for-a-visa">Apply for a visa</a>
+            </li>
+        </ul>
+        </li>
+        </ul>
+    </li>
+</ul>
+</nav>
+
+<script>
+var triggers = document.querySelectorAll('.level-two, .level-three, .level-four');
+for (i = 0; i < triggers.length; i++) {
+    var item = triggers[i];
+    item.insertAdjacentHTML('beforeBegin', '<button aria-expanded="false"><img src="plus-dark.svg" alt="collapsed" /></button>');
+    if (item.parentElement.classList.contains('current')) {
+        triggers[0].previousElementSibling.setAttribute('aria-expanded', 'true');
+        item.classList.add('open');
+        item.previousElementSibling.firstElementChild.setAttribute('src', 'minus-dark.svg');
+        item.previousElementSibling.previousElementSibling.classList.add('open-parent');
+    }
+    item.previousElementSibling.addEventListener('click', function(e) {
+        e.target.previousElementSibling.classList.toggle('open-parent');
+        if (e.target.nextElementSibling.classList.contains('open')) {
+            e.target.setAttribute('aria-expanded', 'false');
+            e.target.nextElementSibling.classList.remove('open');
+            e.target.nextElementSibling.classList.add('closed');
+            e.target.firstElementChild.setAttribute('src', 'plus-dark.svg');
+            e.target.firstElementChild.setAttribute('alt', 'collapsed');
+        } else {
+            e.target.setAttribute('aria-expanded', 'true');
+            e.target.firstElementChild.setAttribute('src', 'minus-dark.svg');
+            e.target.firstElementChild.setAttribute('alt', 'expanded');
+            e.target.nextElementSibling.classList.add('open');
+            e.target.nextElementSibling.classList.remove('closed');
+        }
+    }, false);
+}
+var links = document.getElementsByTagName('a');
+for (i = 0; i < links.length; i++) {
+    links[i].addEventListener('click',function(e){
+        e.preventDefault();
+    });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="minimum-scale=1.0, width=device-width, initial-scale=1" name="viewport" />
+<title>Streams</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<style>
+    body {font-family:Roboto,sans-serif; margin:0;}
+    h2, p {margin-top:0;}
+    
+    .stream h2 {font-size:16px;}
+    .stream.xopen h2 {font-size:24px;}
+
+
+    .streams {background:transparent url(lims.jpg) no-repeat 0 0; background-size:cover; width:100vw;}
+    .stream {box-sizing:border-box; flex:1 0 auto; cursor:pointer; transition:background-color 0.3s ease-in-out, flex-grow 0.3s ease-in-out;}
+    .stream:hover {background-color:#333!important;}
+    .active .stream {}
+    .stream.open {flex-grow:6;}
+    .stream.open:hover {background-color:#fff!important;}
+    .stream h2 {background-color:rgba(0,0,0,0.4); color:#fff; line-height:20px; margin:0; padding:20px 16px;}
+    .stream img {display:none;}
+    .stream.open img {display:block;}
+    .stream-content {box-sizing:border-box;}
+    @media (min-width:768px) {
+        .streams {display:flex;}
+        .stream {}
+    }
+    @media (min-width:1024px) {
+        .stream {}
+    }
+
+    .stream-item {width:100%;}
+    .stream-item figure {margin:0;}
+
+    .stream:nth-child(1) {background-color:rgba(0,0,0,0.6);}
+    .stream:nth-child(2) {background-color:rgba(0,0,0,0.5);}
+    .stream:nth-child(3) {background-color:rgba(0,0,0,0.4);}
+    .stream:nth-child(4) {background-color:rgba(0,0,0,0.3);}
+    .stream:nth-child(5) {background-color:rgba(0,0,0,0.2);}
+    .stream:nth-child(6) {background-color:rgba(0,0,0,0.1);}
+    div.stream.open {background-color:#fff;}
+
+    .flex-showcase-item {box-sizing:border-box; flex:0 0 calc(25% - 30px); margin:30px;}
+    .flex-showcase-item figure {margin:0;}
+    .flex-showcase-content {box-sizing:border-box; padding:30px;}
+    @media (min-width:768px) {
+        .flex-showcase {display:flex; flex-direction:column;}
+        .flex-showcase-item {flex:0 0 calc(50% - 30px); margin:0 0 30px 30px;}
+    }
+    @media (min-width:1024px) {
+        .flex-showcase-item {flex:0 0 calc(25% - 30px); margin:0 0 60px 30px;}
+    }
+
+    /* Image ratio */
+    .img-ratio {background-color:#242424; box-shadow:0 0 5px rgba(0,0,0,0.5); display:block; height:0; overflow:hidden; position:relative; width:100%;}
+    .ratio-3-2 {padding:66.5% 0 0 0;}
+    .img-ratio img {bottom:0; display:block; left:0; max-height:100%; margin:auto; position:absolute; right:0; top:0;}
+
+    .block {background-color:#fff; height:250px; margin:20px; opacity:0; transition:opacity 0.3s ease-in-out 0s; transform-origin:left;}
+    .open .block {opacity:1; transition:opacity 0.3s ease-in-out 0.2s;}
+</style>
+
+</head>
+<body class="">
+
+<div class="streams">
+    <div class="stream"><h2>Study</h2>
+        <img src="placeholder.svg" alt="" />
+    </div>
+    <div class="stream"><h2>Research</h2>
+        <img src="placeholder.svg" alt="" />
+    </div>
+    <div class="stream"><h2>Alumni</h2>
+        <img src="placeholder.svg" alt="" />
+    </div>
+    <div class="stream"><h2>Industry</h2>
+        <img src="placeholder.svg" alt="" />
+    </div>
+    <div class="stream"><h2>Community</h2>
+        <img src="placeholder.svg" alt="" />
+    </div>
+    <div class="stream"><h2>About</h2>
+        <img src="placeholder.svg" alt="" />
+    </div>
+</div>
+
+<!--div class="flex-showcase">
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/courses/feature/apply-direct-images/Master-of-Teaching.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hello</h2>
+            <p>Another nice looking car</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/study/images/Aspire-James-latrobe-uni.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>What's up?</h2>
+            <p>Some description here asdsadsa</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/experience/social-media/social-tab.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hey what you doing with such a long heading?</h2>
+            <p>Massive power for goofing around. 123 </p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/events/all/naomi-simson-presents-the-ethics-of-business-transformation/Naomi-Simson-1.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Yo!</h2>
+            <p>Grab an expert to get ahead of the marketplace.</p>
+        </div>
+    </div>
+        <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/courses/feature/apply-direct-images/Master-of-Teaching.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hello</h2>
+            <p>Another nice looking car</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/study/images/Aspire-James-latrobe-uni.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>What's up?</h2>
+            <p>Some description here asdsadsa</p>
+        </div>
+    </div>
+    <div class="flex-showcase-item">
+        <figure class="img-ratio ratio-3-2"><img src="http://www.latrobe.edu.au/experience/social-media/social-tab.jpg/large.jpg" alt="" /></figure>
+        <div class="flex-showcase-content">
+            <h2>Hey what you doing with such a long heading?</h2>
+            <p>Massive power for goofing around. 123 </p>
+        </div>
+    </div>
+
+</div-->
+
+<script>
+    
+    var bits = document.querySelectorAll('.stream'), i;
+    for (i = 0; i < bits.length; ++i) {
+      bits[i].addEventListener('click', function() {
+          var last = document.querySelector('.open');
+          this.classList.toggle('open');
+          last.classList.remove('open');
+          this.parentNode.classList.add('active');
+      }, false);
+    }
+
+</script>
+
+</body>
+</html>

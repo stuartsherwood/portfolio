@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+      body {background:#000 url(../Downloads/17d90568319f118551d21387263017937.jpg) no-repeat 0 0 / cover;}
+      h1 {color:red; font-size:120px; font-family:"Papyrus"; font-weight:normal; margin:0 0 20px; text-align:center; text-shadow:0 0 15px rgba(255,255,255,0.7);}
+      .fade-in h1 {margin:80px 0;}
+      p {margin-top:0;}
+      .content {background-color:rgba(0,0,0,0.5); border-radius:15px; color:rgba(255,255,255,1); font:300 16px/24px sans-serif; margin:0 auto; overflow:hidden; opacity:0; padding:20px; text-shadow:0 0 1px #000; transition:opacity 2s ease-in-out; width:50%;}
+      .content img {width:200px;}
+      .fade-in .content {opacity:1;}
+      
+      .content img {float:left; margin:0 20px 20px 0;}
+      
+      table {border-collapse: collapse; width:100%;}
+      th, td {border:1px solid #fff; padding:4px;}
+
+      /*
+         * Shake animation
+        */
+
+        @-webkit-keyframes shake {
+            0% {transform: translate(0,0) rotateZ(2deg);}
+            10% {transform: translate(-3px,4px) rotateZ(0deg);}
+            20% {transform: translate(6px,-5px) rotateZ(1deg);}
+            30% {transform: translate(4px,4px) rotateZ(-2deg);}
+            40% {transform: translate(-5px,1px) rotateZ(-1deg);}
+            50% {transform: translate(7px,-3px) rotateZ(1deg);}
+            60% {transform: translate(-2px,-7px) rotateZ(-2deg);}
+            70% {transform: translate(4px,1px) rotateZ(0deg);}
+            80% {transform: translate(-5px,3px) rotateZ(-2deg);}
+            90% {transform: translate(3px,-5px) rotateZ(1deg);}
+            100% {transform: translate(-6px,5px) rotateZ(-1deg);}
+        }
+        .shake {
+            -webkit-animation: shake 0.1s infinite;
+        }
+        @-webkit-keyframes spin {
+            0% {transform: rotateZ(0deg) scale(0) opacity(0);}
+            10% {opacity:(1);}
+            100% {transform: rotateZ(720deg) scale(1);}
+        }
+        .spin {
+            -webkit-animation: spin 5s 1 forwards;
+        }
+      
+  </style>
+  <script src="jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+    <article>
+        
+        <div class="content"><img src="../Downloads/R_013510732_B_012.JPG" alt="taiga" />
+            <h1>Taiga!</h1>
+            <p>I'm eight years old. My sister, Lily, is 3 years old. My Dad's name is Stuart and my Mum's name is Mayu.</p>
+            <p>My favourite letter is R. My favourite number is 8.</p>
+
+            <h2>Favourites</h2>
+            <table>
+             <thead>
+                <th>Food</th>
+                 <th>Animals</th>
+                 <th>Places</th>
+                 <th>School Friends</th>
+                 <th>Japanese Friends</th>
+             </thead>
+            <tbody>
+                <tr>
+                    <td>Dumplings</td>
+                    <td>Peregirne Falcon</td>
+                    <td>Josh's house</td>
+                    <td>Ahilan</td>
+                    <td>Josh</td>
+                </tr>
+                <tr>
+                    <td>Ebi fry</td>
+                    <td>Black Marlin</td>
+                    <td>My house</td>
+                    <td>Adtharsh</td>
+                    <td>Niko</td>
+                </tr>
+                <tr>
+                    <td>Karage</td>
+                    <td>Sail fish</td>
+                    <td>Museum</td>
+                    <td>Rehaan</td>
+                    <td>Kain</td>
+                </tr>
+                <tr>
+                    <td>Meat pies</td>
+                    <td>Tiger</td>
+                    <td>Japan</td>
+                    <td>Sebastien</td>
+                    <td>Mai</td>
+                </tr>
+            </tbody>
+            </table>
+            
+            
+            
+        </div>
+    </article>
+    
+<script>
+
+    setTimeout(function() {
+        $('body').addClass('fade-in');
+        //$('h1').addClass('shake spin');
+    }, 1000);
+    
+    var i = 0;
+    document.body.addEventListener('click', function(e){
+        if (i === 0) {
+            document.body.style.backgroundImage = ('url(../Downloads/lightning-storm-over-bankok-city-highways-hdr-desktop-background-536054.jpg)')
+        };
+        if (i === 1) {
+            document.body.style.backgroundImage = ('url(../Downloads/3462871-7303553537-3D-Sc.jpg)')
+        };
+        if (i === 2) {
+            document.body.style.backgroundImage = ('url(../Downloads/october_rain_by_fear_sas-d82pc6x.jpg)')
+        };
+        if (i === 3) {
+            document.body.style.backgroundImage = ('url(../Downloads/maxresdefault.jpg)')
+        };
+        if (i === 4) {
+            document.body.style.backgroundImage = ('url(../Downloads/17d90568319f118551d21387263017937.jpg)')
+            i = 0;
+        };
+        i++;
+    });
+    
+    
+</script>
+ 
+</body>
+</html>

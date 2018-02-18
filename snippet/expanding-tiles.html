@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Javascript</title>
+    
+<style>
+body {margin:0; transition:background-color 0.5s;}
+ul {list-style-type:none; margin:0; padding:0;}
+li {background:yellow; float:left; height:32.275vw; margin:.5vw; transition:height 0.3s ease-in-out, width 0.3s ease-in-out; width:32.275vw;}
+.open {height:800px; width:65.7vw;}
+
+.openx {
+  -webkit-animation: scaleOut ease-in-out .4s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-transform-origin: 50% 50%;
+}
+
+@-webkit-keyframes scaleOut {
+  0% {
+    transform:  scale(1) ;
+  }
+  100% {
+    transform:  scale(30) ;
+  }
+}
+        
+</style>
+</head>
+<body id="root">
+ 
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+    
+<script>
+
+var foo = document.getElementsByTagName('li');
+for(var i=0; i<foo.length; i++){
+ foo[i].onclick = myfunction;
+}
+//var root = document.getElementById('root');
+function myfunction (){
+    this.classList.toggle('open');
+}
+
+myfunction();
+
+//foo[4].addEventListener('click', function(){
+//    this.classList.toggle('open');
+//});
+
+</script>
+ 
+</body>
+</html>

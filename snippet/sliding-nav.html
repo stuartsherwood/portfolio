@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mega menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {margin:0; padding:0;}
+button {background-color:transparent; border:none; font-size:inherit;}
+
+.slide-nav {background-color:#ccc; height:100vh; overflow-x:hidden; position:relative;}
+@media (min-width:768px) {
+    .slide-nav {width:25%;}
+}
+.slide-nav-wrapper {position:relative; transition:transform 0.3s ease-in-out;}
+.slide-nav-wrapper.level2 {transform:translateX(-100%);}
+.slide-nav-wrapper.level3 {transform:translateX(-200%);}
+.slide-nav-wrapper.level4 {transform:translateX(-300%);}
+.slide-nav-wrapper.level5 {transform:translateX(-400%);}
+.slide-nav *:focus {outline:none; background-color:#d14124;}
+.slide-nav ul {background-color:#ccc; list-style-type:none; margin:0; padding:0; width:100%;}
+.slide-nav ul ul {position:absolute; top:0; transform:translateX(100%); transition:visibility 0.3s 0s; visibility:hidden;}
+.slide-nav ul.show {visibility:visible; transition:visibility 0.3s 0s;}
+.slide-nav li {font:700 20px/1 'Roboto Condensed', sans-serif; margin:0;}
+.title {background-color:#999; padding:20px;}
+.slide-nav a {display:block; padding:20px; text-decoration:none;}
+.slide-nav a:hover {background-color:#ddd;}
+.slide-nav button {line-height:60px; cursor:pointer; padding:0; position:absolute; right:0; text-align:center; width:60px;}
+.children {background-color:#ccc; margin-top:-60px;}
+.children:hover {background-color:#ddd;}
+.back {margin-top:-20px;}
+
+</style>
+</head>
+<body id="top">
+<nav class="slide-nav">
+    <div id="menu" class="slide-nav-wrapper">
+        <ul class="level1">
+            <li class=""><a id="study" href="http:www.latrobe.edu.au/study">Study with us</a><button class="children" data-level="2">&#9654;</button>
+                <ul class="level2" aria-labeledby="study" aria-hidden="true">
+                    <li class="title">Study with us <button class="back">&#9664;</button></li>
+                    <li><a href="http:www.latrobe.edu.au/courses">Courses</a></li>
+                    <li><a href="">Experience</a><button class="children" data-level="3">&#9654;</button>
+                        <ul class="level3" aria-labeledby="study" aria-hidden="true">
+                            <li class="title">Experience <button class="back">&#9664;</button></li>
+                            <li><a href="http:www.latrobe.edu.au/courses">Courses</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Experience at night</a></li>
+                            <li><a href="">Fees</a></li>
+                            <li><a href="">ATAR Wizard</a><button class="children" data-level="4">&#9654;</button>
+                                <ul class="level4" aria-labeledby="study" aria-hidden="true">
+                                    <li class="title">ATAR Wizard <button class="back">&#9664;</button></li>
+                                    <li><a href="http:www.latrobe.edu.au/courses">Courses</a></li>
+                                    <li><a href="">Experience tickets</a></li>
+                                    <li><a href="">Refunds</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">Apply</a></li>
+                            <li><a href="">Scholarships</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="">Fees</a></li>
+                    <li><a href="">ATAR Wizard</a></li>
+                    <li><a href="">Apply</a></li>
+                    <li><a href="">Scholarships</a></li>
+                </ul>
+            </li>
+            <li><a href="">Community</a><button class="children" data-level="2">&#9654;</button>
+                <ul class="section" aria-labeledby="community" aria-hidden="true">
+                    <li class="title">Community <button class="back">&#9664;</button></li>
+                    <li><a href="">Events</a></li>
+                    <li><a href="">Sport</a></li>
+                    <li><a href="">Clubs</a></li>
+                    <li><a href="">Community efforts</a></li>
+                </ul>
+            </li>
+            <li><a href="">Industry</a><button class="children" data-level="2">&#9654;</button>
+                <ul class="section" aria-labeledby="industry" aria-hidden="true">
+                    <li class="title">Industry <button class="back">&#9664;</button></li>
+                    <li><a href="">Consultants</a></li>
+                    <li><a href="">Innovation</a></li>
+                    <li><a href="">Partnerships</a></li>
+                    <li><a href="">Intellectual property</a></li>
+                </ul>
+            </li>
+            <li><a href="">About</a><button class="children" data-level="2">&#9654;</button>
+                <ul class="section" aria-labeledby="about" aria-hidden="true">
+                    <li class="title">About <button class="back">&#9664;</button></li>
+                    <li><a href="">Vision</a></li>
+                    <li><a href="">History</a></li>
+                    <li><a href="">Governance</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<script>
+var triggers = document.querySelectorAll('.children');
+for (i = 0; i < triggers.length; i++) {
+    var nav = document.getElementById('menu');
+    var item = triggers[i];
+    item.addEventListener('click',function(e){
+        var $this = e.target;
+        var level = $this.getAttribute('data-level');
+        $this.nextElementSibling.classList.add('show');
+        nav.classList.add('level'+level);
+        nav.parentElement.scrollTop = 0;
+    },false);
+    item.nextElementSibling.firstElementChild.addEventListener('click', function(){
+        this.parentElement.classList.remove('show');
+        nav.classList.remove('level'+this.parentElement.previousElementSibling.getAttribute('data-level'));
+    },false);
+}
+
+
+/*
+var menus = document.getElementsByClassName('level1');
+for (i = 0; i < menus.length; i++) {
+    var $this = menus[i];
+    openMenu($this);
+}
+var section = document.getElementsByClassName('section');
+for (i = 0; i < section.length; i++) {
+    var $this = section[i].parentNode;
+    openMenuKbd($this);
+}
+
+function openMenu($this){
+    $this.addEventListener('mouseover', function() {
+        //$this.classList.add('open');
+        $this.children[1].setAttribute('checked','checked');
+    }, false);
+    $this.addEventListener('mouseout', function() {
+    //    $this.classList.remove('open');
+        $this.children[1].removeAttribute('checked','');
+    }, false);
+}
+function openMenuKbd($this){
+    $this.children[0].addEventListener('focus', function() {
+//        $this.classList.add('open');
+        $this.children[1].setAttribute('checked','checked');
+    }, false);
+    $this.children[0].addEventListener('blur', function() {
+        console.log(document.activeElement);
+        $this.children[2].children[0].children[0].focus;
+        if ($this.children[0].contains(document.activeElement)) {
+            console.log('active');
+        }
+        else $this.children[1].removeAttribute('checked','');
+    }, false);
+}
+*/
+//function openMenuKbd($this) {
+//     $this.addEventListener('keyup', function(e) {
+//        if (e.code = 9 & !$this.classList.contains('open')) {
+//            $this.classList.add('open');
+//            if ($this.index !== 0) {
+//                $this.previousElementSibling.classList.remove('open');
+//            }
+//            $this.nextElementSibling.classList.remove('open');
+//        }
+//    }, false);   
+//}
+//document.body.addEventListener('click', function(){
+//    document.querySelector('input:checked').setAttribute('checked','');
+//});
+</script>
+</body>
+</html>

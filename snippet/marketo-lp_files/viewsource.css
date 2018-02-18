@@ -1,0 +1,328 @@
+html, body {height:100%;}
+body {background-color:#2D251A; color:#242424; font-family:Roboto; font-weight:300; margin:0; padding:0;}
+
+h1 {font:700 32px/40px 'Roboto Condensed',sans-serif; margin:0; padding:24px 30px 28px;}
+h2 {color:#D76F21; font:700 24px/28px 'Roboto Condensed',sans-serif; margin:0 0 20px 0;}
+h2:only-child {margin:0;}
+h3 {font:700 18px/20px 'Roboto Condensed',sans-serif; margin:0 0 8px; padding:0 32px;}
+p {margin:0;}
+figure {margin:0;}
+b,strong {font-family:'Roboto-Medium'; font-weight:500;}
+iframe {border:none;}
+
+*:focus {outline:2px dotted #FF9E1b!important;}
+
+a {color:#D14124; text-decoration:underline;}
+a:visited {color:#575757;}
+a:hover {color:#D14124; text-decoration:none;}
+a:hover, a:active { outline: 0; }
+
+.wrapper {background-color:#fff; font-size:16px; line-height:24px; width:100%;}
+@media (min-width:1200px) {
+    .wrapper {margin:0 auto; max-width:1600px;}
+}
+@media (min-width:1440px) {
+    .wrapper {font-size:18px; line-height:28px;}
+    h2 {font-size:32px; line-height:36px;}
+    h3 {font-size:22px; line-height:24px;}
+}
+
+.dark {background-color:#2D251A; color:#fff;}
+.dark h2 {color:#fff;}
+.dark *:before {color:#2D251A;}
+.dark a {color:#fff;}
+.beige {background-color:#F5F2E4; color:#242424;}
+.beige *:before {color:#F5F2E4;}
+.beige a {color:#242424;}
+     
+
+/* LTU Button */
+a.ltu-button {color:#fff!important; background:#63513d url(../icons/chevron-sm-ffffff.svg) no-repeat 100% center; display:inline-block; font-family:"Roboto Condensed",sans-serif; padding:10px 42px 9px 26px; text-decoration:none; text-transform:uppercase;}
+a.mini {background-image:none; padding:4px 20px; vertical-align:top;}
+a.ltu-button:first-child:not(:only-child) {margin-bottom:5px;}
+a.ltu-button.chat {background:#D14124 url(http://www.latrobe.edu.au/__data/assets/image/0003/551469/speech-bubbles.png) no-repeat 15% center; padding:10px 26px 9px 48px;}
+a.ltu-button:hover {background-color:#735e47;}
+a.ltu-button:active {background-color:#D52B1E; box-shadow:0 0 4px #D52B1E;}
+
+a.ltu-button.primary {background-color:#D14124}
+a.ltu-button.primary:hover {background-color:#B43A20;}
+a.ltu-button.primary:active {background-color:#D52B1E;}
+
+
+
+/* Image ratio */
+.img-ratio {background-color:#242424; box-shadow:0 0 5px rgba(0,0,0,0.5); display:block; height:0; overflow:hidden; position:relative; width:100%;}
+.ratio-3-2 {padding:66.5% 0 0 0;}
+.img-ratio img {bottom:0; display:block; left:0; max-height:100%; margin:auto; position:absolute; right:0; top:0;}
+
+/* Forms */
+fieldset {border:none; text-align:left; padding:0!important;}
+legend {font:700 16px/18px inherit!important; margin:0 0 8px 0!important; padding:0!important;}
+input[type="text"],input[type="email"],input[type="tel"],input[type="search"],input[type="number"],input[type="url"] {border:none!important; box-shadow:none!important; font-size:14px!important; line-height:16px!important; padding:10px 16px!important; width:100%!important;}
+.wrapper input[type="submit"] {background-color:#D14124; border:none; color:#fff; font-size:16px;  padding:9px 20px 10px;}
+.wrapper input[type="submit"]:focus, .wrapper input[type="submit"]:active {background-color:#D52B1E;}
+.wrapper input[type="submit"]:hover {background-color:#ff9e1b; color:#242424;}
+.wrapper input[type="reset"] {background-color:#2D251A; border:none; color:#fff; font-size:16px;  padding:9px 20px 10px;}
+.wrapper input[type="reset"]:focus, .wrapper input[type="submit"]:active {color:#FF9E1B;}
+.wrapper input[type="reset"]:hover {background-color:#63513D;}
+.wrapper input[type="checkbox"] {border:none; padding:4px;}
+.wrapper select {background-color:#fff!important; border:none!important; box-shadow:none!important; font-size:14px!important; line-height:16px!important; padding:9px 16px!important; -webkit-appearance:none; border-radius:0; width:100%!important;}
+.wrapper textarea {border:1px solid #D5D2C3; font-family:"Roboto", sans-serif; font-size:14px!important; line-height:16px!important; padding:8px 16px!important;}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    .wrapper select:not([multiple]) {background-image:url(http://www.latrobe.edu.au/__data/assets/image/0003/552090/chevron-sm-orange-down.png)!important; background-repeat:no-repeat; background-position:calc(100% - 12px) center!important; padding-right:36px!important;}
+}
+::-webkit-input-placeholder {color:#666;}
+:-moz-placeholder {color:#666;} /* Firefox 18- */
+::-moz-placeholder {color:#666;} /* Firefox 19+ */
+:-ms-input-placeholder {color:#666;}
+
+.icon {margin:40px auto;}
+
+/* Flexbox layout */
+.flex-showcase {overflow:hidden;}
+.flex-showcase-item {box-sizing:border-box; flex-basis:28%; flex:0 0 calc(33.333% - 30px); margin:32px 30px;}
+.flex-showcase-item figure {margin:0;}
+.flex-showcase-content {box-sizing:border-box; padding-top:30px; text-align:center;}
+@media (min-width:768px) {
+    .flex-showcase {display:flex; flex-wrap:wrap; padding:32px 30px 32px 30px;}
+    .flex-showcase-item {float:left; margin:0 0 32px 30px; min-width:26%;}
+}
+@media (min-width:1024px) {
+    .flex-showcase {padding:32px 60px 0 0;}
+    .flex-showcase-item {flex:0 0 calc(33.333% - 60px); margin:0 0 60px 60px;}
+}
+@media (min-width:1441px) {
+    .flex-showcase {padding:90px 120px 90px 30px;}
+    .flex-showcase-item {flex:0 0 calc(33.333% - 90px); margin:0 0 60px 90px;}
+}
+
+/* Logo used in intro items */
+.logo {background-color:#fff; box-shadow:0 0 5px rgba(0,0,0,0.5); height:80px; padding:8px; position:relative;}
+.logo img {display:block; height:76%; margin:10px auto; width:auto;}
+.intro-alt .logo {}
+.intro-plain .logo {}
+@media (min-width:768px) {
+    .logo {padding:0; position:absolute; z-index:2;}
+    .logo img {margin:10px 40px;}
+    .intro .logo {margin-top:46px;}
+    .intro-alt .logo {top:40px;}
+    .intro-plain .logo {left:0; top:40px;}
+}
+
+/* Intro item with form */
+.intro {background:#242424; position:relative;}
+.intro h1 {color:#fff; padding:30px;}
+.intro h2 {margin-bottom:16px;}
+.intro-img {box-sizing:border-box; max-height:900px; overflow:hidden; vertical-align:top; width:100%;}
+.intro-img img {width:100%;}
+@media (min-width:600px) {
+    .intro {overflow:hidden;}
+}
+@media (min-width:768px) {
+    .intro h1 {padding:60px 60px 60px 320px; text-align:right;}
+}
+@media (min-width:768px) {
+    .intro h1 {font-size:40px; line-height:48px;}
+}
+@media (min-width:1024px) {
+    .intro-img img {-ms-animation:zoom 7s 1 ease-in-out forwards; animation:zoom 7s 1 ease-in-out forwards;}
+}
+@media (min-width:1441px) {
+    .intro h1 {background-color:transparent; bottom:90px; font-size:56px; left:120px; line-height:60px; margin:-28px 0 0 30px; max-width:800px; overflow:hidden; padding:0; position:absolute; z-index:2;}
+    .intro h1 span {background-color:#ff9e1b; clear:both; color:#242424; display:block; float:left; padding:6px 15px 8px; white-space:nowrap;}
+}
+form.mktoForm {background-color:#eae8e0; box-shadow:0 0 5px rgba(0,0,0,0.5); box-sizing:border-box; color:#242424!important; cursor:auto!important; font-family:inherit!important; font-size:16px!important; padding:30px; width:auto!important;}
+.mktoForm legend {font:700 20px/24px 'Roboto Condensed',sans-serif!important;}
+.mktoFormRow:not(:last-child), .mktoForm p {margin:0 0 24px 0;}
+.mktoOffset, .mktoForm .mktoGutter {display:none;}
+.mktoForm .mktoFormCol {float:none!important; margin:0!important; min-height:inherit!important; position:static!important;}
+.mktoForm .mktoField, .mktoForm .mktoFieldWrap {float:none!important;}
+.mktoLabel {border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute;}
+.mktoForm input[type="text"], .mktoForm input[type="email"] {box-sizing:border-box;}
+.mktoButton, .mktoForm input[type="submit"] {background-color:#63513d!important; background-image:none!important; border:none!important; border-radius:0!important; box-shadow:none!important; color:#fff!important; font-family:inherit!important; font-size:16px!important; font-weight:300!important; padding:9px 12px!important; text-align:left!important; text-shadow:none!important; width:auto!important;}
+.mktoButton:hover, .mktoForm input[type="submit"]:hover {background-color:#ff9e1b!important; color:#242424!important;}
+.mktoButton:active, .mktoForm input[type="submit"]:active {background-color:#d52b1e!important; color:#fff!important;}
+.mktoForm select {box-sizing:border-box;}
+.mktoButtonWrap {margin:0!important;}
+.mktoForm textarea {border:none; box-sizing:border-box; padding:9px 12px; width:100%;}
+.mktoButton {color:#fff; }
+@media (min-width:600px) {
+    .mktoForm {margin:-120px 60px 60px; padding:60px; position:relative;}
+}
+@media (min-width:1024px) {
+    .mktoForm {margin:-240px 60px 60px;}
+}
+@media (min-width:1280px) {
+    .mktoForm {bottom:90px; margin:0; padding:30px; position:absolute; right:60px; width:25%;}
+}
+@media (min-width:1441px) {
+    .mktoForm {right:120px; width:20%;}
+}
+
+/* Intro item with text over image */
+.intro-alt {background:#242424; overflow:hidden; padding-bottom:30px; position:relative;}
+.intro-alt-img {max-height:900px; overflow:hidden;}
+.intro-alt-img img {vertical-align:top; width:100%;}
+.intro-alt h1 {font-size:28px; line-height:32px; margin:-28px 0 0 30px; max-width:800px; overflow:hidden; padding:0; position:relative;}
+.intro-alt h1 span {background-color:#ff9e1b; clear:both; color:#242424; display:block; float:left; padding:6px 15px 8px; white-space:nowrap;}
+.intro-alt h1 span:empty {display:none;}
+.intro-alt-tag {background-color:#ff9e1b; color:#242424; display:inline-block; margin-left:30px; padding:8px 16px;}
+.intro-alt .cta {margin-left:30px;}
+@media (min-width:768px) {
+    .intro-alt {padding-bottom:0;}
+    .intro-alt-text {bottom:60px; left:60px; position:absolute;}
+    .intro-alt h1 {font-size:52px; line-height:56px; margin:0;}
+    .intro-alt span {padding:12px 15px 14px;}
+    .intro-alt-tag {font-size:20px; margin:0;}
+    .intro-alt .cta {margin-left:0;}
+}
+@media (min-width:1024px) {
+    .intro-alt-img img {-ms-animation:zoom 7s 1 ease-in-out forwards; animation:zoom 7s 1 ease-in-out forwards;}
+}
+@media (min-width:1441px) {
+    .intro-alt-text {bottom:90px; left:120px;}
+}
+
+.intro-plain {background:#D52B1E url(https://www.latrobe.edu.au/__data/assets/image/0005/545990/texture-red.jpg) no-repeat 0 50%; position:relative;}
+.intro-plain h1 {color:#fff; padding:30px;}
+@media (min-width:768px) {
+    .intro-plain {background-size:100%; padding:120px 60px 60px;}
+}
+@media (min-width:1280px) {
+    .intro-plain h1 {font-size:60px; line-height:64px; padding:60px 60px 60px 360px;}
+}
+@media (min-width:1441px) {
+    .intro-plain h1 {padding:90px 120px 90px 300px;}
+}
+
+@-webkit-keyframes zoom {
+  0% {-webkit-transform: scale(1.05);}
+  100% { -webkit-transform: scale(1.05) translate(-2%, -2%);}
+}
+
+@keyframes zoom {
+  0% {transform: scale(1.05);}
+  100% {transform: scale(1.05) translate(-2%, -2%);}
+}
+
+
+.cta {display:inline-block; margin-top:20px; vertical-align:bottom; width:100%;}
+.off-screen, .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Feature large */
+.feature-lg {box-sizing:border-box; overflow:hidden; padding:32px 30px;}
+.feature-lg-img {box-sizing:border-box; margin-bottom:24px;}
+.feature-lg img {box-shadow:0 0 5px rgba(0,0,0,0.3); vertical-align:top; width:100%;}
+.feature-lg-text {box-sizing:border-box; display:inline-block; position:relative; vertical-align:top;}
+.feature-lg ul {padding:0;}
+.feature-lg li {background:transparent url(../icons/chevron-sm-000000.svg) no-repeat 0 -4px; background-size:32px; list-style:none; padding-left:30px;}
+@media (min-width:768px) {
+    .feature-lg {padding:60px 60px 60px 30px;}
+    .feature-lg-img {float:left; margin-bottom:0; padding:0 0 0 30px; width:50%;}
+    .reverse .feature-lg-img {float:right;}
+    .feature-lg-text {padding-left:30px; width:50%;}
+}
+@media (min-width:1441px) {
+    .feature-lg {padding:90px 120px 90px 90px;}
+    .feature-lg-img {padding:0 0 0 60px;}
+    .feature-lg-text {padding-left:60px;}
+}
+
+/* Content with 2 columns of text */
+.content-2-col {margin:32px 30px;}
+.content-2-col-img {margin-bottom:20px;}
+.content-2-col-text {padding-bottom:30px;}
+.content-2-col .cta {text-align:center;}
+@media (min-width:768px) {
+    .content-2-col {margin:60px;}
+    .content-2-col-img {margin-bottom:40px;}
+    .content-2-col-text {column-count:2; column-gap:30px;}
+}
+@media (min-width:1441px) {
+    .content-2-col {margin:90px 120px;}
+}
+
+/* Youtube video */
+.yt-video {height:0; margin:0; overflow:hidden; padding-bottom:67.5%; position:relative;}
+@media (min-width:768px) {
+    .yt-video {margin:60px;}
+}
+.yt-video.widescreen {padding-bottom:56.34%;}
+@media (min-width:900px) {.intro .yt-video.widescreen {padding-bottom:33.735%;}}
+.yt-video.vimeo {padding-top:0;}
+.yt-video embed, .yt-video iframe, .yt-video object, .yt-video video {border:none; height:100%; left:0; position:absolute; top:0; width:100%;}
+@media (min-width:960px) {
+    .yt-video.fixedwidth {padding-bottom:0%; height:420px; width:560px;}
+    .yt-video.widescreen.fixedwidth {height:315px;}
+}
+@media (min-width:1441px) {
+    .yt-video {margin:90px 120px;}
+}
+
+/* Social media - Content secondary only */
+#social-media {list-style-type:none; margin:0; overflow:auto; padding:0;}
+#social-media li {background-image:none; display:block; float:left; height:40px; margin:0 1px 0 0; padding:0; text-indent:-10000px; width:40px;}
+#social-media a {background:transparent url(https://www.latrobe.edu.au/__data/assets/image/0011/550568/social-media-icons.png) no-repeat 0 0; display:block; height:100%; background-size:100% auto; text-indent:-5000px;}
+#social-media a:hover {background-color:#ab2327;}
+
+#facebook a {background-position:0 0;}
+#twitter a {background-position:0 -40px;}
+#google a {background-position:0 -80px;}
+#youtube a {background-position:0 -120px;}
+#linkedin a {background-position:0 -160px;}
+#instagram a {background-position:0 -200px;} 
+#flickr a {background-position:0 -240px;}
+@media (min-width:1024px) {
+    #social-media li {height:60px; width:60px;}
+    #social-media a {background-size:60px auto;}
+    #twitter a {background-position:0 -60px;}
+    #google a {background-position:0 -120px;}
+    #youtube a {background-position:0 -180px;}
+    #linkedin a {background-position:0 -240px;}
+    #instagram a {background-position:0 -300px;} 
+    #flickr a {background-position:0 -360px;}
+}
+
+/* Last feature on page */
+.closeout {background-color:#D52B1E; background-repeat:no-repeat; background-position:0 bottom; background-size:100%; padding:32px 30px;}
+.closeout h2 {overflow:hidden; padding:0;}
+.closeout h2 span {background-color:#ff9e1b; clear:both; color:#242424; display:block; float:left; padding:12px 15px 14px;}
+@media (min-width:768px) {
+    .closeout {padding:60px;}
+}
+@media (min-width:1441px) {
+    .closeout {padding:90px 120px;}
+}
+
+
+/* Footer content */
+footer {padding-bottom:60px;}
+footer ul {}
+footer li {display:inline; padding-right:8px;}
+
+.footer-cta {align-items:center; background-color:#000; display:flex; flex-direction:column; padding:20px 30px;}
+.footer-item {flex:1 0 auto; padding:20px;}
+
+.footer-item:last-child {text-align:right;}
+.footer-item a[href^="tel:"] {background:transparent url(../icons/telephon-white.svg) no-repeat 0 center; background-size:36px; color:#fff; text-decoration:none; padding-left:32px;}
+.footer-item a[href^="tel:"]:hover {color:#ff9e1b;}
+@media (min-width:768px) {
+    .footer-cta {flex-direction:row; padding:20px 60px;}
+    .footer-item {padding:0;}
+}
+@media (min-width:1441px) {
+    .footer-cta {padding:40px 120px;}
+}
+
+.main-footer-legal {margin-top:30px;}
+.main-footer-legal, .copyright-notice {font-size:14px; padding:0 30px;}
+.main-footer-legal a, .copyright-notice a {color:#242424;}
+#flag {display:block; margin:40px 0;}
+@media (min-width:768px) {
+    .main-footer-legal, .copyright-notice {padding:0 60px;}
+    #flag {float:right; margin:20px 0; padding-right:0;}
+}
+@media (min-width:1441px) {
+    .main-footer-legal {margin-top:60px;}
+    .main-footer-legal, .copyright-notice {font-size:16px; padding:0 120px;}
+}

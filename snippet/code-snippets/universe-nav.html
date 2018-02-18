@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>mega menu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font:900 16px/20px sans-serif; margin:0; padding:0;}
+button {background-color:transparent; border:none; box-sizing:border-box; font-family:inherit; font-size:inherit; font-weight:inherit; line-height:inherit; padding:8px;}
+
+h1 {font-size:36px; font-weight:100; letter-spacing:3px; line-height:42px; text-transform:uppercase;}
+h2 {background-color:#fefffa; cursor:pointer; display:block; font-size:26px; font-weight:300; line-height:34px; letter-spacing:1px; margin:0;}
+
+.menu-wrapper {padding:0;}
+.global-nav {background-color:#ffc200; box-shadow:0 0 8px rgba(0,0,0,0.4); list-style:none; margin:0; padding:4px; position:relative;}
+.global-nav li {box-sizing:border-box; color:#000; margin:0; padding:12px; perspective:2000px;}
+@media (min-width:1024px) {
+    .menu-wrapper {}
+    .global-nav {display:flex; padding:0 80px;}
+    .global-nav > li {flex:1 0 auto;}
+    .global-nav li {perspective:none;}
+}
+.global-nav a {color:#333; text-decoration:none;}
+.global-nav li > a:visited {color:#333;}
+
+.level1 input {margin:0; opacity:0; transform:scale(3.5); transform-origin:left;}
+.level1 label {transform-style:preserve-3d; perspective-origin:center;}
+.level1 label:before {background-color:#fff; border-radius:100%; color:red; content:"+"; display:inline-block; font-size:20px; height:48px; line-height:48px; margin:0 10px 0 -14px; pointer-events:none; text-align:center; transition:border-radius 0.3s ease-in-out, transform 0.3s ease-in-out; vertical-align:middle; width:48px;}
+.level1 input:checked + label:before {border-radius:0; content:"-";}
+.level1 input:hover + label:before {transform:rotateY(180deg);}
+.level1 input:focus + label:before {outline:1px double;}
+    
+.section {animation:accordion-closed 0.2s 1 ease-in-out forwards; background-color:#eee; box-sizing:border-box; font-weight:300; height:0; list-style:none; margin:0; max-height:50vh; overflow:hidden; padding:0; text-align:left; visibility:hidden;}
+.section li:hover {background-color:#fff;}
+@media (min-width:1024px) {
+    .section {animation:none; display:flex; flex-direction:column; flex-wrap:wrap; height:auto; left:0; max-height:calc(100vh - 72px); overflow:inherit; padding:40px 80px; position:absolute; transform:translateY(-200%); transition:transform 0.3s 0s ease-in-out, visibility 0s 0.3s; width:100vw; z-index:-1;}
+}
+.level1 input:checked + label + .section {animation:accordion-open 0.2s 1 ease-in-out forwards; height:auto; overflow:auto; visibility:visible;}
+@media (min-width:1024px) {
+    .level1 input:checked + label + .section {animation:none; transform:translateY(0); transition:transform 0.3s 0s ease-in-out, visibility 0s 0s;}
+}
+
+@keyframes accordion-open {
+  0% {max-height:0px; transform: rotateX(-90deg); visibility:visible;}
+  100% {max-height:50vh; transform: rotateX(0); visibility:visible;}
+}
+@keyframes accordion-closed {
+  0% {max-height:50vh; transform: rotateX(0); visibility:visible;}
+  100% {max-height:0; overflow:hidden; transform: rotateX(-90deg); visibility:visible;}
+}
+</style>
+</head>
+<body>
+<nav class="menu-wrapper">
+<ul id="global-nav" class="global-nav">
+    <li class="level1" id="africa"><input class="trigger" id="africa-radio" type="radio" title="Africa" value="Africa" name="mega-menu" checked="" /><label for="africa"><a href="http:www.latrobe.edu.au/study">Africa</a></label>
+        <ul class="section" aria-labeledby="africa">
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/dz.htm">Algeria</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ao.htm">Angola</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/bj.htm">Benin</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/bw.htm">Botswana</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/bf.htm">Burkina</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/bi.htm">Burundi</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/cm.htm">Cameroon</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/cv.htm">Cape Verde</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/cf.htm">Central African Republic</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/td.htm">Chad</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/km.htm">Comoros</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/cg.htm">Congo</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/cd.htm">Congo, Democratic Republic of</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/dj.htm">Djibouti</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/eg.htm">Egypt</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/gq.htm">Equatorial Guinea</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/er.htm">Eritrea</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/et.htm">Ethiopia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ga.htm">Gabon</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/gm.htm">Gambia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/gh.htm">Ghana</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/gn.htm">Guinea</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/gw.htm">Guinea-Bissau</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ci.htm">Ivory Coast</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ke.htm">Kenya</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ls.htm">Lesotho</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/lr.htm">Liberia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ly.htm">Libya</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/mg.htm">Madagascar</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/mw.htm">Malawi</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ml.htm">Mali</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/mr.htm">Mauritania</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/mu.htm">Mauritius</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ma.htm">Morocco</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/mz.htm">Mozambique</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/na.htm">Namibia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ne.htm">Niger</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ng.htm">Nigeria</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/rw.htm">Rwanda</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/st.htm">Sao Tome and Principe</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/sn.htm">Senegal</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/sc.htm">Seychelles</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/sl.htm">Sierra Leone</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/so.htm">Somalia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/za.htm">South Africa</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ss.htm">South Sudan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/sd.htm">Sudan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/sz.htm">Swaziland</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/tz.htm">Tanzania</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/tg.htm">Togo</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/tn.htm">Tunisia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/ug.htm">Uganda</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/zm.htm">Zambia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/africa/zw.htm">Zimbabwe</a></li>
+        </ul>
+    </li>
+    <li class="level1"><input class="trigger" id="asia" type="radio" title="Asia" value="Asia" name="mega-menu" checked="" aria-expanded="false" /><label for="asia"><a href="http:www.latrobe.edu.au/study">Asia</a></label>
+        <ul class="section" aria-labeledby="community" aria-hidden="true">
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/af.htm">Afghanistan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/bh.htm">Bahrain</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/bd.htm">Bangladesh</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/bt.htm">Bhutan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/bn.htm">Brunei</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/mm.htm">Burma (<i>Myanmar</i>)</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/kh.htm">Cambodia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/cn.htm">China</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/etimor.htm">East Timor</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/in.htm">India</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/id.htm">Indonesia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/ir.htm">Iran</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/iq.htm">Iraq</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/il.htm">Israel</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/jp.htm">Japan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/jo.htm">Jordan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/kz.htm">Kazakhstan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/kp.htm">Korea, North</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/kr.htm">Korea, South</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/kw.htm">Kuwait</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/kg.htm">Kyrgyzstan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/la.htm">Laos</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/lb.htm">Lebanon</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/my.htm">Malaysia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/mv.htm">Maldives</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/mn.htm">Mongolia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/np.htm">Nepal</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/om.htm">Oman</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/pk.htm">Pakistan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/ph.htm">Philippines</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/qa.htm">Qatar</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/ru.htm">Russian Federation</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/sa.htm">Saudi Arabia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/sg.htm">Singapore</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/lk.htm">Sri Lanka</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/sy.htm">Syria</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/tj.htm">Tajikistan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/th.htm">Thailand</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/tr.htm">Turkey</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/tm.htm">Turkmenistan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/ae.htm">United Arab Emirates</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/uz.htm">Uzbekistan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/vn.htm">Vietnam</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/asia/ye.htm">Yemen</a></li>
+        </ul>
+    </li>
+    <li class="level1"><input class="trigger" id="europe" type="radio" title="Europe" value="Europe" name="mega-menu" checked="" aria-expanded="false" /><label for="europe"><a href="">Europe</a></label>
+        <ul class="section" aria-labeledby="industry" aria-hidden="true">
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/al.htm">Albania</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/ad.htm">Andorra</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/am.htm">Armenia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/at.htm">Austria</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/az.htm">Azerbaijan</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/by.htm">Belarus</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/be.htm">Belgium</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/ba.htm">Bosnia and Herzegovina</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/bg.htm">Bulgaria</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/hr.htm">Croatia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/cy.htm">Cyprus</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/cz.htm">Czech Republic</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/dk.htm">Denmark</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/ee.htm">Estonia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/fi.htm">Finland</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/fr.htm">France</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/ge.htm">Georgia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/de.htm">Germany</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/gr.htm">Greece</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/hu.htm">Hungary</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/is.htm">Iceland</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/ie.htm">Ireland</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/it.htm">Italy</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/lv.htm">Latvia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/li.htm">Liechtenstein</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/lt.htm">Lithuania</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/lu.htm">Luxembourg</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/mk.htm">Macedonia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/mt.htm">Malta</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/md.htm">Moldova</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/mc.htm">Monaco</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/mj.htm">Montenegro</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/nl.htm">Netherlands</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/no.htm">Norway</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/pl.htm">Poland</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/pt.htm">Portugal</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/ro.htm">Romania</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/sm.htm">San Marino</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/mj.htm">Serbia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/sk.htm">Slovakia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/si.htm">Slovenia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/es.htm">Spain</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/se.htm">Sweden</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/ch.htm">Switzerland</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/ua.htm">Ukraine</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/uk.htm">United Kingdom</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/europe/va.htm">Vatican City</a></li>
+        </ul>
+    </li>
+    <li class="level1"><input class="trigger" id="n-america" type="radio" title="North America" value="North America" name="mega-menu" checked="" aria-expanded="false" /><label for="n-america"><a href="">North America</a></label>
+        <ul class="section" aria-labeledby="about" aria-hidden="true">
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/ag.htm">Antigua and Barbuda</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/bs.htm">Bahamas</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/bb.htm">Barbados</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/camerica/bz.htm">Belize</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/ca.htm">Canada</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/camerica/cr.htm">Costa Rica</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/cu.htm">Cuba</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/dm.htm">Dominica</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/do.htm">Dominican Republic</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/camerica/sv.htm">El Salvador</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/gd.htm">Grenada</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/camerica/gt.htm">Guatemala</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/ht.htm">Haiti</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/camerica/hn.htm">Honduras</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/jm.htm">Jamaica</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/mx.htm">Mexico</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/camerica/ni.htm">Nicaragua</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/camerica/pa.htm">Panama</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/kn.htm">Saint Kitts and Nevis</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/lc.htm">Saint Lucia</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/vc.htm">Saint Vincent and the Grenadines</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/caribb/tt.htm">Trinidad and Tobago</a></li>
+            <li><a href="http://www.worldatlas.com/webimage/countrys/namerica/us.htm">United States</a></li>
+        </ul></li>
+</ul>
+</nav>
+<script>
+var triggers = document.getElementsByClassName('trigger');
+for (i = 0; i < triggers.length; i++) {
+    var item = triggers[i];
+    item.addEventListener('change',function(e){
+        for (i = 0; i < triggers.length; i++) {
+            triggers[i].setAttribute('aria-expanded','false');
+            triggers[i].nextElementSibling.nextElementSibling.setAttribute('aria-hidden','true');
+            $this = e.target;
+            if ($this.checked) {
+                $this.setAttribute('aria-expanded','true');
+                $this.nextElementSibling.nextElementSibling.setAttribute('aria-hidden','false');
+            }
+        }
+    },false);
+}
+
+
+/*
+var menus = document.getElementsByClassName('level1');
+for (i = 0; i < menus.length; i++) {
+    var $this = menus[i];
+    openMenu($this);
+}
+var section = document.getElementsByClassName('section');
+for (i = 0; i < section.length; i++) {
+    var $this = section[i].parentNode;
+    openMenuKbd($this);
+}
+
+function openMenu($this){
+    $this.addEventListener('mouseover', function() {
+        //$this.classList.add('open');
+        $this.children[1].setAttribute('checked','checked');
+    }, false);
+    $this.addEventListener('mouseout', function() {
+    //    $this.classList.remove('open');
+        $this.children[1].removeAttribute('checked','');
+    }, false);
+}
+function openMenuKbd($this){
+    $this.children[0].addEventListener('focus', function() {
+//        $this.classList.add('open');
+        $this.children[1].setAttribute('checked','checked');
+    }, false);
+    $this.children[0].addEventListener('blur', function() {
+        console.log(document.activeElement);
+        $this.children[2].children[0].children[0].focus;
+        if ($this.children[0].contains(document.activeElement)) {
+            console.log('active');
+        }
+        else $this.children[1].removeAttribute('checked','');
+    }, false);
+}
+*/
+//function openMenuKbd($this) {
+//     $this.addEventListener('keyup', function(e) {
+//        if (e.code = 9 & !$this.classList.contains('open')) {
+//            $this.classList.add('open');
+//            if ($this.index !== 0) {
+//                $this.previousElementSibling.classList.remove('open');
+//            }
+//            $this.nextElementSibling.classList.remove('open');
+//        }
+//    }, false);   
+//}
+//document.body.addEventListener('click', function(){
+//    document.querySelector('input:checked').setAttribute('checked','');
+//});
+</script>
+</body>
+</html>

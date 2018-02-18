@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, minimum-scale=1" />
+  <title>La Trobe Online</title>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+  <link href='css/featherlight.css' rel='stylesheet'>
+<style>
+html, body {height:100%;}
+body {font-family:Roboto; font-weight:300; margin:0; padding:0;}
+
+h1 {background:url("http://www.latrobe.edu.au/__data/assets/image/0005/545990/texture-red.jpg") repeat-x scroll 0 70% rgba(0, 0, 0, 0); box-shadow:0 0 5px rgba(0,0,0,0.4); color:#fff; font:700 50px/1 'Roboto Condensed',sans-serif; margin:0; padding:36px 60px 48px; position:relative; transition:padding-left 0.3s ease-in-out;}
+h2 {font:700 20px/20px 'Roboto Condensed',sans-serif; margin:0 0 4px 0;}
+h2:only-child {margin:0;}
+h3 {font:700 18px/20px 'Roboto Condensed',sans-serif; margin:0 0 4px 0;}
+p {margin-top:0;}
+    
+*:focus {outline:2px dotted #FF9E1b;}
+
+header {height:140px;}
+.universes {display:none;}
+.search {background:#fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3MTk2MzJFRjNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3MTk2MzJGMDNEMjUxMUUzQkUzQUJENEM1MTFCNTU2OSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjcxOTYzMkVEM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjcxOTYzMkVFM0QyNTExRTNCRTNBQkQ0QzUxMUI1NTY5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+XW8RkAAAAwNJREFUeNrsml2ITGEYx9+xPrKkfIVI9sLH+rgQUVuULZa0JG5Q3Fm52XbvFIm483GplFy62SVRrBIr+bhQatYuF1wQViQXWsvONv6P804dz545O3PG7Gz7/J/61bzvnPOeOb/Oed7zPmdS2WzWMZJHigIpkAIpkAIZFEiBFEiBDAqkQAqkQAYFUiAFUiCDAimQAimQQYEUSIF/o6thWUVOcGXHq7KOP47XEAVWNMaPst8zGewADWAJmOv7voGX4AFoB1+YA4eKa/XMGGaoX+AKOA6+Mgc6txw8B6cLkCcxCRwGPWCb9Ry4HjwCtQn2nQVugoNWc+AiL2C66h8EN8Bt8Nq3a8BmsBtMDW1bBS6DT+CupRyY8ldendqsExwB3XmGkUnlHNin+j8DOcB3Kzlwb4S8dn+Vdcfs1wv2g5Oqfw44ZikHtqp2GhwAAwXuLwLbVF8TmGZB4GKwRvW1gL4ixpC80wx+hvokN263IHCjar8D9xKM8xHcUn0bLAhcqNr3SxjroWovtSBwvmp/KGGs96o924LAHxHLuKQxUbUHLAjs/Y+3XW1EXhzzAntUe5NaXRQTjar9woLATl9RCd/CzQnG2QrWqr47FgTKcuua6jsKVhUxhkwWF1WfrJsfW1mJnAGZUHuKLx4UIlFm8Q5fjNCrk6wVgVJdPhsh5qkLCqUzI/apBodcUDtcHfF9phInUsmK9ASfs+ojNpcS1jPwxn9e4IsP1TGHyPgixT9r5HJXYypZD5Rntp0uqMJsUd9VeWF1RZ7LVf+5bazfwuGHaikAnAK/iywmvI2RuMeKwNytd8IF70YuufgXRX1+BpeiwYo8jy05ifUj8eNH02tNyXdS05OK9DpJX2Cez3sitcsFrzX7Q/vsAtf9M6E+rxprAsMTyBPPcNGfR+IFF7wrMXELlxo5ibnb+bwbWvE2dQUmldjoiwtpCw/S5ZqM0iN9UP4/kAIpkAIpkEGBFEiBFMigQAqkQApkUCAFUiAFMiiQAimQAhkUSIEUSIGMmPgjwAB1wSBkr5jHbQAAAABJRU5ErkJggg==) no-repeat 100% 42.5%; float:right; height:80px; right:0; top:0; width:80px; z-index:10;}
+.breadcrumbs {background-color:#333; clear:both; height:60px;}
+.logo {background-color:#fff; box-shadow:0 0 5px rgba(0,0,0,0.2); display:inline-block; float:left; height:80px; min-width:324px; width:27%; z-index:11;}
+.hamburger {background-color:#d14124; color:#fff; float:left; height:80px; width:80px;}
+
+    .nav {background-color:#F8F3EF; box-shadow:0 0 5px rgba(0,0,0,0.2); margin-top:-60px; transition:margin-left 0.3s ease-in-out; width:25%;}
+
+    a {color:#d14124; text-decoration:none;}
+
+    .wrapper {transition:width 0.3s ease-in-out; width:100%;}
+    
+    .nav-container {background-color:#f5f2e4; width:25%;}
+    .content-wrapper {height:150vh; overflow:hidden;}
+    @media (min-width:1024px) {
+        .nav-container {box-shadow:0 0 8px rgba(0,0,0,0.4); display:inline-block; height:150vh; position:relative; z-index:1000;}
+        .content-wrapper {display:inline-block; vertical-align:top; width:75%;}
+    }
+    
+
+    
+    /* Lists */
+    .content-wrapper li > ul, .main-content li > ol {margin-bottom:0;}
+    .content-wrapper p + ul, .main-content p + ol {margin-top:-8px;}
+    .content-wrapper li {margin-bottom:8px;}
+    
+    /* List styles */
+    ul.beige-arrows {background-color:#555; list-style-type:none; margin:0; padding:20px 0;}
+    ul.beige-arrows > li {box-sizing:border-box; color:#ccc; cursor:pointer; font:20px/1 'Roboto Condensed',sans-serif; margin:0; padding:12px 24px 12px 44px; transition:background-color 0.3s ease-in-out, padding 0.3s ease-in-out;}
+    ul.beige-arrows > li:hover {background-color:#666; color:#fff;}
+    ul.beige-arrows > .selected {border:1px solid #333; border-right:none;}
+    ul.beige-arrows > .selected, ul.beige-arrows > .selected:hover {background-color:#444; color:#fff; padding:24px 24px 24px 44px;}
+    /*.selected:after {content:"\25B6"; color:#444; left:50%; margin:4px 0 0 -2px; position:absolute; transform:scaleY(2.6);}*/
+    
+    .discover {height:72px; overflow:hidden; position:relative; transition:height 0.3s ease-in-out;}
+    .discover.open {height:1200px;}
+    .discover-title {background:#252422; color:#fff; cursor:pointer; font-size:32px; line-height:1; margin:0; padding:20px;}
+    .discover-title:after {content:url(http://www.latrobe.edu.au/__data/assets/image/0014/552200/chevron-lg-white-down.png); position:absolute; right:20px; transform:rotate(90deg); transition:transform 0.3s ease-in-out;}
+    .open .discover-title:after {transform:rotate(0deg);}
+    .course-list {background-color:#444; box-sizing:border-box; height:100%; left:50%; list-style-type:none; margin:0; overflow:hidden; padding:20px 0; position:absolute; visibility:hidden;}
+    .selected .course-list {visibility:visible;}
+    .course-list li {box-sizing:border-box; font:20px/1 'Roboto Condensed',sans-serif; margin:0; padding:12px 36px; transform:translateX(-100%); transition:transform 0.3s ease-in-out;}
+    .selected li {transform:translateX(0);}
+    .course-list > li:hover {background-color:#e06248;}
+    .course-list a {font:18px/20px Roboto,sans-serif; color:#fff;}
+
+    @media (min-width:1024px) {
+        .discover {height:152px;}
+        .discover.open {height:584px;}
+        .discover-title {padding:60px;}
+        .discover-title:after {right:60px;}
+        .course-list {left:50%; top:0; width:50%;}
+        
+        .beige-arrows {position:relative; width:100%;}
+        .beige-arrows > li {width:50%;}
+        
+    }
+
+</style>
+</head>
+
+<body>
+<header>
+    <div class="logo"><div class="hamburger"><img src="http://www.latrobe.edu.au/__data/assets/image/0012/545988/hamburger.png" alt="Menu" height="75" width="75"></div><img src="http://www.latrobe.edu.au/__data/assets/image/0011/545987/logo.png" alt="La Trobe University" height="75" width="224" /></div>
+    <ul class="universes"><li>Home</li><li>Staff</li><li>Students</li><li>Researchers</li></ul>
+    <div class="search"></div>
+    <div class="breadcrumbs"></div>
+</header>
+<div class="nav"></div><!--
+
+--><div class="wrapper">
+<h1 id="title">La Trobe Online</h1>
+<div class="nav-container"></div><div class="content-wrapper">
+    <div class="discover">
+        <h2 class="discover-title">Discover our online courses</h2>
+        <div class="course-lists">
+            <ul class="beige-arrows">
+                <li class="selected">Arts and Communication
+                    <ul class="course-list">
+                        <li><a href="http://www.latrobe.edu.au/">Bachelor of Asian Studies</a></li>
+                        <li><a href="">Master of Journalism</a></li>
+                        <li><a href="">Master of Philosophy</a></li>
+                    </ul>
+                </li>
+                <li>Business and Commerce
+                    <ul class="course-list">
+                        <li><a href="">Master of Finance</a></li>
+                        <li><a href="">Master of Event Management</a></li>
+                        <li><a href="">Bachelor of Marketing</a></li>
+                        <li><a href="">Master of Sport Management</a></li>
+                    </ul>
+                </li>
+                <li>Education, Outdoor and Environmental Studies
+                    <ul class="course-list">
+                        <li><a href="">Master of Applied Linguistics</a></li>
+                        <li><a href="">Master of Educational Studies</a></li>
+                        <li><a href="">Bachelor of Secondary teaching</a></li>
+                        <li><a href="">Master of Special Education</a></li>
+                    </ul>
+                </li>
+                <li>Health Sciences
+                    <ul class="course-list">
+                        <li><a href="">Master of Audiology</a></li>
+                        <li><a href="">Master of Counselling</a></li>
+                        <li><a href="">Bachelor of Family Therapy</a></li>
+                        <li><a href="">Master Oral Health</a></li>
+                    </ul>
+                </li>
+                <li>IT and Engineering
+                    <ul class="course-list">
+                        <li><a href="">Master of Engineering</a></li>
+                        <li><a href="">Master of Computer Science</a></li>
+                        <li><a href="">Master of Information Technology</a></li>
+                    </ul>
+                </li>
+                <li>Law
+                    <ul class="course-list">
+                        <li><a href="">Master of Global Business Law</a></li>
+                        <li><a href="">Master of Law</a></li>
+                    </ul>
+                </li>
+                <li>Sciences and Psychology
+                    <ul class="course-list">
+                        <li><a href="">Master of Botany</a></li>
+                        <li><a href="">Master of Genetics</a></li>
+                        <li><a href="">Bachelor of Mathematics and Statistics</a></li>
+                        <li><a href="">Master of Nanotechnology</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+<footer class="footer"></footer>
+
+<script>
+    document.body.classList.add('js');
+    
+    var windows = document.querySelectorAll('.discover-title');
+    var discipline = document.querySelectorAll('.beige-arrows li');
+    
+    for (var i=0;i<windows.length;i++){
+        var $this = windows[i];
+        $this.addEventListener('click', function(){
+            this.parentNode.classList.toggle('open');
+        });
+    };
+    
+    for (var i=0;i<discipline.length;i++){
+        var $this = discipline[i];
+        $this.addEventListener('click', function(){
+            closeWindows();
+            this.classList.toggle('selected');
+        });
+    };
+    
+    var closeWindows = function(){
+        [].forEach.call(discipline, function(item) {
+            item.classList.remove('selected');
+        });
+        //grid.classList.remove('active');
+    }
+    
+    var openWindow = function(ele){
+        //closeWindows();
+        ele.classList.toggle('open');
+        grid.classList.add('active');
+    }
+     
+    var initWindows = function(){
+        
+        for (var i=0;i<windows.length;i++){
+            var $this = windows[i];
+            //$this.firstElementChild.insertAdjacentHTML('beforeend',' <span class="close" aria-role="button" tabindex="0">&#10006;</span>');
+            $this.addEventListener('click', function(){
+                var ele = this;
+                openWindow(ele);
+            }, false);
+            $this.addEventListener('keyup', function(e){
+                var ele = this;
+                if (e.keyCode == '13'){
+                    openWindow(ele);
+                }
+            }, false);
+        }
+        
+        var closeButtons = document.querySelectorAll('.close');
+        for (var i=0;i<closeButtons.length;i++){
+            var $this = closeButtons[i];
+            $this.addEventListener('click', function(event){
+                this.parentElement.parentElement.focus();
+                closeWindows();
+                event.stopPropagation();
+            }, false);
+            $this.addEventListener('keyup', function(event){
+                if (event.keyCode == 13) {
+                    this.parentElement.parentElement.focus();
+                    closeWindows();
+                    event.stopPropagation();
+                }
+            }, false);
+        }
+    }
+    
+    //initWindows();
+    
+</script>
+
+
+
+</body></html>

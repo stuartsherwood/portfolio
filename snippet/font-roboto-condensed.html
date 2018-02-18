@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Noticia+Text:400' rel='stylesheet' type='text/css'>
+
+<style>
+
+/* =============================================================================
+   HTML5 Boilerplate CSS: h5bp.com/css
+   ========================================================================== */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
+[hidden] { display: none; }
+
+html { font-size: 10px; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html, button, input, select, textarea { font-family: sans-serif; color: #222; }
+body { margin: 0; line-height: 1.55; }
+
+::-moz-selection { background: #EF3829; color: #fff; text-shadow: none; }
+::selection { background: #EF3829; color: #fff; text-shadow: none; }
+
+a { color: #cc0000; }
+a:visited { color: #666; }
+a:hover { color: #000; text-decoration:none;}
+a:focus, *:focus { outline: thin dotted red; }
+a:hover, a:active { outline: 0; }
+
+abbr, acronym {cursor:help;}
+abbr[title] { border-bottom: 1px dotted; }
+b, strong { font-weight: bold; }
+blockquote { margin: 1em 40px; }
+dfn { font-style: italic; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size:1.8rem; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+small { font-size: 100%; }
+
+sub, sup { font-size: 1.2rem; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+
+svg:not(:root) { overflow: hidden; }
+
+figure { margin: 0; }
+
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+label { cursor: pointer; }
+legend { border: 0; *margin-left: -7px; padding: 0; white-space: normal; }
+button, input, select, textarea { font-size: 120%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input { line-height: normal; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+button[disabled], input[disabled] { cursor: default; }
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; *width: 13px; *height: 13px; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+th,td { vertical-align: top; }
+
+.chromeframe { margin: 0.2em 0; background: #ccc; color: black; padding: 0.2em 0; }
+
+
+
+/* ===== Primary Styles ========================================================
+   Author: Stuart Sherwood
+   ========================================================================== */
+
+html {font-family:'Roboto Condensed', Verdana, Helvetica, Arial, sans-serif;}
+
+body {padding:15px;}
+
+h1, h2, h3, h4, h5, h6 {font-family:'Roboto Condensed'; line-height:1; margin:0 0 0.2em 0;}
+
+h1 {color:rgb(150,0,0); font-size:4rem; font-weight:700; text-transform:uppercase;}
+h2 {font-size:3.6rem; font-weight:300; text-transform:uppercase;}
+h2 a:link {color:#ef3829;}
+h3 {font-size:3rem; font-weight:400;}
+h4 {font-size:2.8rem; font-weight:300;}
+h5 {font-size:2.2rem; font-weight:300;}
+h6 {font-size:2rem; font-weight:300;}
+
+h2:nth-of-type(1) {color:rgb(130,0,0);}
+h2:nth-of-type(2) {color:rgb(150,0,0);}
+h2:nth-of-type(3) {color:rgb(170,0,0);}
+h2:nth-of-type(4) {color:rgb(190,0,0);}
+.container > p+div:before, *:not(h1)+h2:before {color:#000; content:"§"; display:block; font-size:2rem; font-weight:300; margin:1em 0; text-align:center;}
+*:not(h2)+h3, *:not(h3)+h4, *:not(h4)+h5, *:not(h5)+h6 {margin-top:1.55em;}
+
+/* Text nodes */
+address,p,li,th,dt,dd {font-size:2rem; font-weight:300; margin:0;}
+cite {font-size:1.8rem;}
+
+.content>p:first-of-type {font:2.4rem 'Noticia Text';}
+p+p {margin-top:1.55em;}
+p:empty,li:empty {display:none;}
+
+blockquote {background-color:rgb(70, 62, 62); color:#fff; font-family:'Noticia Text'; margin:1.5em 0; padding:0.6em 1em 1em 1em;}
+
+fieldset {margin-bottom:3em;}
+label {float:left; width:200px;}
+input+label {float:none; width:auto;}
+input[type="text"],input[type="email"],input[type="tel"],input[type="search"],input[type="number"],input[type="date"],input[type="datetime"],input[type="url"],input[type="time"],input[type="month"],input[type="week"] {box-shadow:0 0 6px inset; border:none; padding:3px 6px;}
+legend {font-size:2.6rem;}
+textarea {border:none; box-shadow:0 0 6px inset; width:100%;}
+
+dl {margin-bottom:1.55em;}
+dt {font-weight:400;}
+dd+dt {margin-top:0.5em;}
+
+/* Tables */
+table {border:1px solid #999; margin:1.55em 0; width:100%;}
+table th { border:1px solid #999; background-color:#ddd; font-weight:400; padding:4px 8px 6px 8px; text-align:left;}
+table td { border:1px solid #999; font-size:1.6rem; font-weight:300; padding:8px;}
+tr:nth-child(odd) {background-color:#eee;}
+table caption {font-size:2.6em; text-align:left; padding-top:3px; padding-bottom:8px;}
+
+.container {max-width:1140px; margin:0 auto;}
+
+/*h1+h2, h2+h3, h3+h4, h4+h5, h5+h6 {margin-top:-0.3em;}*/
+
+/*body p:first-of-type:first-line {font-weight:400;}*/
+/*body p:first-of-type:first-letter {font-size:400%; margin-top:-0.3em;}*/
+
+nav {display:inline-block; position:fixed; width:276px;}
+nav h3 {margin:0;}
+nav h3 a {background-color:#333; color:#fff; padding:8px 12px}
+nav h3 a:visited {color:#fff;}
+nav a {background-color:#eee; display:block; margin-bottom:1px; padding:0 12px; text-decoration:none;}
+nav li a:visited {background-color:#eee;}
+nav a:hover {background-color:#ddd;}
+
+.content {display:inline-block; margin-left:288px;}
+.content > div {margin-top:1.55em;}
+
+
+
+</style>
+
+<head>
+<body>
+
+<article class="container">
+
+<nav id="nav-local">
+<h3><a href="http://www.latrobe.edu.au/about">About La Trobe</a></h3>
+<ul>
+  <li><a href="http://www.latrobe.edu.au/about/vision" class="parent">Our Vision</a>
+    <ul>
+      <li><a href="http://www.latrobe.edu.au/about/vision/values" class="">Our Values</a></li>
+      <li><a href="http://www.latrobe.edu.au/about/vision/introduction" class="">Introduction</a></li>
+      <li><a href="http://www.latrobe.edu.au/about/vision/learning-and-teaching" class="">Learning and Teaching</a></li>
+      <li><a href="http://www.latrobe.edu.au/about/vision/research" class="current">Research</a></li>
+      <li><a href="http://www.latrobe.edu.au/about/vision/our-campuses-and-communities" 
+      class="">Our campuses and communities</a></li>
+      <li><a href="http://www.latrobe.edu.au/about/vision/supporting-strategies" class="">Supporting Strategies</a></li>
+      <li><a href="http://www.latrobe.edu.au/about/vision/future-ready-implementation" class="">Future Ready Implementation</a></li>
+    </ul>
+  </li>
+  <li><a href="http://www.latrobe.edu.au/about/management" class="">Management and Planning</a></li>
+  <li><a href="http://www.latrobe.edu.au/about/governance" class="">Governance</a></li>
+  <li><a href="http://www.latrobe.edu.au/about/history" class="">Our history</a></li>
+  <li><a href="http://www.latrobe.edu.au/about/international" class="">International activities</a></li>
+  <li><a href="http://www.latrobe.edu.au/about/facts-figures" class="">Facts and figures</a></li>
+  <li><a href="http://www.latrobe.edu.au/about/maps" class="">Locations and Maps</a></li>
+  <li><a href="http://www.latrobe.edu.au/about/acknowledgement" class="">Acknowledgement</a></li>
+</ul>
+</nav>
+
+<div class="content">
+
+<h1>RE-ENTITY Test sheet (H1)</h1>
+<h2>All typographic elements arranged below (H2)</h2>
+			
+<p>This page demonstrates common semantic text formatting and the styles associated with them. This page is linked to x which I am using to fine tune a few of the global styles and add formatting for some elements that were previously not styled.</p>
+			
+<p>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum small text ament, con; venami quis nostrud laboris nisi<sup>12</sup> ut greyText exd srtd ae dertsd. Venami quis nostrud<sub>23</sub> laboris nisi ut nostrdt ut aliquip exd srtd ae dertsd.</p>
+
+<blockquote>
+<p>Blockquote. Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament.</p>
+<p>Blockquote. Loruim ipsum dolor sitm nitjh.</p>
+<cite>Sitm nitjh, Nodstrdf. 2004.</cite>
+</blockquote>
+
+<code>
+&lt;link href="/handbook/2007/assets/css/IE_hacks.css" rel="stylesheet" type="text/css" media="screen" /&gt;
+</code>
+			
+<h3>Content heading (H3)</h3>
+<p>Loruim ipsum dolor <del>del nitjh; dfer trdsdf nodstrdf</del> thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. <a href="#">Lorum ipsum dolor</a> sit ament, con; venami quis nostrud laboris nisi ut de venami sil de <strike>thws sdes fedq</strike> diy amin. Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer srtd ae dertsd.</p>
+
+<address>
+Address: 23/34 Yellow Brick Rd. Wonderworld. 23234.
+</address>
+
+<table class="general" summary="This table lists amount of money raised and spent by the major party candidates in the 2000 U.S. Presidential election" border="1" cellpadding="3" cellspacing="0">
+<caption>2000 U.S. Presidential Election Campaign Expenditure</caption>
+<tbody><tr>
+  <th scope="col">Candidate</th>
+  <th scope="col" abbr="raised">Amount Raised</th>
+  <th scope="col" abbr="spent">Amount Spent</th>
+</tr>
+<tr>
+  <td scope="row">George W. Bush</td>
+
+  <td>$193,088,650</td>
+  <td>$185,921,855</td>
+</tr>
+<tr>
+  <td scope="row">Al Gore</td>
+  <td>$132,900,252</td>
+  <td>$120,371,857</td>
+</tr>
+</tbody>
+</table>
+
+<h4>Content heading (H4)</h4>
+<p>As it turns out, the golden ratio provides us with a guide—a formula—for proper typesetting. Because of this, we can now set our type with absolute certainty in any situation! Better still, we can use this information about typography to make more informed decisions about all the spatial aspects of our designs, such as: The amount of whitespace that appears after each paragraph; Padding, margins, and other units of whitespace throughout the design; Headline line-heights in a given width; Any and all spatial properties that you wish to relate mathematically.</p>
+
+<h5>Minor heading (H5)</h5>
+<p>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip exd srtd ae dertsd.</p>
+<pre>Fnodstrdf thikl in quis ipsum dolor sit ament, con; venami quis.</pre>
+
+<h6>Feature List Heading (H6)</h6>
+<ul>
+<li>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. <q>Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip exd srtd ae dertsd.</q> Venami quis nostrud laboris nisi ut nostrdt ut aliquip exd srtd ae dertsd.</li>
+<li><a href="#">link dfer trdsdf nodstrdf</a></li>
+<li>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip exd srtd ae dertsd. Venami quis nostrud laboris nisi ut nostrdt ut aliquip exd srtd ae dertsd.</li>
+</ul>
+
+<samp>
+&lt;dt&gt;&lt;label for="Invoice"&gt;Invoice&lt;/label&gt;&lt;/dt&gt;
+&lt;dd&gt;&lt;input name="payment" type="radio" id="Invoice" value="Invoice" />&lt;/dd&gt;
+</samp>
+
+<h2>Section heading</h2>
+<p>In redrids ftrh de venami sil de thws sdes fedq diy amin. Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis.</p>
+<ul>
+	<li>Unordered list with nested unordered list</li>
+	<li>link dfer trdsdf nodstrdf</li>
+	<li>link dfer trdsdf nodstrdf
+	<ul>
+		<li>link dfer trdsdf nodstrdf</li>
+		<li>link dfer trdsdf nodstrdf</li>
+		<li>link dfer trdsdf nodstrdf</li>
+	</ul>
+	</li>
+</ul>
+
+<ul>
+	<li>Unordered list with nested ordered list</li>
+	<li>link dfer trdsdf nodstrdf</li>
+	<li>link dfer trdsdf nodstrdf
+	<ol>
+	<li>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</li>
+	<li>link dfer trdsdf nodstrdf</li>
+	<li>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</li>
+	</ol>
+	</li>
+</ul>
+			
+<ol>
+	<li>Ordered list with nested unordered list</li>
+	<li>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip. Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.
+	<ul>
+	<li>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</li>
+	<li>link dfer trdsdf nodstrdf</li>
+	<li>link dfer trdsdf nodstrdf</li>
+	</ul>
+	</li>
+	<li>link dfer trdsdf nodstrdf</li>
+</ol>
+
+<ol>
+	<li>Ordered list with nested ordered list</li>
+	<li>link dfer trdsdf nodstrdf</li>
+	<li>link dfer trdsdf nodstrdf
+	<ol>
+	<li>link dfer trdsdf nodstrdf</li>
+	<li>link dfer trdsdf nodstrdf</li>
+	<li>link dfer trdsdf nodstrdf</li>
+	</ol>
+	</li>
+</ol>
+
+<h2>Section heading</h2>
+<dl>
+<dt>Definition list</dt>
+<dd>Definition term</dd>
+<dd>Ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</dd>
+<dd>Definition with some words to see how it looks.</dd>
+
+<dt>Resdgsg</dt>
+<dd>Dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis laboris nisi ut nostrdt ut aliquip.</dd>
+
+<dt>Mklj</dt>
+<dd>Dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis.</dd>
+<dd>Ukluh hlj as iew</dd>
+</dl>
+		
+<dl class="bullets">
+<dt>Definition list</dt>
+<dd>Definition term</dd>
+<dd>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis.</dd>
+<dd>Definition with some words to see how it looks.</dd>
+
+<dt>Resdgsg</dt>
+<dd>Nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</dd>
+
+<dt>Mklj</dt>
+<dd>Dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris.</dd>
+<dd>Ukluh hlj as iew</dd>
+</dl>
+
+<p>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</p>
+
+<h2>Test heading</h2>
+<p>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</p>
+
+<p>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</p>
+
+<h3>Test heading</h3>
+<p>Loruim ipsum dolor sitm nitjh; dfer trdsdf nodstrdf thikl in quis. Sitm nitjh; dfer trdsdfnodstrdf thikl in quis. Lorum ipsum dolor sit ament, con; venami quis nostrud laboris nisi ut nostrdt ut aliquip.</p>
+
+<form method="post">
+<p id="required"><span class="required">*</span> indicates required fields.</p>
+<fieldset>
+<legend>Personal Details</legend>
+
+<p><label for="Name">Participants Name(s)<span class="required">*</span>:</label><textarea name="Name" cols="35" rows="2" id="Name"></textarea></p>
+<p><label for="color">Color<span class="required">*</span>:</label><input name="Org" type="color" id="color" value="" /></p>
+<p><label for="date">Date<span class="required">*</span>:</label><input name="Org" type="date" id="date" value="" /></p>
+<p><label for="datetime">Datetime<span class="required">*</span>:</label><input name="Org" type="datetime" id="datetime" value="" /></p>
+<p><label for="upload">Upload<span class="required">*</span>:</label><input name="Org" type="file" id="upload" value="" /></p>
+<p><label for="busphone">Contact Phone (BH)<span class="required">*</span>:</label><input name="busphone" type="text" id="busphone" value="" /></p>
+<p><label for="ahphone">Contact Phone (AH):</label><input name="ahphone" type="tel" id="ahphone" value="" /></p>
+<p><label for="mobile">Mobile:</label><input name="mobile" type="number" id="mobile" value="" /></p>
+<p><label for="fax">Fax:</label><input name="fax" type="text" id="fax" value="" /></p>
+<p><label for="email2">Email address:</label><input name="email" type="email" id="email2" value="" /></p>
+<p><label for="ulr">Web address:</label><input name="web" type="url" id="url" value="" /></p>
+
+</fieldset>
+
+
+<fieldset>
+
+<legend>Short Course Details</legend>
+<p class="instruction">Please check the short course name in the boxes below for courses you wish to enrol in.<span class="required">*</span></p>
+<p><input name="fee" type="checkbox" id="fee" value="$790.00" /> <label for="fee">Capturing Investment Opportunities EDO Workshop (inc. $131.80 GST)</label></p>
+<p><label for="amount"><b>Fee Total</b>:</label>
+<input name="fee" type="text" id="amount" value="$1450.00" /></p>
+<p><label for="bcard">Interest (1-10)</label>
+<input type="range" name="rangex" min="1" max="10" /></p>
+</fieldset>
+
+
+<fieldset>
+<legend>Payment</legend>
+<p class="instruction">Choose a payment method<span class="required">*</span></p>
+
+<p><input name="payment" type="radio" id="Cheque" value="Cheque" />
+<label for="Cheque">Cheque<sup>&dagger;</sup></label></p>
+<p><input name="payment" type="radio" id="Invoice" value="Invoice" />
+<label for="Invoice">Invoice</label></p>
+<p><input name="payment" type="radio" id="Cash" value="Cash" />
+<label for="Cash">Cash<sup>&Dagger;</sup></label></p>
+<p><input type="radio" id="visa" name="payment" value="Visa" />
+<label for="visa">Visa</label></p>
+<p><input type="radio" id="mcard" name="payment" value="MasterCard" />
+<label for="mcard">MasterCard</label></p>
+<p><input type="radio" id="bcard" name="payment" value="BankCard" />
+<label for="bcard">BankCard</label></p>
+
+<p class="greyText"><sup>&dagger;</sup>Request to raise Invoice (If requesting this option, you must allow a minimum 2 week turn around between registration and payment)</p>
+<p class="greyText"><sup>&Dagger;</sup>Payable on the day of the course</p>
+
+<p><label for="Total">Total Amount<span class="required">*</span>:</label>
+<input name="Total" type="text" id="Total" value="(incl. GST)" /></p>
+<p><label for="CardNo">Card Number:</label>
+<input name="CardNo" type="text" id="CardNo" /></p>
+<p><label for="expiry">Expiry Date:</label>
+<input name="expiry" type="text" id="expiry" /></p>
+<p><label for="Cardholder">Name of Cardholder:</label>
+<input name="Cardholder" type="text" id="Cardholder" /></p>
+
+</fieldset>
+
+
+<fieldset>
+<legend>Pay by Cheque or Cash</legend>
+<p class="instruction">Please submit this form now only if you are NOT paying by Credit Card</p>
+<p><input type="submit" name="Submit" value="Pay by Cash/Cheque/Invoice" /></p>
+
+</fieldset>
+</form>
+
+</div>
+
+</article>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+</body>
+</html>

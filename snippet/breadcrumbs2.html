@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<title>Breadcrumbs</title>
+
+<style>
+
+html, body {height:100%;}
+
+#nav-breadcrumb {background-color:#333; font-family:sans-serif; font-size:14px; position:relative; overflow:hidden; text-transform:uppercase;}
+#nav-breadcrumb a {background:#333 url(img/arrow-right-grey.png) no-repeat 8px 14px; color:#fff; display:block; padding:16px 10px 13px 26px; text-decoration:none;}
+#nav-breadcrumb a:hover {color:#F99D27;}
+#nav-breadcrumb a.live {overflow:hidden; position:absolute; top:0; width:100%;}
+#nav-breadcrumb a.you-are-here {color:#F99D27; cursor:default;}
+#nav-breadcrumb a:nth-child(2) {background-color:#444; background-position:26px 14px; padding-left:44px;}
+#nav-breadcrumb a:nth-child(3) {background-color:#555; background-position:44px 14px; padding-left:62px;}
+#nav-breadcrumb a:nth-child(4) {background-color:#666; background-position:62px 14px; padding-left:80px;}
+#nav-breadcrumb a:nth-child(5) {background-color:#777; background-position:80px 14px; padding-left:98px;}
+#nav-breadcrumb a:nth-child(6) {background-color:#888; background-position:98px 14px; padding-left:116px;}
+#nav-breadcrumb a:nth-child(7) {background-color:#999; background-position:116px 14px; padding-left:134px;}
+
+#nav-breadcrumb span {background:#333 url(img/arrow-right-grey.png) no-repeat 8px 14px; color:#fff; cursor:pointer;  display:block; padding:16px 10px 13px 26px; position:relative;}
+#nav-breadcrumb span:focus {outline:1px dotted #cc0000;}
+#nav-breadcrumb .close-crumbs {background-color:#fff; background-image:none; bottom:0; color:#cc0000; display:none; right:0;  padding:10px 14px; position:absolute;}
+
+</style>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+</head>
+
+<body>
+
+<div id="nav-breadcrumb">
+  <a href="/">University home</a><a href="http://www.latrobe.edu.au/about">About La Trobe</a><a href="http://www.latrobe.edu.au/about/vision">Our Vision</a><a href="#" class="you-are-here">Supporting Strategies</a>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('#nav-breadcrumb a').addClass('live').attr('tabindex','0');
+  $('#nav-breadcrumb').append('<span class="close-crumbs">X</span><span tabindex="0" class="last-crumb">You are here</span>');
+
+  $('.last-crumb').click(function(){
+    var crumbsHeight = $('#nav-breadcrumb a').length * 44;
+    $('#nav-breadcrumb').animate({'height':crumbsHeight});
+    $(this).fadeOut();
+    $('.close-crumbs').slideDown();
+    $('#nav-breadcrumb a').each(function(){
+      $(this).css('top',$(this).index()*44);
+    });
+  });
+  $('.close-crumbs').click(function(){
+    $('#nav-breadcrumb').animate({'height':'44px'},'slow');
+    $(this).slideUp();
+    setTimeout(function(){
+      $('.last-crumb').fadeIn();
+      $('#nav-breadcrumb a').addClass('live');
+    },500);
+  });
+
+});
+</script>
+
+</body>
+</html>

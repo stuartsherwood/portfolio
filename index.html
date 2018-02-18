@@ -1,216 +1,341 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>    <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>    <html lang="en" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<!doctype html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-
-<meta name="viewport" content="initial-scale=1, minimum-scale=1">
-
-<meta name="description" content="" />
-<meta name="keywords" content="" />
-
-<meta name="author" content="Stuart Sherwood" />
-<meta name="assetcreated" content="26 August 2014" />
-
-    <title>Stuart Sherwood, Web Designer/Developer</title>
-
+<meta charset="utf-8">
+<title>Stuart Sherwood - Portfolio</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,800" rel="stylesheet">
 
 <style>
+body {background:#222; font-family:'Montserrat',sans-serif; margin:0; padding:0;}
+.tile-open {overflow:hidden;}
 
-@font-face {
-    font-family: 'BallparkWeiner';
-    src: url('Ballpark-fontfacekit/ballpark_weiner-webfont.eot');
-    src: url('Ballpark-fontfacekit/ballpark_weiner-webfont.eot?#iefix') format('embedded-opentype'),
-         url('Ballpark-fontfacekit/ballpark_weiner-webfont.woff') format('woff'),
-         url('Ballpark-fontfacekit/ballpark_weiner-webfont.ttf') format('truetype'),
-         url('Ballpark-fontfacekit/ballpark_weiner-webfont.svg#BallparkWeiner') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-    
-@font-face {
-    font-family: 'BitterRegular';
-    src: url('bitter-fontfacekit/Bitter-Regular-webfont.eot');
-    src: url('bitter-fontfacekit/Bitter-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('bitter-fontfacekit/Bitter-Regular-webfont.woff') format('woff'),
-         url('bitter-fontfacekit/Bitter-Regular-webfont.ttf') format('truetype'),
-         url('bitter-fontfacekit/Bitter-Regular-webfont.svg#BitterRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+main {margin-bottom:1vw;}
+section + section {margin-top:4vw;}
 
-body {font:18px/24px BitterRegular,serif; margin:0; overflow-x:hidden;}
-header {border-bottom:60px solid #242424; margin:10px 0 -24px -5px; padding-top:20px; transform:rotate(-2deg);}
-h1 {color:#242424; font:60px/0.8 BallparkWeiner,serif; margin:0 0 -12px; padding-left:60px;}
-/* GALLERY */
-.gallery {background-color:#242424; padding:60px; position:relative;}
-.gallery img {float:none!important; padding:0!important;}
-.placeholder {background:transparent url(images/overlay-loader.gif) no-repeat center center; margin:0; xmax-height:420px; overflow:hidden; text-align:center;}
-.placeholder a {display:block;}
-.placeholder img {margin:0 auto; width:100%;}
-.placeholder img + img {display:none!important;}
-.gallery-info h2 {color:#fff; font-size:30px;}
-.gallery-info p {color:#fff;}
-p.gallery-counter {font-family:'Roboto Bold', sans-serif; font-size:16px; letter-spacing:3px; margin-bottom:20px;}
-p.caption {font-size:15px; line-height:1.3; margin-bottom:20px; max-height:110px; overflow:auto;}
-ul.showcase {height:105px; padding:0; margin:0; list-style-type:none; overflow-x:auto; overflow-y:hidden; white-space:nowrap;}
-.showcase a:hover {background-color:#504742;}
-.showcase li {display:inline-block; padding:0; margin:0; vertical-align:bottom;}
-.showcase a {cursor:pointer;}
-.showcase img {border-top:10px solid #242424; height:80px; padding:0;}
-.showcase a:focus img {outline:none; transform:scale(1.1);}
-.m-brown .showcase img {border-color:#63513D;}
-.m-yellow .showcase img {border-color:#FF9E1B;}
-.m-beige .showcase img {border-color:#F5F2E4;}
-.showcase img.selected {border-bottom:10px solid orange;
-    -webkit-animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
-    -moz-animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
-    -o-animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
-    -ms-animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
-    animation: 0.5s ease-out 0s alternate backwards 2 bbounce;
-}
-p.gallery-attribution {font-size:15px; margin-bottom:20px;}
-.gallery-attribution:empty {display:none;}
-.gallery-attribution:before {content:"Attribution: ";}
-.gallery-left, .gallery-right {background-color:orange; bottom:35px; color:#fff; display:inline-block; height:44px; width:44px;}
-.gallery-left:hover, .gallery-right:hover {background-color:#B2371F;}
-.gallery-left {background-image:url(images/chevron-sm-white-left.png); background-repeat:no-repeat; background-position:center center; left:572px;}
-.gallery-right {background-image:url(images/chevron-sm-white-right.png); background-repeat:no-repeat; background-position:center center; left:616px;}
+/* Closed layer */
+.layer {background:#f7dd61; box-sizing:border-box; height:32vw; margin:0; overflow:hidden; position:absolute; transform:translate3d(0,0,0); transition:bottom 0.3s ease-in-out, height 0.3s ease-in-out, left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.6s, width 0.3s ease-in-out, z-index 0.1s ease-in-out; z-index:1;}
+.layer:focus {outline:2px solid red;}
+.layer:hover {}
+header {padding:20px; pointer-events:none; position:relative; transition:opacity 0.3s ease-in-out;}
+h2 {font-size:16px; font-weight:800; margin:0 0 1vw 0; position:relative; pointer-events:none; text-transform:uppercase; transition:margin-bottom 0.3s ease-in-out; z-index:2;}
+a {color:#333; text-decoration:none;}
+p {font-weight:300; margin-bottom:0; transition:visibility 0s; visibility:hidden;}
+img {display:none; pointer-events:none;}
+iframe {border:0; height:50vw; width:100%;}
+.content {display:none; max-height:86%; overflow-y:scroll;}
 
-address {font-style:normal; padding:60px;}
+/* Open layer */
+.open {background-color:#fff!important;}
+.open:focus {outline:none;}
+.open header {box-shadow:0 0 4px rgba(0,0,0,0.3); pointer-events:inherit;}
+.open[data-snippet] header {background:transparent url(images/interactive.svg) no-repeat calc(100% - 20px) center; background-size:60px; padding:20px 90px 20px 20px;}
+.open h2 {font-size:20px;}
+.open p {transition:visibility 0.3s 0.3s; visibility:visible;}
+.open .content {display:block;}
+.open .content img {display: block; vertical-align:bottom; width:100%;}
 
-@media (min-width:768px) {
-  header {padding-top:50px;}
-  h1 {font-size:100px; line-height:0.8; margin:0 0 -18px 0;}   
-}
-    
-@media (min-width:320px) and (max-width:1024px) {
-  .gallery-info {padding:20px 0;}
-  .gallery-info h2 {margin-top:0;}
-  p.gallery-counter {float:left; margin-right:12px;}
+.layer:nth-child(1) {background-color:#fffa5a;}
+.layer:nth-child(2) {background-color:#fff567;}
+.layer:nth-child(3) {background-color:#ffef75;}
+.layer:nth-child(4) {background-color:#ffea81;}
+.layer:nth-child(5) {background-color:#ffe58d;}
+.layer:nth-child(6) {background-color:#ffdf9a;}
+.layer:nth-child(7) {background-color:#fddba6;}
+.layer:nth-child(8) {background-color:#fbd6b1;}
+.layer:nth-child(9) {background-color:#f8d2bb;}
+.layer:nth-child(10) {background-color:#f3cdc5;}
+.layer:nth-child(11) {background-color:#edcad1;}
+.layer:nth-child(12) {background-color:#e5c6db;}
+.layer:nth-child(13) {background-color:#dac4e7;}
+.layer:nth-child(14) {background-color:#c9c3f3;}
+.layer:nth-child(15) {background-color:#abc5ff;}
+
+@media (max-width:1199px) and (orientation:portrait) {
+.layer {width:32vw;}
+.tile-open .layer {opacity:0;}
+.layer:nth-child(1) {left:1vw; top:1vw;}
+.layer:nth-child(2) {left:34vw; top:1vw;}
+.layer:nth-child(3) {left:67vw; top:1vw;}
+.layer:nth-child(4) {left:1vw; top:34vw;}
+.layer:nth-child(5) {left:34vw; top:34vw;}
+.layer:nth-child(6) {left:67vw; top:34vw;}
+.layer:nth-child(7) {left:1vw; top:67vw;}
+.layer:nth-child(8) {left:34vw; top:67vw;}
+.layer:nth-child(9) {left:67vw; top:67vw;}
+.layer:nth-child(10) {left:1vw; top:100vw;}
+.layer:nth-child(11) {left:34vw; top:100vw;}
+.layer:nth-child(12) {left:67vw; top:100vw;}
+.layer:nth-child(13) {left:1vw; top:133vw;}
+.layer:nth-child(14) {left:34vw; top:133vw;}
+.layer:nth-child(15) {left:67vw; top:133vw;}
+.layer.open {box-shadow:0 0 8px rgba(0,0,0,0.6); height:98vh; left:1vw; opacity:1; position:fixed; top:1vw; width:98vw; z-index:2;}
+.layer:last-child {margin-bottom:1vw;}
 }
 
-@media (min-width:1025px) and (max-width:10000px) {
-  h1 {padding-left:100px;}
-  .gallery {padding:160px 120px; position:relative;}
-  .gallery-info {position:absolute; right:120px; top:0; width:30%;}
-  .gallery-controls {position:absolute; right:0; top:-85px;}
-  .gallery-left, .gallery-right {height:88px; width:88px;}
-  address {padding:120px;}
+@media (max-width:1199px) and (orientation:landscape) {
+.layer {height:23.75vw; width:23.75vw;}
+.tile-open .layer {opacity:0;}
+.layer:nth-child(1) {left:1vw; top:1vw;}
+.layer:nth-child(2) {left:25.75vw; top:1vw;}
+.layer:nth-child(3) {left:50.5vw; top:1vw;}
+.layer:nth-child(4) {left:75.25vw; top:1vw;}
+.layer:nth-child(5) {left:1vw; top:25.75vw;}
+.layer:nth-child(6) {left:25.75vw; top:25.75vw;}
+.layer:nth-child(7) {left:50.5vw; top:25.75vw;}
+.layer:nth-child(8) {left:75.25vw; top:25.75vw;}
+.layer:nth-child(9) {left:1vw; top:50.5vw;}
+.layer:nth-child(10) {left:25.75vw; top:50.5vw;}
+.layer:nth-child(11) {left:50.5vw; top:50.5vw;}
+.layer:nth-child(12) {left:75.25vw; top:50.5vw;}
+.layer:nth-child(13) {left:1vw; top:75.25vw;}
+.layer:nth-child(14) {left:25.75vw; top:75.25vw;}
+.layer:nth-child(15) {left:50.5vw; top:75.25vw;}
+.layer:last-child {margin-bottom:1vw;}
+.layer.open {box-shadow:0 0 8px rgba(0,0,0,0.6); height:98vh; left:1vw; opacity:1; position:fixed; top:1vw; width:98vw; z-index:2;}
 }
-    
-@-moz-keyframes bbounce { 
-    from { border-bottom:10px solid orange; border-top:10px solid #242424;}
-    to { border-bottom:20px solid orange; border-top:0 solid #242424;}
+
+@media (min-width:1200px) {
+.wrapper {right:29vw;}
+.tile-open {overflow:auto;}
+/*.tile-open .layer {bottom:1vw;}*/
+.layer {height:13vw; left:81vw; width:13vw;}
+.close-layer {display:none;}
+.indicator {line-height:1.5}
+.layer:nth-child(1) {left:72vw; top:1vw;}
+.layer:nth-child(2) {left:86vw; top:1vw;}
+.layer:nth-child(3) {left:72vw; top:15vw;}
+.layer:nth-child(4) {left:86vw; top:15vw;}
+.layer:nth-child(5) {left:72vw; top:29vw;}
+.layer:nth-child(6) {left:86vw; top:29vw;}
+.layer:nth-child(7) {left:72vw; top:43vw;}
+.layer:nth-child(8) {left:86vw; top:43vw;}
+.layer:nth-child(9) {left:72vw; top:57vw;}
+.layer:nth-child(10) {left:86vw; top:57vw;}
+.layer:nth-child(11) {left:72vw; top:71vw;}
+.layer:nth-child(12) {left:86vw; top:71vw;}
+.layer:nth-child(13) {left:72vw; top:85vw;}
+.layer:nth-child(14) {left:86vw; top:85vw;}
+.layer:nth-child(15) {left:72vw; top:99vw;}
+.layer:last-child {margin-bottom:1vw;}
+.layer.open {height:97vh; left:1vw; position:fixed; top:1vw; width:70vw;}
 }
     
 </style>
-
-
-<!--[if lt IE 9]>
-<script src="/__data/assets/js_file/0006/576672/html5shiv.min.js"></script>
-<![endif]-->
-
-
 </head>
 
-<body class="">
+<body>
+<main class="wrapper">
 
+<section class="layer" tabindex="0" data-img="images/cover.svg">
+    <header>
+        <h2><a href="images/cover.svg" tabindex="-1">Welcome</a></h2>
+        <p>Samples of my work.</p>
+    </header>
+    <div class="content"></div>
+</section>
 
-<div class="wrapper">
-
-<header itemscope itemtype="http://schema.org/Person"><h1 itemprop="name">Stuart Sherwood</h1></header>
-    
-<article class="gallery">
-    <div class="gallery-info">
-      <h2>Portfolio <span class="gallery-current">1</span>/<span class="gallery-total">11</span></h2>
-      <p class="caption"></p>
-      <p class="gallery-attribution"></p>
+<section class="layer" tabindex="0" data-img="images/Courses.png">
+    <header>
+        <h2><a href="images/Courses.png" tabindex="-1">Course publishing application</a></h2>
+        <p>Goal: create one page per course to better align with campaigns and improve usability, increase findability of course content and raise conversions.</p>
+    </header>
+    <div class="content">
     </div>
-    <div class="gallery-controls">
-      <span class="gallery-left"></span><span class="gallery-right"></span>
-    </div>
-    <ul class="showcase">
-      <li><a href="images/Courses.png"><img alt="Course publishing application. 2017, Responsive. Goal: increase findability and conversions." src="images/Courses-thumb.jpg"></a></li>
-      <li><a href="images/La-Trobe-University.jpg"><img alt="Current version of the La Trobe University home page. 2017, Responsive. Goal: deliver recommendations from Global Reviews user testing." src="images/La-Trobe-University-thumb.jpg"></a></li>
-      <li><a href="images/best-mobile-site.png"><img alt="Compliment from Twitter and recognition from college." src="images/best-mobile-site-thumb.png"></a></li>
-      <li><a href="images/ATAR-Wizard.jpg"><img alt="ATAR Wizard app. 2017, Responsive. Goal: Comply with new legal requirements and improve user experience." src="images/ATAR-Wizard-thimb.jpg"></a></li>
-      <li><a href="images/Subjects.png"><img alt="Subject page. 2014, Responsive. Goal: improve usability and SEO of all subject pages" src="images/Subjects-thumb.jpg"></a></li>
-      <li><a href="images/Scholarships.png"><img alt="Scholarships application. 2017, Responsive. Goal: help users discover available funds." src="images/Scholarships-thumb.jpg"></a></li>
-      <li><a href="images/Plan-your-orientation.png"><img alt="Orientation activity planner. 2018, Responsive. Goal: allow users to discover and save orientation activities." src="images/Plan-your-orientation-thumb.png"></a></li>
-      <li><a href="images/mobile-screens.jpg"><img alt="La Trobe mobile application interface designs. Goal: create mobile application UI toolkit." src="images/mobile-screens-thumb.jpg"></a></li>
-      <!--li><a href="images/audio.png"><img alt="La Trobe audio and podcast module. 2014, Responsive" src="images/audio-thumb.png"></a></li>
-      <li><a href="images/photo-gallery.jpg"><img alt="La Trobe photo gallery module. 2014, Responsive" src="images/photo-gallery-thumb.jpg"></a></li-->
-      <li><a href="images/top-ten-treks.png"><img alt="My longest enduring work circa 2001." src="images/top-ten-treks.png"></a></li>
-      <li><a href="images/vertex.png"><img alt="Vertex logo, 2017" src="images/vertex-thumb.png"></a></li>
-      <li><a href="images/catchi-smile.png"><img alt="Boat signage. 2013" src="images/catchi-smile-thumb.png"></a></li>
-      <!--li><a href="images/Tetsuo-badge.png"><img alt="Japanese motorcycle club badge. 2014" src="images/Tetsuo-badge-thumb.png"></a></li>
-      <li><a href="images/promo.jpg"><img alt="La Trobe etched image campain module. 2014, Responsive" src="images/promo-thumb.jpg"></a></li-->
-    </ul>
-    
-    <figure class="placeholder"><a class="load" href="images/Courses.png" tabindex="0">
-        <img alt="" src="images/Courses.png"></a>
-    </figure>
-</article>
-    
-<address itemscope itemtype="http://schema.org/Person">
-    <h2>Contact</h2>
-    <p>
-        <span itemprop="telephone">043 166 1742</span><br />
-        <a href="mailto:stuartosherwood@yahoo.com" itemprop="email">stuartosherwood@yahoo.com</a>
-    </p>
-</address>
+</section>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<section class="layer" tabindex="0" data-img="images/La-Trobe-University.jpg">
+    <header>
+        <h2><a href="images/La-Trobe-University.jpg" tabindex="-1">La Trobe homepage</a></h2>
+        <p>Redesign of the La Trobe University home page, late 2017. Goals: improve usability, navigation, build reputation and personalise content.</p>
+    </header>
+    <div class="content"></div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/mobile-screens.jpg">
+    <header>
+        <h2><a href="images/mobile-screens.jpg" tabindex="-1">Mobile UI toolkit</a></h2>
+        <p>La Trobe mobile application interface designs. Goal: create mobile application UI toolkit.</p>
+    </header>
+    <div class="content">
+    </div>
+</section>
+
+<section class="layer" tabindex="0" data-snippet="snippet/accordion-nav.html">
+    <header>
+        <h2><a href="snippet/accordion-nav.html" tabindex="-1">Accordion nav</a></h2>
+        <p>Deep navigation widget used on latrobe.edu.au. Production version WCAG AA compliant.</p>
+    </header>
+    <div class="content">
+    </div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/ATAR-Wizard.jpg">
+    <header>
+        <h2><a href="images/ATAR-Wizard.jpg" tabindex="-1">ATAR Wizard</a></h2>
+        <p>Discover ATAR entranace scores. Goal: meet compliance rules, improve usability and align visual styles.</p>
+    </header>
+    <div class="content"></div>
+</section>
+
+<section class="layer" tabindex="0" data-snippet="snippet/streams.html">
+    <header>
+        <h2><a href="snippet/streams.html" tabindex="-1">Streams</a></h2>
+        <p>Experimental interface.</p>
+    </header>
+    <div class="content">
+    </div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/Subjects.png">
+    <header>
+        <h2><a href="images/Subjects.png" tabindex="-1">Subjects publication</a></h2>
+        <p>Goals: replace legacy subjects application, improve SEO of subject pages, migrate presentation layer to our CMS and adopt brand styles.</p>
+    </header>
+    <div class="content"></div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/Scholarships.png">
+    <header>
+        <h2><a href="images/Scholarships.png" tabindex="-1">Scholarships</a></h2>
+        <p>Goals: help users discover available funds and centralise all scholarships under one business process.</p>
+    </header>
+    <div class="content"></div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/Plan-your-orientation.png">
+    <header>
+        <h2><a href="images/Plan-your-orientation.png" tabindex="-1">Orientation activity planner</a></h2>
+        <p>Goals: Help new students discover orientation activities and provide an easy way to create a schedule.</p>
+    </header>
+    <div class="content">
+    </div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/audio.png">
+    <header>
+        <h2><a href="images/audio.png" tabindex="-1">Podcast audio module with transcript</a></h2>
+        <p>Editors made use of a custom editor to create the transcripts.</p>
+    </header>
+    <div class="content">
+        
+    </div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/vertex.svg">
+    <header>
+        <h2><a href="images/vertex.svg" tabindex="-1">Vertex</a></h2>
+        <p>Branding for new business.</p>
+    </header>
+    <div class="content"></div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/catchi-smile.png">
+    <header>
+        <h2><a href="images/catchi-smile.png" tabindex="-1">Catchi</a></h2>
+        <p>Illustration for boat signage.</p>
+    </header>
+    <div class="content"></div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/top-ten-treks.png">
+    <header>
+        <h2><a href="images/top-ten-treks.png" tabindex="-1">Top Ten Treks</a></h2>
+        <p>My longest enduring work circa 2001.</p>
+    </header>
+    <div class="content"></div>
+</section>
+
+<section class="layer" tabindex="0" data-img="images/best-mobile-site.png">
+    <header>
+        <h2><a href="images/best-mobile-site.png" tabindex="-1">Best mobile site</a></h2>
+        <p>Compliment from Twitter and recognition from college.</p>
+    </header>
+    <div class="content">
+    </div>
+</section>
+
+</main>
+
 <script>
-//IMAGE GALLERY
-$('.showcase li:first-child img').addClass('selected');
-var firstCaption = $('.showcase li:first-child img').attr('alt');
-$('.caption').text(firstCaption);
-var attribution = $('.showcase li:first-child img').attr('data-attribution');
-$('.gallery-attribution').text(attribution);
 
-$('.showcase a').on('click',function(){
-	var newimage = $(this).attr('href');
-	var caption = $(this).children("img").attr('alt');
-        var count = $(this).parent('li').index() + 1;
-        var currentAttribution = $(this).children("img").attr('data-attribution');
+/*$('.close-layer').click(function(e){
+    $('body').removeClass('tile-open');
+    $('.layer').removeClass('open');
+    e.stopPropagation();
+});*/
 
-        $('<img src="'+ newimage +'">').load(function() {
-          $('.placeholder img').fadeOut(300, function() { 
-            $(this).remove();
-          });
-          $(this).hide().fadeIn(300, function() {
-            $(this).appendTo('.placeholder a');
-            $('.placeholder a').attr('href',newimage);
-            $('.placeholder img').attr('alt',caption);
-            $('.caption').text(caption);
-            $('.gallery-attribution').text(currentAttribution);
-            $('.gallery-current').text(count);
-          });
-        })
+var layers = document.getElementsByClassName('layer');
 
-        $('.showcase img').removeClass('selected');
-        $(this).children('img').addClass('selected');
-	return false;
+for (i=0; i < layers.length; i++) {
+    layers[i].addEventListener('click',function(e){
+        e.preventDefault();
+        openTile(e.target);
+    });
+    layers[i].addEventListener('keyup',function(e){
+        if (e.code == "Enter") {
+            e.preventDefault();
+            openTile(e.target);
+        }
+    });
+}
+function openTile(e) {
+    var openTile = document.querySelector('.open');
+    if (e.localName == 'header') {
+        e.parentNode.classList.remove('open');
+    }
+    else {
+        if (openTile) {
+            openTile.classList.remove('open');
+        }
+        e.classList.add('open');
+        if (e.classList.contains('set') == false) {
+            e.classList.add('set');
+            var content = e.children[1];
+
+            var imgPath = e.dataset.img;
+            if (imgPath) {
+                var newImg = document.createElement('img');
+                newImg.setAttribute('src',imgPath);
+                content.appendChild(newImg);
+            }
+            var snippetPath = e.dataset.snippet;
+            if (snippetPath) {
+                var newIframe = document.createElement('iframe');
+                newIframe.setAttribute('src',snippetPath);
+                content.appendChild(newIframe);
+            }
+            if (document.body.clientWidth >= 1200) {
+                document.body.classList.add('tile-open');
+            } else document.body.classList.remove('tile-open');
+        }
+    }
+}
+    
+if (document.body.clientWidth >= 1200) {
+    openTile(document.querySelector('.layer'));
+    document.body.classList.toggle('tile-open');
+}
+
+var resizeTimer;
+window.addEventListener('resize', function(e) {
+
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() {
+
+    if (document.body.clientWidth >= 1200) {
+        document.body.classList.add('tile-open');
+        var openedTile = document.querySelector('.open');
+        if (openedTile == undefined) {
+            openTile(document.querySelector('.layer'));
+        }
+    } else document.body.classList.remove('tile-open');
+
+  }, 250);
+
 });
-
-$('.gallery-left').on('click',function(){
-  $('.showcase').animate({scrollLeft:'-=121'}, 400);
-  $('.showcase img.selected').parent().parent().prev('li').children('a').click();
-  return false;
-});
-
-$('.gallery-right').on('click',function(){
-  $('.showcase').animate({scrollLeft:'+=121'}, 400);
-  $('.showcase img.selected').parent().parent().next('li').children('a').click();
-  return false;
-});    
 </script>
-
-</div>
-
+ 
 </body>
 </html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta content="minimum-scale=1.0, width=device-width, initial-scale=1" name="viewport" />
+<title>Personalisation</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<style>
+    body {font-family:Roboto,sans-serif; margin:0;}
+    h2 {font-size:18px; margin:4px;}
+    
+    .p-item {opacity:0.1;}
+    #courses li {opacity:1;}
+    
+    .generic .generic {opacity:1;}
+    .au .au {opacity:1;}
+    .int .int {opacity:1;}
+    .ug .ug {opacity:1;}
+    .pg .pg {opacity:1;}
+    .au-ug .au-ug {opacity:1;}
+    .au-pg .au-pg {opacity:1;}
+    .int-ug .int-ug {opacity:1;}
+    .int-pg .int-pg {opacity:1;}
+    .au-ug-arts .au-ug-arts {opacity:1;}
+    .au-pg-arts .au-pg-arts {opacity:1;}
+    .int-ug-arts .int-ug-arts {opacity:1;}
+    .int-pg-arts .int-pg-arts {opacity:1;}
+    .au-ug-health .au-ug-health {opacity:1;}
+    .au-pg-health .au-pg-health {opacity:1;}
+    .int-ug-health .int-ug-health {opacity:1;}
+    .int-pg-health .int-pg-health {opacity:1;}
+    .au-ug-science .au-ug-science {opacity:1;}
+    .au-pg-science .au-pg-science {opacity:1;}
+    .int-ug-science .int-ug-science {opacity:1;}
+    .int-pg-science .int-pg-science {opacity:1;}
+    
+    .au-ug-arts li.au-ug-arts {color:red;}
+    .au-pg-arts li.au-pg-arts {color:red;}
+    .int-ug-arts li.int-ug-arts {color:red;}
+    .int-pg-arts li.int-pg-arts {color:red;}
+    .au-ug-health li.au-ug-health {color:red;}
+    .au-pg-health li.au-pg-health {color:red;}
+    .int-ug-health li.int-ug-health {color:red;}
+    .int-pg-health li.int-pg-health {color:red;}
+    .au-ug-science li.au-ug-science {color:red;}
+    .au-pg-science li.au-pg-science {color:red;}
+    .int-ug-science li.int-ug-science {color:red;}
+    .int-pg-science li.int-pg-science {color:red;}
+    
+</style>
+
+</head>
+<body class="">
+    
+    <label><input id="au" type="radio" name="location" />AU</label>
+    <label><input id="int" type="radio" name="location" />INT</label>
+    <label><input id="ug" type="radio" name="study-level" />UG</label>
+    <label><input id="pg" type="radio" name="study-level" />PG</label>
+    <label><input id="arts" type="radio" name="study-option" />Arts</label>
+    <label><input id="health" type="radio" name="study-option" />Health</label>
+    <label><input id="science" type="radio" name="study-option" />Science</label>
+    <button id="done">Done</button>
+    <button id="nope">Nope</button>
+    
+    <br /><br />
+
+    <h2 class="p-item au">AU story</h2>
+    <h2 class="p-item int">INT story</h2>
+    <h2 class="p-item au-ug">AU UG story</h2>
+    <h2 class="p-item generic">Generic story</h2>
+    <h2 class="p-item au">AU story</h2>
+    <h2 class="p-item generic">Courses</h2>
+    <ul id="courses">
+        <li class="p-item au-ug-arts int-ug-arts ">Arts</li>
+        <li class="p-item au-ug-health au-pg-health int-ug-health int-pg-health">Health</li>
+        <li class="p-item au-ug-science au-pg-science int-ug-science int-pg-science">Science</li>
+    </ul>
+    <h2 class="p-item int">INT story</h2>
+    <h2 class="p-item au-pg">AU PG story</h2>
+    <h2 class="p-item ug">UG story</h2>
+    <h2 class="p-item int-ug">INT UG story</h2>
+    <h2 class="p-item int-pg">INT PG story</h2>
+    <h2 class="p-item pg">PG story</h2>
+    <h2 class="p-item generic">Generic story</h2>
+    <h2 class="p-item au-ug-arts">AU UG arts story</h2>
+    <h2 class="p-item int-pg-arts">INT PG arts story</h2>
+    <h2 class="p-item au-pg-health">PG health story</h2>
+    <h2 class="p-item int-ug-arts">INT UG arts story</h2>
+    <h2 class="p-item au-pg-arts">AU PG arts story</h2>
+    <h2 class="p-item generic">Generic story</h2>
+    <h2 class="p-item int-ug-arts int-pg-arts">INT UG/PG arts story</h2>
+    <h2 class="p-item int-pg-science int-pg-health">INT PG science health story</h2>
+    <h2 class="p-item int-ug-science int-ug-health">INT UG science health story</h2>
+    <h2 class="p-item generic">Generic story</h2>
+    <h2 class="p-item int-pg-arts">INT PG arts story</h2>
+    <h2 class="p-item au-ug-arts">AU UG arts story</h2>
+    <h2 class="p-item generic">Generic story</h2>
+    
+
+
+<script>
+
+var done = document.getElementById('done');
+var clear = document.getElementById('clear');
+var nope = document.getElementById('nope');
+
+var classToUse = '';
+    
+done.addEventListener('click', function(e){
+    document.body.className = '';
+    var classToUse = document.querySelectorAll('input:checked');
+    var classToPrint = '';
+    for (i = 0; i < classToUse.length; i++) {
+        var newID = classToUse[i].id;
+        var classToPrint = classToPrint+'-'+newID;
+        document.body.classList.remove('generic');
+        document.body.classList.add(newID);
+        document.body.classList.add(classToPrint.substr(1,classToPrint.length));
+    }
+});
+nope.addEventListener('click', function(){document.body.className = 'generic';});
+
+</script>
+
+</body>
+</html>
