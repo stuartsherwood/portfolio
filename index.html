@@ -18,9 +18,10 @@ section + section {margin-top:4vw;}
 .layer {background:#f7dd61; box-sizing:border-box; height:32vw; margin:0; overflow:hidden; position:absolute; transform:translate3d(0,0,0); transition:bottom 0.3s ease-in-out, height 0.3s ease-in-out, left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.6s, width 0.3s ease-in-out, z-index 0.1s ease-in-out; z-index:1;}
 .layer:focus {outline:2px solid red;}
 .layer:hover {}
-header {padding:20px; pointer-events:none; position:relative; transition:opacity 0.3s ease-in-out;}
-h2 {font-size:16px; font-weight:800; margin:0 0 1vw 0; position:relative; pointer-events:none; text-transform:uppercase; transition:margin-bottom 0.3s ease-in-out; z-index:2;}
-a {color:#333; text-decoration:none;}
+header {padding:8px; pointer-events:none; position:relative; transition:opacity 0.3s ease-in-out;}
+h2 {font-size:14px; font-weight:800; margin:0 0 1vw 0; position:relative; pointer-events:none; text-transform:uppercase; transition:margin-bottom 0.3s ease-in-out; z-index:2;}
+h2 a {text-decoration:none;}
+a {color:#333;}
 p {font-weight:300; margin-bottom:0; transition:visibility 0s; visibility:hidden;}
 img {display:none; pointer-events:none;}
 iframe {border:0; height:50vw; width:100%;}
@@ -101,6 +102,7 @@ iframe {border:0; height:50vw; width:100%;}
 .tile-open {overflow:auto;}
 /*.tile-open .layer {bottom:1vw;}*/
 .layer {height:13vw; left:81vw; width:13vw;}
+header {font-size:16px; padding:20px;}
 .close-layer {display:none;}
 .indicator {line-height:1.5}
 .layer:nth-child(1) {left:72vw; top:1vw;}
@@ -130,8 +132,8 @@ iframe {border:0; height:50vw; width:100%;}
 
 <section class="layer" tabindex="0" data-img="images/cover.svg">
     <header>
-        <h2><a href="images/cover.svg" tabindex="-1">Welcome</a></h2>
-        <p>Samples of my work.</p>
+        <h2><a href="images/cover.svg" tabindex="-1">Stuart Sherwood, UX/UI Designer</a></h2>
+        <p>Check out these samples of my work, some are interactive. <a href="https://www.linkedin.com/in/stuart-sherwood/">Find me on Linkedin</a>.</p>
     </header>
     <div class="content"></div>
 </section>
@@ -148,7 +150,7 @@ iframe {border:0; height:50vw; width:100%;}
 <section class="layer" tabindex="0" data-img="images/La-Trobe-University.jpg">
     <header>
         <h2><a href="images/La-Trobe-University.jpg" tabindex="-1">La Trobe homepage</a></h2>
-        <p>Redesign of the La Trobe University home page, late 2017. Goals: improve usability, navigation, build reputation and personalise content.</p>
+        <p>Redesign of the La Trobe University home page. Goals: improve usability and navigation, build reputation and personalise content.</p>
     </header>
     <div class="content"></div>
 </section>
@@ -165,7 +167,7 @@ iframe {border:0; height:50vw; width:100%;}
 <section class="layer" tabindex="0" data-snippet="snippet/accordion-nav.html">
     <header>
         <h2><a href="snippet/accordion-nav.html" tabindex="-1">Accordion nav</a></h2>
-        <p>Deep navigation widget used on latrobe.edu.au. Production version WCAG AA compliant.</p>
+        <p>Deep navigation widget used on latrobe.edu.au. CSS3 and vanilla JS, WCAG AA compliant.</p>
     </header>
     <div class="content">
     </div>
@@ -182,7 +184,7 @@ iframe {border:0; height:50vw; width:100%;}
 <section class="layer" tabindex="0" data-snippet="snippet/streams.html">
     <header>
         <h2><a href="snippet/streams.html" tabindex="-1">Streams</a></h2>
-        <p>Experimental interface.</p>
+        <p>Experimental interface for audience segmentation.</p>
     </header>
     <div class="content">
     </div>
@@ -215,7 +217,7 @@ iframe {border:0; height:50vw; width:100%;}
 
 <section class="layer" tabindex="0" data-img="images/audio.png">
     <header>
-        <h2><a href="images/audio.png" tabindex="-1">Podcast audio module with transcript</a></h2>
+        <h2><a href="images/audio.png" tabindex="-1">Podcast audio module</a></h2>
         <p>Editors made use of a custom editor to create the transcripts.</p>
     </header>
     <div class="content">

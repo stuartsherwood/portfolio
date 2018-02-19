@@ -4,17 +4,16 @@
 <meta charset="utf-8" />
 <meta content="minimum-scale=1.0, width=device-width, initial-scale=1" name="viewport" />
 <title>Streams</title>
-<link href='http://fonts.googleapis.com/css?family=Roboto:300' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Montserrat:300,800" rel="stylesheet">
 <style>
-    body {font-family:Roboto,sans-serif; margin:0;}
+    body {font-family:Montserrat,sans-serif; margin:0;}
     h2, p {margin-top:0;}
     
-    .stream h2 {font-size:16px;}
+    .stream h2 {font-size:16px; font-weight:300;}
     .stream.xopen h2 {font-size:24px;}
 
 
-    .streams {background:transparent url(lims.jpg) no-repeat 0 0; background-size:cover; width:100vw;}
+    .streams {background:transparent url(lims.jpg) no-repeat 0 0; background-size:cover; height:100vh; width:100vw;}
     .stream {box-sizing:border-box; flex:1 0 auto; cursor:pointer; transition:background-color 0.3s ease-in-out, flex-grow 0.3s ease-in-out;}
     .stream:hover {background-color:#333!important;}
     .active .stream {}
@@ -67,22 +66,22 @@
 <body class="">
 
 <div class="streams">
-    <div class="stream"><h2>Study</h2>
+    <div class="stream"><h2 tabindex="0">Study</h2>
         <img src="placeholder.svg" alt="" />
     </div>
-    <div class="stream"><h2>Research</h2>
+    <div class="stream"><h2 tabindex="0">Research</h2>
         <img src="placeholder.svg" alt="" />
     </div>
-    <div class="stream"><h2>Alumni</h2>
+    <div class="stream"><h2 tabindex="0">Alumni</h2>
         <img src="placeholder.svg" alt="" />
     </div>
-    <div class="stream"><h2>Industry</h2>
+    <div class="stream"><h2 tabindex="0">Industry</h2>
         <img src="placeholder.svg" alt="" />
     </div>
-    <div class="stream"><h2>Community</h2>
+    <div class="stream"><h2 tabindex="0">Community</h2>
         <img src="placeholder.svg" alt="" />
     </div>
-    <div class="stream"><h2>About</h2>
+    <div class="stream"><h2 tabindex="0">About</h2>
         <img src="placeholder.svg" alt="" />
     </div>
 </div>
@@ -149,6 +148,14 @@
           this.classList.toggle('open');
           last.classList.remove('open');
           this.parentNode.classList.add('active');
+      }, false);
+      bits[i].addEventListener('keyup', function(e) {
+          if (e.key == 'Enter') {
+              var last = document.querySelector('.open');
+              this.classList.toggle('open');
+              last.classList.remove('open');
+              this.parentNode.classList.add('active');
+          }
       }, false);
     }
 
