@@ -53,10 +53,10 @@ p {margin-top:0;}
 .nav-container nav {width:200%;}
 .nav-container ul {float:left; list-style-type:none; margin:0; padding:0; width:50%;}
 .nav-container li {overflow:hidden;}
-.nav-container li:not(.furniture) {background:#ff9e1b url(http://www.latrobe.edu.au/__data/assets/image/0012/585939/nav-icons.png) no-repeat -60px -350px;}
+.nav-container li:not(.furniture) {background:#ff9e1b url(http://www.latrobe.edu.au/_media/la-trobe-api/v5/img/nav-icons.png) no-repeat -60px -350px;}
 .nav-container a {color:#63513D; display:block; font:700 20px/1 'Roboto Condensed',sans-serif; text-decoration:none;}
 .nav-container a:visited {color:#63513D;}
-.nav-container .icon {background:#FF9E1B url(http://www.latrobe.edu.au/__data/assets/image/0012/585939/nav-icons.png) no-repeat; display:block; float:left; height:60px; vertical-align:top; width:60px;}
+.nav-container .icon {background:#FF9E1B url(http://www.latrobe.edu.au/_media/la-trobe-api/v5/img/nav-icons.png) no-repeat; display:block; float:left; height:60px; vertical-align:top; width:60px;}
 .nav-container a:hover .icon {background-color:#D14124;}
 .nav-label {background-color:#fff; box-shadow:0 -1px 0 #E1E1E1 inset; -moz-box-sizing:border-box; box-sizing:border-box; display:block; overflow:hidden; padding:20px; text-transform:uppercase; vertical-align:top;}
 .furniture a {font:300 18px/1 'Roboto',sans-serif; padding:12px 0 12px 80px;}
@@ -165,7 +165,18 @@ a.ltu-button:active {background-color:#D52B1E; box-shadow:0 0 4px #D52B1E;}
     #make-wide {top:120px;}
     .flow-node:last-child {padding-right:120px;}
 }
-    
+
+.courses {background:#222; padding:40px 60px; width:320px;}
+.courses h2 {color:#fff;}
+.courses input {border:none; box-sizing:border-box; line-height:20px; padding:14px; vertical-align:top; width:calc(100% - 48px);}
+.courses input[type=image] {background:#fff; padding:0; width:48px;}
+.courses p {margin:0;}
+.courses p:last-of-type {margin-top:20px;}
+.courses ol {list-style-type:none; margin:0; padding:0;}
+.courses li {margin:0;}
+.courses li:nth-child(even) {background:#333;}
+.courses a {color:#fff; display:block; text-decoration:none;}
+.courses a:hover {text-decoration:underline;}
 
 .spotlight {min-width:790px; position:relative;}
 .spotlight header {background:transparent; height:300px; width:90%;}
@@ -180,15 +191,15 @@ a.ltu-button:active {background-color:#D52B1E; box-shadow:0 0 4px #D52B1E;}
 .spotlight .ltu-button {margin-bottom:20px;}
 
 
-.feature_small img {max-width:360px;}
-.js .feature_small.stacked {display:inline-block; float:left; vertical-align:top;}
+.sm img {max-width:360px;}
+.js .sm.stacked {display:inline-block; float:left; vertical-align:top;}
 .content_box header {height:auto; width:320px;}
 
-.feature_large img {max-width:600px;}
+.lg img {max-width:600px;}
 
 .content_box {min-width:360px;}
 
-.flow-node.feature_small.stacked > div {height:280px;}
+.flow-node.sm.stacked > div {height:280px;}
 
 .newsreel {}
 .newsreel .hero {background:none; height:auto; overflow:hidden; padding:0; width:100%!important;}
@@ -240,17 +251,146 @@ a.ltu-button:active {background-color:#D52B1E; box-shadow:0 0 4px #D52B1E;}
     <div class="paralax"></div>
     <div id="flow-content">
         <div id="make-wide">
-            <article class="flow-node"><header class="hero"><h2>GET A GLOBAL PERSPECTIVE</h2></header><div class="sidekick"><img src="http://www.latrobe.edu.au/be-the-difference/choose-la-trobe/global-perspective.jpg/preview.jpg" alt="" /></div></article>
-            <article class="flow-node"><header class="hero"><h2>GET A GLOBAL PERSPECTIVE</h2></header><div class="sidekick"><img src="http://www.latrobe.edu.au/be-the-difference/choose-la-trobe/global-perspective.jpg/preview.jpg" alt="" /></div></article>
-            <article class="flow-node">3</article>
-            <article class="flow-node">4</article>
-            <article class="flow-node">5</article>
-            <article class="flow-node">6</article>
-            <article class="flow-node">7</article>
-            <article class="flow-node">8</article>
-            <article class="flow-node">9</article>
-            <article class="flow-node">0</article>
-            <article class="flow-node"><header class="hero"><h2>LA TROBE FEE GUARANTEE</h2></header><div class="sidekick"><img class="lazy" data-original="http://www.latrobe.edu.au/study/aspire/fee-guarantee/Cameron.jpg/preview.jpg" alt="" /></div></article>
+            <article class="flow-node">
+                <header class="courses">
+                    <h2>Find a course</h2>
+                    <p><input /><input type="image" src="http://www.latrobe.edu.au/__data/assets/file/0007/841156/search-red.svg" /></p>
+                    <p><a href="http://www.latrobe.edu.au/courses/help">Need help deciding?</a></p>
+                    <!--ol class="discipline-list">
+                        <li data-id="692491"><a href="http://www.latrobe.edu.au/courses/study-arts-social-sciences-and-communications">Arts, social sciences and communications</a></li>
+                        <li data-id="692495"><a href="http://www.latrobe.edu.au/courses/study-business-and-commerce">Business and commerce</a></li>
+                        <li data-id="692499"><a href="http://www.latrobe.edu.au/courses/study-education-teaching">Education and teaching</a></li>
+                        <li data-id="692504"><a href="http://www.latrobe.edu.au/courses/study-health">Health</a></li
+                        ><li data-id="692508"><a href="http://www.latrobe.edu.au/courses/study-it-and-engineering">IT and engineering</a></li>
+                        <li data-id="692512"><a href="http://www.latrobe.edu.au/courses/study-law-criminology">Law and criminology</a></li>
+                        <li data-id="692516"><a href="http://www.latrobe.edu.au/courses/study-science">Science</a></li>
+                        <li class="need-help"><a href="http://www.latrobe.edu.au/courses/help">Need help deciding?</a></li>
+                    </ol-->
+                </header>
+            </article>
+            
+            <article class="flow-node v6-news">
+                <h2 class="section-heading">News</h2>
+                <div class="v6-news-item" id="a779851">
+                  <a href="http://www.latrobe.edu.au/news/articles/2018/release/la-trobe-awarded-for-gender-equity"><img src="http://www.latrobe.edu.au/news/images/articles/David-Myers.jpg/220.jpg" alt=""></a>
+                  <div class="v6-news-text">
+                    <h3><a href="http://www.latrobe.edu.au/news/articles/2018/release/la-trobe-awarded-for-gender-equity"><span class="headline">La Trobe awarded for gender equity </span></a></h3>
+                    <p class="leadin">La Trobe named an employer of chioce for gender equity</p>
+                  </div>
+                </div><div class="v6-news-item" id="a779851">
+                  <a href="http://www.latrobe.edu.au/news/articles/2018/release/new-hope-for-stroke-patients"><img src="http://www.latrobe.edu.au/news/images/articles/brain-scan.jpg/220.jpg" alt=""></a>
+                  <div class="v6-news-text">
+                    <h3><a href="http://www.latrobe.edu.au/news/articles/2018/release/new-hope-for-stroke-patients"><span class="headline">New hope for stroke patients </span></a></h3>
+                    <p class="leadin"></p>
+                  </div>
+                </div><div class="v6-news-item" id="a779851">
+                  <a href="http://www.latrobe.edu.au/news/articles/2017/release/leading-next-generation-ivf"><img src="http://www.latrobe.edu.au/news/images/articles/embryo-resized.jpg/220.jpg" alt=""></a>
+                  <div class="v6-news-text">
+                    <h3><a href="http://www.latrobe.edu.au/news/articles/2017/release/leading-next-generation-ivf"><span class="headline">Leading next generation IVF </span></a></h3>
+                    <p class="leadin">Embryo signal key to improving pregnancy success rates</p>
+                  </div>
+                </div><div class="v6-news-item" id="a779851">
+                  <a href="http://www.latrobe.edu.au/news/articles/2018/opinion/four-types-of-drinker-which-one-are-you"><img src="http://www.latrobe.edu.au/news/images/articles/drinking2.jpg/220.jpg" alt=""></a>
+                  <div class="v6-news-text">
+                    <h3><a href="http://www.latrobe.edu.au/news/articles/2018/opinion/four-types-of-drinker-which-one-are-you"><span class="headline">Four types of drinker: which one are you</span></a></h3>
+                    <p class="leadin">There are four types of drinker - which one are you?</p>
+                  </div>
+                </div>
+                    <p class="more-news-events"><a href="/news">More news</a></p>
+            </article>
+
+            <article class="flow-node v6-events">
+              <h2 class="section-heading">Events</h2>
+              <div id="event-855256" class="event">
+                    <h3><a href="http://www.latrobe.edu.au/events/all/twilight-tour-of-la-trobe-wildlife-sanctuary">Twilight Tour of La Trobe Wildlife Sanctuary</a></h3>
+                    <p class="event-date">
+                        <span class="dateTime">
+                            <span class="event-month">Feb</span>
+                            <span class="event-number">21</span>
+                        </span>
+                    </p>
+                </div><div id="event-857519" class="event">
+                    <h3><a href="http://www.latrobe.edu.au/events/all/drop-in-information-sessions-23-feb">Drop-in information sessions for international students</a></h3>
+                    <p class="event-date">
+                        <span class="dateTime">
+                            <span class="event-month">Feb</span>
+                            <span class="event-number">23</span>
+                        </span>
+                    </p>
+                </div><div id="event-855070" class="event">
+                    <h3><a href="http://www.latrobe.edu.au/events/all/orientation3">Orientation</a></h3>
+                    <p class="event-date">
+                        <span class="dateTime">
+                            <span class="event-month">Feb</span>
+                            <span class="event-number">26</span>
+                        </span>
+                    </p>
+                </div><div id="event-857528" class="event">
+                    <h3><a href="http://www.latrobe.edu.au/events/all/drop-in-information-sessions-2-march">Drop-in information sessions for international students</a></h3>
+                    <p class="event-date">
+                        <span class="dateTime">
+                            <span class="event-month">Mar</span>
+                            <span class="event-number">02</span>
+                        </span>
+                    </p>
+                </div><div id="event-849930" class="event">
+                    <h3><a href="http://www.latrobe.edu.au/events/all/art-therapy-masterclass-yayoi-kusama">Art Therapy Masterclass: Yayoi Kusama</a></h3>
+                    <p class="event-date">
+                        <span class="dateTime">
+                            <span class="event-month">Mar</span>
+                            <span class="event-number">02</span>
+                        </span>
+                    </p>
+                </div>
+                  <p class="more-news-events"><a href="/events">More events</a></p>
+            </article>
+
+            <article class="flow-node spotlight">
+                <header class="hero">
+                    <h2><span>GET A GLOBAL</span><span>PERSPECTIVE</span></h2>
+                </header>
+                <div class="sidekick">
+                    <img src="http://www.latrobe.edu.au/edit-homepage/promo-3-multiplex/ug/b-criminology.jpg/preview.jpg" alt="" />
+                </div> 
+            </article>
+            <article class="flow-node lg">
+                <header class="hero">
+                    <h2>GET A GLOBAL PERSPECTIVE</h2>
+                </header>
+                <div class="sidekick">
+                    <img src="http://www.latrobe.edu.au/edit-homepage/promo-feature/generic/Bendigo01.jpg/preview.jpg" alt="" /></div>
+            </article>
+            <article class="flow-node sm">
+                <header class="hero">
+                    <h2>GET A GLOBAL PERSPECTIVE</h2>
+                </header>
+                <div class="sidekick">
+                    <img src="http://www.latrobe.edu.au/be-the-difference/choose-la-trobe/global-perspective.jpg/preview.jpg" alt="" /></div>
+            </article>
+            <article class="flow-node sm">
+                <header class="hero">
+                    <h2>LA TROBE FEE GUARANTEE</h2>
+                </header>
+                <div class="sidekick">
+                    <img class="lazy" data-original="http://www.latrobe.edu.au/edit-homepage/promo-feature/generic/34148-AKoC-Homepage-Pose-2.jpg/preview.jpg" alt="" />
+                </div>
+            </article>
+            <article class="flow-node sm">
+                <header class="hero">
+                    <h2>LA TROBE FEE GUARANTEE</h2>
+                </header>
+                <div class="sidekick">
+                    <img class="lazy" data-original="http://www.latrobe.edu.au/edit-homepage/promo-feature/generic/_K8A9267.jpg/preview.jpg" alt="" />
+                </div>
+            </article>
+            <article class="flow-node lg">
+                <header class="hero">
+                    <h2>LA TROBE FEE GUARANTEE</h2>
+                </header>
+                <div class="sidekick">
+                    <img class="lazy" data-original="http://www.latrobe.edu.au/edit-homepage/promo-feature/generic/LaTrobe_AusBallet_RenPidgeon_BTS_731.jpg/preview.jpg" alt="" />
+                </div>
+            </article>
         </div>
     </div>
 

@@ -15,7 +15,7 @@ main {margin-bottom:1vw;}
 section + section {margin-top:4vw;}
 
 /* Closed layer */
-.layer {background:#f7dd61; box-sizing:border-box; height:32vw; margin:0; overflow:hidden; position:absolute; transform:translate3d(0,0,0); transition:bottom 0.3s ease-in-out, height 0.3s ease-in-out, left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.6s, width 0.3s ease-in-out, z-index 0.1s ease-in-out; z-index:1;}
+.layer {background:#f7dd61; box-sizing:border-box; cursor:pointer; height:32vw; margin:0; overflow:hidden; position:absolute; transform:translate3d(0,0,0); transition:bottom 0.3s ease-in-out, height 0.3s ease-in-out, left 0.3s ease-in-out, top 0.3s ease-in-out, opacity 0.6s, width 0.3s ease-in-out, z-index 0.1s ease-in-out; z-index:1;}
 .layer:focus {outline:2px solid red;}
 .layer:hover {}
 header {padding:8px; pointer-events:none; position:relative; transition:opacity 0.3s ease-in-out;}
@@ -138,6 +138,14 @@ header {font-size:16px; padding:20px;}
     <div class="content"></div>
 </section>
 
+<section class="layer" tabindex="0" data-snippet="praise.html">
+    <header>
+        <h2><a href="praise.html" tabindex="-1">Praise</a></h2>
+        <p>But first, here are some things people have said about my work.</p>
+    </header>
+    <div class="content"></div>
+</section>
+
 <section class="layer" tabindex="0" data-img="images/Courses.png">
     <header>
         <h2><a href="images/Courses.png" tabindex="-1">Course publishing application</a></h2>
@@ -173,10 +181,18 @@ header {font-size:16px; padding:20px;}
     </div>
 </section>
 
-<section class="layer" tabindex="0" data-img="images/ATAR-Wizard.jpg">
+<!--section class="layer" tabindex="0" data-img="images/ATAR-Wizard.jpg">
     <header>
         <h2><a href="images/ATAR-Wizard.jpg" tabindex="-1">ATAR Wizard</a></h2>
         <p>Discover ATAR entranace scores. Goal: meet compliance rules, improve usability and align visual styles.</p>
+    </header>
+    <div class="content"></div>
+</section-->
+
+<section class="layer" tabindex="0" data-snippet="snippet/marketo-lp.html">
+    <header>
+        <h2><a href="snippet/marketo-lp.html" tabindex="-1">Marketo Landing Page</a></h2>
+        <p> Campaign landing page template with a variety of modules.</p>
     </header>
     <div class="content"></div>
 </section>
@@ -215,6 +231,15 @@ header {font-size:16px; padding:20px;}
     </div>
 </section>
 
+<!--section class="layer" tabindex="0" data-snippet="snippet/flow.html">
+    <header>
+        <h2><a href="snippet/flow.html" tabindex="-1">Flow page</a></h2>
+        <p>Previous version of La Trobe homepage. Bold and adventurous with horizontal scrolling .</p>
+    </header>
+    <div class="content">
+    </div>
+</section-->
+
 <section class="layer" tabindex="0" data-img="images/audio.png">
     <header>
         <h2><a href="images/audio.png" tabindex="-1">Podcast audio module</a></h2>
@@ -249,14 +274,14 @@ header {font-size:16px; padding:20px;}
     <div class="content"></div>
 </section>
 
-<section class="layer" tabindex="0" data-img="images/best-mobile-site.png">
+<!--section class="layer" tabindex="0" data-img="images/best-mobile-site.png">
     <header>
         <h2><a href="images/best-mobile-site.png" tabindex="-1">Best mobile site</a></h2>
         <p>Compliment from Twitter and recognition from college.</p>
     </header>
     <div class="content">
     </div>
-</section>
+</section-->
 
 </main>
 
